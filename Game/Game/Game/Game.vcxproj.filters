@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="system">
+      <UniqueIdentifier>{a9bb9230-eaa9-4c07-a610-f43e5384bb9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NewFilter1">
+      <UniqueIdentifier>{dbb1d7ca-e821-434d-8693-8506af1a0632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine">
+      <UniqueIdentifier>{abd69f98-0270-4773-b057-cdb94d7ce29b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HID">
+      <UniqueIdentifier>{8786b3e8-f09d-4b8b-9acc-fd94588005bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{3b52a398-174e-44c7-87cd-7cac517d152e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tkFile">
+      <UniqueIdentifier>{2ada42e3-a7fb-48a1-b8f6-2545177f0749}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="system\system.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\tkFile\TkmFile.cpp">
+      <Filter>tkFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\tkFile\TksFile.cpp">
+      <Filter>tkFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\tkFile\TkaFile.cpp">
+      <Filter>tkFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\math\Vector.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\math\Matrix.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\HID\GamePad.cpp">
+      <Filter>HID</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\GraphicsEngine.cpp" />
+    <ClCompile Include="..\..\HiroEngine\IndexBuffer.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Material.cpp" />
+    <ClCompile Include="..\..\HiroEngine\MeshParts.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Model.cpp" />
+    <ClCompile Include="..\..\HiroEngine\PipelineState.cpp" />
+    <ClCompile Include="..\..\HiroEngine\RenderTarget.cpp" />
+    <ClCompile Include="..\..\HiroEngine\RootSignature.cpp" />
+    <ClCompile Include="..\..\HiroEngine\RWStructuredBuffer.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Shader.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Skeleton.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Sprite.cpp" />
+    <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Texture.cpp" />
+    <ClCompile Include="..\..\HiroEngine\tkEngine.cpp" />
+    <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Camera.cpp" />
+    <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp" />
+    <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="system\system.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="TrianglePolygon.h">
+      <Filter>NewFilter1</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>NewFilter1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\tkFile\TkmFile.h">
+      <Filter>tkFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\tkFile\TksFile.h">
+      <Filter>tkFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\tkFile\TkaFile.h">
+      <Filter>tkFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\math\Matrix.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\math\Vector.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\math\Math.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\HID\GamePad.h">
+      <Filter>HID</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\GraphicsEngine.h" />
+    <ClInclude Include="..\..\HiroEngine\IndexBuffer.h" />
+    <ClInclude Include="..\..\HiroEngine\IShaderResource.h" />
+    <ClInclude Include="..\..\HiroEngine\IUnorderAccessResource.h" />
+    <ClInclude Include="..\..\HiroEngine\Material.h" />
+    <ClInclude Include="..\..\HiroEngine\MeshParts.h" />
+    <ClInclude Include="..\..\HiroEngine\MiniEngine.h" />
+    <ClInclude Include="..\..\HiroEngine\Model.h" />
+    <ClInclude Include="..\..\HiroEngine\PipelineState.h" />
+    <ClInclude Include="..\..\HiroEngine\RenderContext.h" />
+    <ClInclude Include="..\..\HiroEngine\RenderContext_inline.h" />
+    <ClInclude Include="..\..\HiroEngine\RenderTarget.h" />
+    <ClInclude Include="..\..\HiroEngine\RootSignature.h" />
+    <ClInclude Include="..\..\HiroEngine\RWStructuredBuffer.h" />
+    <ClInclude Include="..\..\HiroEngine\Shader.h" />
+    <ClInclude Include="..\..\HiroEngine\Skeleton.h" />
+    <ClInclude Include="..\..\HiroEngine\Sprite.h" />
+    <ClInclude Include="..\..\HiroEngine\StructuredBuffer.h" />
+    <ClInclude Include="..\..\HiroEngine\Texture.h" />
+    <ClInclude Include="..\..\HiroEngine\tkEngine.h" />
+    <ClInclude Include="..\..\HiroEngine\VertexBuffer.h" />
+    <ClInclude Include="..\..\HiroEngine\Camera.h" />
+    <ClInclude Include="..\..\HiroEngine\ConstantBuffer.h" />
+    <ClInclude Include="..\..\HiroEngine\d3dx12.h" />
+    <ClInclude Include="..\..\HiroEngine\DescriptorHeap.h" />
+    <ClInclude Include="..\..\HiroEngine\DescriptorHeap_inline.h" />
+  </ItemGroup>
+</Project>
