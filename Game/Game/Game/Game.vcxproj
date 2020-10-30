@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/../MiniEngine;$(SolutionDir)/Sample_00;$(ProjectDir)/../../HiroEngine</IncludePath>
-    <LibraryPath>$(SolutionDir)/../MiniEngine/DirectXTK/Bin/Desktop_2019_Win10/x64/Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)/../HiroEngine/DirectXTK/Bin/Desktop_2019_Win10/x64/Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
