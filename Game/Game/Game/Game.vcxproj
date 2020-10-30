@@ -202,6 +202,7 @@
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap_inline.h" />
     <ClInclude Include="..\..\HiroEngine\GraphicsEngine.h" />
     <ClInclude Include="..\..\HiroEngine\HID\GamePad.h" />
+    <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
     <ClInclude Include="..\..\HiroEngine\IndexBuffer.h" />
     <ClInclude Include="..\..\HiroEngine\IShaderResource.h" />
     <ClInclude Include="..\..\HiroEngine\IUnorderAccessResource.h" />
@@ -210,7 +211,6 @@
     <ClInclude Include="..\..\HiroEngine\math\Matrix.h" />
     <ClInclude Include="..\..\HiroEngine\math\Vector.h" />
     <ClInclude Include="..\..\HiroEngine\MeshParts.h" />
-    <ClInclude Include="..\..\HiroEngine\MiniEngine.h" />
     <ClInclude Include="..\..\HiroEngine\Model.h" />
     <ClInclude Include="..\..\HiroEngine\PipelineState.h" />
     <ClInclude Include="..\..\HiroEngine\RenderContext.h" />
