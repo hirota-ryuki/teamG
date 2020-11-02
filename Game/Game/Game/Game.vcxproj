@@ -182,7 +182,7 @@
     <ClCompile Include="..\..\HiroEngine\Sprite.cpp" />
     <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\Texture.cpp" />
-    <ClCompile Include="..\..\HiroEngine\tkEngine.cpp" />
+    <ClCompile Include="..\..\HiroEngine\hrEngine.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TkaFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TkmFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TksFile.cpp" />
@@ -225,7 +225,7 @@
     <ClInclude Include="..\..\HiroEngine\Sprite.h" />
     <ClInclude Include="..\..\HiroEngine\StructuredBuffer.h" />
     <ClInclude Include="..\..\HiroEngine\Texture.h" />
-    <ClInclude Include="..\..\HiroEngine\tkEngine.h" />
+    <ClInclude Include="..\..\HiroEngine\hrEngine.h" />
     <ClInclude Include="..\..\HiroEngine\tkFile\TkaFile.h" />
     <ClInclude Include="..\..\HiroEngine\tkFile\TkmFile.h" />
     <ClInclude Include="..\..\HiroEngine\tkFile\TksFile.h" />

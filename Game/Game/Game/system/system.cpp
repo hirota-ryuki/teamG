@@ -79,8 +79,8 @@ void InitGame(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, in
 {
 	//ウィンドウを初期化。
 	InitWindow(hInstance, hPrevInstance, lpCmdLine, nCmdShow, appName);
-	//TKエンジンの初期化。
-	g_engine = new TkEngine;
+	//Hrエンジンの初期化。
+	g_engine = new HrEngine;
 	g_engine->Init(g_hWnd, FRAME_BUFFER_W, FRAME_BUFFER_H);
 }
 //ウィンドウメッセージをディスパッチ。falseが返ってきたら、ゲーム終了。

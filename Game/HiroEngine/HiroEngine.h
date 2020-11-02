@@ -23,7 +23,7 @@
 #include "math/Vector.h"
 #include "math/Matrix.h"
 
-#include "tkEngine.h"
+#include "hrEngine.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "IShaderResource.h"
