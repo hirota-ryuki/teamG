@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "system/system.h"
-
+#include"Player/Player.h"
 
 //関数宣言
 void InitRootSignature(RootSignature& rs);
@@ -49,7 +49,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 	//モデルを初期化。
 	ModelInitData modelInitData;
-	//人型モデルを初期化。
+	////人型モデルを初期化。
 	modelInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
 	modelInitData.m_fxFilePath = "Assets/shader/model.fx";
 	Model humanModel;
