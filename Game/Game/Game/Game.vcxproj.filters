@@ -52,6 +52,12 @@
     <Filter Include="HiroEngine\HrioEngine">
       <UniqueIdentifier>{21541520-3b8c-40db-8e7f-0b353d71db05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HiroEngine\CharaCon">
+      <UniqueIdentifier>{b9f3f962-4969-4841-9e67-b20a67867f99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\physics">
+      <UniqueIdentifier>{77bc3dd8-689e-4365-a2be-df9ec6317316}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="system\system.cpp">
@@ -146,6 +152,15 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp">
+      <Filter>HiroEngine\CharaCon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="system\system.h">
@@ -266,6 +281,18 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
       <Filter>HiroEngine\HrioEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
+      <Filter>HiroEngine\CharaCon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\CollisionAttr.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\Physics.h">
+      <Filter>HiroEngine\physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
