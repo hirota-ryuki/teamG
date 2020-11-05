@@ -4,12 +4,12 @@
 
 class GraphicsEngine;
 
-class TkEngine {
+class HrEngine {
 public:
 	/// <summary>
 	/// デストラクタ。
 	/// </summary>
-	~TkEngine();
+	~HrEngine();
 	/// <summary>
 	/// フレームの開始時に呼ばれる処理。
 	/// </summary>
@@ -28,4 +28,4 @@ private:
 	
 };
 
-extern TkEngine* g_engine;	//TKエンジン。
+extern HrEngine* g_engine;	//TKエンジン。

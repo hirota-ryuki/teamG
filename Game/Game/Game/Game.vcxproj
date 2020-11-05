@@ -162,9 +162,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\HiroEngine\Camera.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Camera\Camera.cpp" />
     <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp" />
+    <ClCompile Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.cpp" />
     <ClCompile Include="..\..\HiroEngine\GraphicsEngine.cpp" />
     <ClCompile Include="..\..\HiroEngine\HID\GamePad.cpp" />
     <ClCompile Include="..\..\HiroEngine\IndexBuffer.cpp" />
@@ -182,7 +183,7 @@
     <ClCompile Include="..\..\HiroEngine\Sprite.cpp" />
     <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\Texture.cpp" />
-    <ClCompile Include="..\..\HiroEngine\tkEngine.cpp" />
+    <ClCompile Include="..\..\HiroEngine\hrEngine.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TkaFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TkmFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TksFile.cpp" />
@@ -198,11 +199,13 @@
     <ClCompile Include="system\system.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\HiroEngine\Camera.h" />
+    <ClInclude Include="..\..\HiroEngine\Camera\Camera.h" />
     <ClInclude Include="..\..\HiroEngine\ConstantBuffer.h" />
     <ClInclude Include="..\..\HiroEngine\d3dx12.h" />
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap.h" />
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap_inline.h" />
+    <ClInclude Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.h" />
+    <ClInclude Include="..\..\HiroEngine\GameObjectManager\IGameObject.h" />
     <ClInclude Include="..\..\HiroEngine\GraphicsEngine.h" />
     <ClInclude Include="..\..\HiroEngine\HID\GamePad.h" />
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
@@ -226,10 +229,11 @@
     <ClInclude Include="..\..\HiroEngine\Sprite.h" />
     <ClInclude Include="..\..\HiroEngine\StructuredBuffer.h" />
     <ClInclude Include="..\..\HiroEngine\Texture.h" />
-    <ClInclude Include="..\..\HiroEngine\tkEngine.h" />
+    <ClInclude Include="..\..\HiroEngine\hrEngine.h" />
     <ClInclude Include="..\..\HiroEngine\tkFile\TkaFile.h" />
     <ClInclude Include="..\..\HiroEngine\tkFile\TkmFile.h" />
     <ClInclude Include="..\..\HiroEngine\tkFile\TksFile.h" />
+    <ClInclude Include="..\..\HiroEngine\util\Util.h" />
     <ClInclude Include="..\..\HiroEngine\VertexBuffer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />

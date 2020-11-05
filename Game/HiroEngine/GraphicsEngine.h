@@ -12,7 +12,7 @@
 
 #include "RenderContext.h"
 
-#include "Camera.h"
+#include "Camera/Camera.h"
 
 /// <summary>
 /// DirectX12に依存するグラフィックスエンジン

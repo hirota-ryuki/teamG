@@ -23,7 +23,7 @@
 #include "math/Vector.h"
 #include "math/Matrix.h"
 
-#include "tkEngine.h"
+#include "hrEngine.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "IShaderResource.h"
@@ -47,3 +47,6 @@
 
 const UINT FRAME_BUFFER_W = 1280;				//フレームバッファの幅。
 const UINT FRAME_BUFFER_H = 720;				//フレームバッファの高さ。
+
+//追加後のインクルードファイル。
+#include "GameObjectManager/IGameObject.h"

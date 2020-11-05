@@ -1,16 +1,16 @@
 #include "stdafx.h"
-#include "tkEngine.h"
+#include "hrEngine.h"
 #include "GraphicsEngine.h"
 
-TkEngine* g_engine = nullptr;
+HrEngine* g_engine = nullptr;
 
-TkEngine::~TkEngine()
+HrEngine::~HrEngine()
 {
 	if (m_graphicsEngine) {
 		delete m_graphicsEngine;
 	}
 }
-void TkEngine::Init(HWND hwnd, UINT frameBufferWidth, UINT frameBufferHeight)
+void HrEngine::Init(HWND hwnd, UINT frameBufferWidth, UINT frameBufferHeight)
 {
 	//グラフィックエンジンの初期化。
 	m_graphicsEngine = new GraphicsEngine();
@@ -20,7 +20,7 @@ void TkEngine::Init(HWND hwnd, UINT frameBufferWidth, UINT frameBufferHeight)
 		g_pad[i] = &m_pad[i];
 	}
 }
-void TkEngine::BeginFrame()
+void HrEngine::BeginFrame()
 {
 	m_graphicsEngine->BeginRender();
 	for (auto& pad : m_pad) {
@@ -28,7 +28,7 @@ void TkEngine::BeginFrame()
 		pad.Update();
 	}
 }
-void TkEngine::EndFrame()
+void HrEngine::EndFrame()
 {
 	m_graphicsEngine->EndRender();
 }

@@ -19,8 +19,35 @@
     <Filter Include="main">
       <UniqueIdentifier>{dbb1d7ca-e821-434d-8693-8506af1a0632}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{69616d0c-3907-4c08-adb5-002040574077}</UniqueIdentifier>
+    <Filter Include="HiroEngine\Model">
+      <UniqueIdentifier>{e30a0bdc-dbb1-4030-a585-fab43817c7de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\Camera">
+      <UniqueIdentifier>{1790d712-0999-414f-91b4-63dc46180b27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\GraphicsEngine">
+      <UniqueIdentifier>{9f500b9b-fcac-4d88-a323-cd995462f56f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{c81f28fb-8b35-4346-800d-4f1799d1e8df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\Render">
+      <UniqueIdentifier>{05bc3681-1946-487c-8fe2-29ba797f6954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\Buffer">
+      <UniqueIdentifier>{832c8169-4d17-4520-9902-4b3da997366a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\Shader">
+      <UniqueIdentifier>{0202b498-52e1-4bea-88e7-8360f54be8f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\Sprite">
+      <UniqueIdentifier>{34ab3969-b23b-4536-a4ab-dc2b605ba349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\GameObjectManager">
+      <UniqueIdentifier>{1a3cf2f3-579f-4afa-b586-590896c0742d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\Util">
+      <UniqueIdentifier>{3306953c-267a-4c1f-b3fe-94aa2e69548f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,56 +78,65 @@
     <ClCompile Include="..\..\HiroEngine\HID\GamePad.cpp">
       <Filter>HiroEngine\HID</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\Camera.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\GraphicsEngine.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\IndexBuffer.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\Material.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\MeshParts.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\Model.cpp">
       <Filter>HiroEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\HiroEngine\PipelineState.cpp">
       <Filter>HiroEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\RenderTarget.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\RootSignature.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\RWStructuredBuffer.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\Shader.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\Skeleton.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\Sprite.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp">
       <Filter>HiroEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\HiroEngine\Texture.cpp">
       <Filter>HiroEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\hrEngine.cpp">
+      <Filter>HiroEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\Material.cpp">
+      <Filter>HiroEngine\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\MeshParts.cpp">
+      <Filter>HiroEngine\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\Model.cpp">
+      <Filter>HiroEngine\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\GraphicsEngine.cpp">
+      <Filter>HiroEngine\GraphicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\Skeleton.cpp">
+      <Filter>HiroEngine\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\RenderTarget.cpp">
+      <Filter>HiroEngine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\IndexBuffer.cpp">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\RWStructuredBuffer.cpp">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\Shader.cpp">
+      <Filter>HiroEngine\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\Sprite.cpp">
+      <Filter>HiroEngine\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\Camera\Camera.cpp">
+      <Filter>HiroEngine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.cpp">
+      <Filter>HiroEngine\GameObjectManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\HiroEngine\tkEngine.cpp">
       <Filter>HiroEngine</Filter>
@@ -143,12 +179,6 @@
     <ClInclude Include="..\..\HiroEngine\HID\GamePad.h">
       <Filter>HiroEngine\HID</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\Camera.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\ConstantBuffer.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\d3dx12.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
@@ -158,13 +188,7 @@
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap_inline.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\GraphicsEngine.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\IndexBuffer.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\IShaderResource.h">
@@ -173,53 +197,74 @@
     <ClInclude Include="..\..\HiroEngine\IUnorderAccessResource.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\Material.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\MeshParts.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\Model.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\PipelineState.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\RenderContext.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\RenderContext_inline.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\RenderTarget.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\RootSignature.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\RWStructuredBuffer.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\Shader.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\Skeleton.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\Sprite.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\StructuredBuffer.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\Texture.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\tkEngine.h">
+    <ClInclude Include="..\..\HiroEngine\hrEngine.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\MeshParts.h">
+      <Filter>HiroEngine\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\Material.h">
+      <Filter>HiroEngine\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\Model.h">
+      <Filter>HiroEngine\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\GraphicsEngine.h">
+      <Filter>HiroEngine\GraphicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\Skeleton.h">
+      <Filter>HiroEngine\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\RenderContext.h">
+      <Filter>HiroEngine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\RenderContext_inline.h">
+      <Filter>HiroEngine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\RenderTarget.h">
+      <Filter>HiroEngine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\ConstantBuffer.h">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\IndexBuffer.h">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\StructuredBuffer.h">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\VertexBuffer.h">
-      <Filter>HiroEngine</Filter>
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\RWStructuredBuffer.h">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\Shader.h">
+      <Filter>HiroEngine\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\Sprite.h">
+      <Filter>HiroEngine\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\Camera\Camera.h">
+      <Filter>HiroEngine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.h">
+      <Filter>HiroEngine\GameObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\GameObjectManager\IGameObject.h">
+      <Filter>HiroEngine\GameObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\util\Util.h">
+      <Filter>HiroEngine\Util</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Player</Filter>
