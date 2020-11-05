@@ -145,7 +145,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
-		GameObjectManager::GetInstance().GetNum();
+		//GameObjectManagerの更新。
+		GameObjectManager::GetInstance().Update();
 		//レンダリング開始。
 		g_engine->BeginFrame();
 		if (g_pad[0]->IsPress(enButtonRight)) {
