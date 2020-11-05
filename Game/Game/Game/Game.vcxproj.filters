@@ -49,6 +49,9 @@
     <Filter Include="HiroEngine\Util">
       <UniqueIdentifier>{3306953c-267a-4c1f-b3fe-94aa2e69548f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HiroEngine\HrioEngine">
+      <UniqueIdentifier>{21541520-3b8c-40db-8e7f-0b353d71db05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="system\system.cpp">
@@ -138,15 +141,11 @@
     <ClCompile Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.cpp">
       <Filter>HiroEngine\GameObjectManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\tkEngine.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
       <Filter>HiroEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="system\system.h">
@@ -186,9 +185,6 @@
       <Filter>HiroEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap_inline.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\IShaderResource.h">
@@ -266,8 +262,10 @@
     <ClInclude Include="..\..\HiroEngine\util\Util.h">
       <Filter>HiroEngine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Player</Filter>
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="test.h" />
+    <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
+      <Filter>HiroEngine\HrioEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

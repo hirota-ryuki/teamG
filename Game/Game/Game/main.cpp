@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "system/system.h"
 #include"Player/Player.h"
-
+#include "test.h"
 //関数宣言
 void InitRootSignature(RootSignature& rs);
 
@@ -93,6 +93,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	toneModel.Init(toneModelInitData);
 	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
+	test* test1;
+	test1 = NewGO<test>(GOPrio_Defalut);
 	
 	//G-Bufferを作成。
 	RenderTarget albedRT;	//アルベドカラー書き込み用のレンダリングターゲット。
@@ -143,6 +145,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
+		GameObjectManager::GetInstance().GetNum();
 		//レンダリング開始。
 		g_engine->BeginFrame();
 		if (g_pad[0]->IsPress(enButtonRight)) {

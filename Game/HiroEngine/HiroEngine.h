@@ -50,3 +50,4 @@ const UINT FRAME_BUFFER_H = 720;				//フレームバッファの高さ。
 
 //追加後のインクルードファイル。
 #include "GameObjectManager/IGameObject.h"
+#include "GameObjectManager/GameObjectManager.h"

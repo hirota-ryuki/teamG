@@ -82,6 +82,8 @@ void InitGame(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, in
 	//Hrエンジンの初期化。
 	g_engine = new HrEngine;
 	g_engine->Init(g_hWnd, FRAME_BUFFER_W, FRAME_BUFFER_H);
+	//ゲームオブジェクトマネージャーの生成。
+	GameObjectManager::GetInstance();
 }
 //ウィンドウメッセージをディスパッチ。falseが返ってきたら、ゲーム終了。
 bool DispatchWindowMessage()

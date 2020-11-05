@@ -1,5 +1,5 @@
 #pragma once
-//#include "util/Util.h"
+#include "util/Util.h"
 #include <list>
 
 class GameObjectManager
@@ -42,6 +42,9 @@ public:
 		newObj->SetNameKey(hash);
 		newObj->prio = prio;
 		return newObj;
+	}
+	const std::list< IGameObject* >& GetNum() const{
+		return m_goList[2];
 	}
 private:
 	//ベクタは新しい道を別で作りつつ配列を更新していくが、
