@@ -182,6 +182,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		bgModel.Draw(renderContext);
 		roboModel.Draw(renderContext);
 
+		
 
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
@@ -200,7 +201,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		
 		//半透明オブジェクトを描画！
 		//sphereModel.Draw(renderContext);
-
+		humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
 		/////////////////////////////////////////
 		//絵を描くコードを書くのはここまで！！！
 		//////////////////////////////////////

@@ -52,6 +52,9 @@
     <Filter Include="HiroEngine\HrioEngine">
       <UniqueIdentifier>{21541520-3b8c-40db-8e7f-0b353d71db05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Player">
+      <UniqueIdentifier>{e15fe3f9-3c68-495e-bc4e-7ed565effba1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="system\system.cpp">
@@ -144,8 +147,13 @@
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
       <Filter>HiroEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="Player.cpp">
+      <Filter>Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="system\system.h">
@@ -262,10 +270,15 @@
     <ClInclude Include="..\..\HiroEngine\util\Util.h">
       <Filter>HiroEngine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
       <Filter>HiroEngine\HrioEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

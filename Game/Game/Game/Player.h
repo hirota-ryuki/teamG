@@ -1,5 +1,5 @@
 #pragma once
-class Player
+class Player : public IGameObject
 {
 public:
 	Player();
@@ -29,6 +29,10 @@ private:
 	//カメラ前方方向と右方向取得用。
 	Vector3 cameraForward = Vector3::Zero;
 	Vector3 cameraRight = Vector3::Zero;
+	//回転
+	Quaternion m_rotation = Quaternion::Identity;
+	//大きさ
+	Vector3 m_scale = {1.0f,1.0f,1.0f};
 	//移動速度。
 	float m_speed = 450.0f;
 };

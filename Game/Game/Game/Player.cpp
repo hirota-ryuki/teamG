@@ -1,12 +1,12 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "Player.h"
 
 Player::Player()
 {
-	//ƒvƒŒƒCƒ„[‚ğ¶¬‚·‚éƒ‚ƒfƒ‹‚ÆƒVƒF[ƒ_[‚Ìî•ñB
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ãƒ¢ãƒ‡ãƒ«ã¨ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®æƒ…å ±ã€‚
 	playerInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
 	playerInitData.m_fxFilePath = "Assets/shader/model.fx";
-	//ƒ‚ƒfƒ‹‚É‚Ô‚¿‚Ş‚ºB
+	//ãƒ¢ãƒ‡ãƒ«ã«ã¶ã¡è¾¼ã‚€ãœã€‚
 	playerModel.Init(playerInitData);
 }
 
@@ -18,34 +18,43 @@ bool Player::Start()
 {
 	return true;
 }
-//XVŠÖ”
+//æ›´æ–°é–¢æ•°
 void Player::Update()
 {
 	RenderUpdate();
 }
-//•`‰æXVŠÖ”BŒã‚ÉÁ‚¦‚é‰Â”\«‘åB
+//æç”»æ›´æ–°é–¢æ•°ã€‚å¾Œã«æ¶ˆãˆã‚‹å¯èƒ½æ€§å¤§ã€‚
 void Player::RenderUpdate()
 {
 	playerModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
 }
-//ˆÚ“®ˆ—‚ğ‘‚¢‚½ŠÖ”B
+//ç§»å‹•å‡¦ç†ã‚’æ›¸ã„ãŸé–¢æ•°ã€‚
 void Player::MoveOperation()
 {
-	float ZERO = 0.0f;
-	//stick‚Ì“ü—Í‚É‡‚í‚¹‚Ä“®‚«‚Ü‚·B
+	float ZERO = 0.0f;			//0ã§ã™ã€‚
+	float HALF = 0.5f;			//0.5ã§ã™ã€‚
+	//stickã®å…¥åŠ›ã«åˆã‚ã›ã¦å‹•ãã¾ã™ã€‚
 	float lStick_x = (g_pad[0]->GetLStickXF());
 	float lStick_z = (g_pad[0]->GetLStickYF());
-	//ƒJƒƒ‰‚Ì‘O•û•ûŒü
+	//ã‚«ãƒ¡ãƒ©ã®å‰æ–¹æ–¹å‘
 	cameraForward = g_camera3D->GetForward();
 	cameraRight = g_camera3D->GetRight();
-	//XZ•½–Ê‚Å‚Ì‘O•û•ûŒüA‰E•ûŒü‚É•ÏŠ·
+	//XZå¹³é¢ã§ã®å‰æ–¹æ–¹å‘ã€å³æ–¹å‘ã«å¤‰æ›
 	cameraForward.y = ZERO;
 	cameraForward.Normalize();
 	cameraRight.y = ZERO;
 	cameraRight.Normalize();
-	//XZ¬•ª‚ÌˆÚ“®‘¬“x‚ğƒNƒŠƒAB
+	//XZæˆåˆ†ã®ç§»å‹•é€Ÿåº¦ã‚’ã‚¯ãƒªã‚¢ã€‚
 	m_moveSpeed.x = ZERO;
 	m_moveSpeed.z = ZERO;
-	//ˆÚ“®B
-	
+	//ç§»å‹•ã€‚
+	if (HALF < g_pad[0]->GetLStickXF() || HALF > g_pad[0]->GetLStickYF())
+	{
+		m_moveSpeed += cameraForward * m_speed * lStick_x;
+		m_moveSpeed += cameraRight * m_speed * lStick_z;
+	}
+	//ãƒ¢ãƒ‡ãƒ«ã«æ˜ ã—ãŸã„ã‘ã©é–“é•ã£ã¦ã‚‹ã¨æ€ã„ã¾ã™ã€‚
+	//å»£ç”°å›ã‚­ãƒ£ãƒ©ã‚³ãƒ³ä½œã£ã¦â™¡
+	playerModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
+	m_position = m_moveSpeed;
 }
