@@ -15,6 +15,7 @@ Game::~Game()
 bool Game::Start()
 {
 	m_player = NewGO<Player>(GOPrio_Defalut, "Player");
+	return true;
 }
 
 void Game::Update()
