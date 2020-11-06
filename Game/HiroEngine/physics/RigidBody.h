@@ -7,8 +7,8 @@ class ICollider;
 //剛体情報。
 struct RigidBodyInfo {
 
-	CVector3 pos = CVector3::Zero();			//座標。
-	CQuaternion rot = CQuaternion::Identity();	//回転。
+	Vector3 pos = Vector3::Zero;			//座標。
+	Quaternion rot = Quaternion::Identity;	//回転。
 	ICollider* collider = nullptr;				//コライダー。
 	float mass = 0.0f;							//質量。
 

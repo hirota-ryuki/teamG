@@ -1,6 +1,6 @@
 #pragma once
 #include "bulletPhysics/src/LinearMath/btIDebugDraw.h"
-#include "graphics/Shader.h"
+#include "Shader.h"
 
 class DebugWireframe :
 	public btIDebugDraw
@@ -8,6 +8,18 @@ class DebugWireframe :
 public:
 	DebugWireframe();
 	~DebugWireframe();
+	/// <summary>
+	/// ディスクリプタヒープの初期化。
+	/// </summary>
+	void InitDescriptorHeap();
+	/// <summary>
+	/// パイプラインステートの初期化。
+	/// </summary>
+	void InitPipelineState(RenderContext& rc);
+	/// <summary>
+	/// シェーダーの初期化。
+	/// </summary>
+	void InitSharder();
 	/// <summary>
 	/// 設定の準備
 	/// </summary>
@@ -44,6 +56,11 @@ private:
 	
 	ID3D11Buffer*		m_vertexBuffer = nullptr;			//頂点バッファ。
 	ID3D11Buffer*		m_constantBuffer = nullptr;			//定数バッファ。
+	DescriptorHeap		m_descriptorHeap;		//ディスクリプタヒープ。
+	RootSignature m_rootSignature;					//ルートシグネチャ。
+	PipelineState m_pipelineState;		//パイプラインステート。
+
+
 	Shader m_Vshader;	//頂点シェーダー
 	Shader m_Pshader;	//ピクセルシェーダー
 };

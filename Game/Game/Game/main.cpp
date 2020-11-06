@@ -2,6 +2,7 @@
 #include "system/system.h"
 #include "test.h"
 #include "Game.h"
+//#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
 //関数宣言
 void InitRootSignature(RootSignature& rs);
 
@@ -57,11 +58,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
 
 	//ロボットモデルを初期化。
-/*	modelInitData.m_tkmFilePath = "Assets/modelData/robo/robo.tkm";
+	modelInitData.m_tkmFilePath = "Assets/modelData/ninjya/ninjya.tkm";
 	Model roboModel;
 	roboModel.Init(modelInitData);
 	roboModel.UpdateWorldMatrix({ 50.0f, 0.0f, 0.0f }, g_quatIdentity, { 10.0f, 10.0f, 10.0f });
-
+	/*
 	//背景モデルを初期化。
 	modelInitData.m_tkmFilePath = "Assets/modelData/bg/bg.tkm";
 	Model bgModel;

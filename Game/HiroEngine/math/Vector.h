@@ -864,20 +864,19 @@ public:
 /// <summary>
 /// ベクトル同士の加算。
 /// </summary>
-template<class TVector>
-static inline TVector operator+(const TVector& v0, const TVector& v1)
+template<class Vector>
+static inline Vector operator+(const Vector& v0, const Vector& v1)
 {
-	TVector result;
+	Vector result;
 	result.Add(v0, v1);
 	return result;
 }
 /// <summary>
 /// ベクトルとスカラーの乗算。
 /// </summary>
-template<class TVector>
-static inline TVector operator*(const TVector& v, float s)
+static inline Vector3 operator*(const Vector3& v, float s)
 {
-	TVector result;
+	Vector3 result;
 	result = v;
 	result.Scale(s);
 	return result;
@@ -885,10 +884,10 @@ static inline TVector operator*(const TVector& v, float s)
 /// <summary>
 /// ベクトルとスカラーの除算。
 /// </summary>
-template<class TVector>
-static inline TVector operator/(const TVector& v, float s)
+template<class Vector>
+static inline Vector operator/(const Vector& v, float s)
 {
-	TVector result;
+	Vector result;
 	result = v;
 	result.Div(s);
 	return result;
@@ -896,10 +895,10 @@ static inline TVector operator/(const TVector& v, float s)
 /// <summary>
 /// ベクトル同士の減算。
 /// </summary>
-template<class TVector>
-static inline TVector operator-(const TVector& v0, const TVector& v1)
+template<class Vector>
+static inline Vector operator-(const Vector& v0, const Vector& v1)
 {
-	TVector result;
+	Vector result;
 	result.Subtract(v0, v1);
 	return result;
 }
