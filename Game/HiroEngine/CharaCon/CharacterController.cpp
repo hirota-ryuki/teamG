@@ -10,7 +10,7 @@
 
 namespace {
 	//衝突したときに呼ばれる関数オブジェクト(地面用)
-	struct SweepResultGround : public btCollisionWorld::ConvexResultCallback
+	struct SweepResudltGround : public btCollisionWorld::ConvexResultCallback
 	{
 		bool isHit = false;									//衝突フラグ。
 		Vector3 hitPos = Vector3(0.0f, -FLT_MAX, 0.0f);	//衝突点。

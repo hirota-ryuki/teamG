@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "system/system.h"
-#include"Player/Player.h"
 #include "test.h"
+#include "Game.h"
 //関数宣言
 void InitRootSignature(RootSignature& rs);
 
@@ -83,6 +83,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	sphereModel.Init(transModelInitData);
 	*/
 
+
 	//step-1 セルルックモデルを初期化。
 	ModelInitData toneModelInitData;
 	toneModelInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
@@ -153,18 +154,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		test = GameObjectManager::GetInstance().GetListSize();
 		//レンダリング開始。
 		g_engine->BeginFrame();
-		if (g_pad[0]->IsPress(enButtonRight)) {
-			planePos.x -= 1.0f;
-		}
-		if (g_pad[0]->IsPress(enButtonLeft)) {
-			planePos.x += 1.0f;
-		}
-		if (g_pad[0]->IsPress(enButtonUp) ){
-			planePos.z -= 1.0f;
-		}
-		if (g_pad[0]->IsPress(enButtonDown)) {
-			planePos.z += 1.0f;
-		}
+		
 		//sphereModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
 		//////////////////////////////////////
 		//ここから絵を描くコードを記述する。

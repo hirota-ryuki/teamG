@@ -8,11 +8,11 @@ public:
 	/// 初めの一歩。
 	/// </summary>
 	/// <returns></returns>
-	bool Start();
+	bool Start()override;
 	/// <summary>
 	/// プレイヤーの更新関数。
 	/// </summary>
-	void Update();
+	void Update()override;
 	//移動
 	void MoveOperation();
 	//更新描画関数
