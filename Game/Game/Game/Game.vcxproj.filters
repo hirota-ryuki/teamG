@@ -150,7 +150,6 @@
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
       <Filter>HiroEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp">
       <Filter>HiroEngine\CharaCon</Filter>
@@ -283,7 +282,6 @@
     <ClInclude Include="..\..\HiroEngine\util\Util.h">
       <Filter>HiroEngine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
       <Filter>HiroEngine\HrioEngine</Filter>
