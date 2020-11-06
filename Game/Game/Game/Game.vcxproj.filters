@@ -151,20 +151,13 @@
       <Filter>HiroEngine</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp">
-      <Filter>HiroEngine\CharaCon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp">
-      <Filter>HiroEngine\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp">
-      <Filter>HiroEngine\physics</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
       <Filter>HiroEngine\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\git_hirota\GameTemplate\Game\DebugWireframe.cpp">
-      <Filter>HiroEngine\DebugWireframe</Filter>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp">
+      <Filter>HiroEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,20 +279,10 @@
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
       <Filter>HiroEngine\HrioEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
-      <Filter>HiroEngine\CharaCon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\physics\CollisionAttr.h">
-      <Filter>HiroEngine\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h">
-      <Filter>HiroEngine\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\physics\Physics.h">
-      <Filter>HiroEngine\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\git_hirota\GameTemplate\Game\DebugWireframe.h">
-      <Filter>HiroEngine\DebugWireframe</Filter>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
+      <Filter>HiroEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
