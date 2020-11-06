@@ -1,5 +1,5 @@
 #pragma once
-#include "DebugWireframe/"
+#include "DebugWireframe/DebugWireframe.h"
 #include "CharaCon/CharacterController.h"
 
 class RigidBody;

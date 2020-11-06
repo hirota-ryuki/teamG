@@ -6,12 +6,10 @@
 #include <dxgi1_2.h>
 #include <dxgi1_3.h>
 #include <dxgi1_4.h>
-
 #include "DirectXTK/Inc/DDSTextureLoader.h"
 #include "DirectXTK/Inc/ResourceUploadBatch.h"
-
 #include "RenderContext.h"
-
+#include "NullTextureMaps.h"
 #include "Camera/Camera.h"
 
 /// <summary>
@@ -82,6 +80,14 @@ public:
 		return m_cbrSrvDescriptorSize;
 	}
 	/// <summary>
+	/// サンプラのディスクリプタヒープサイズを取得。
+	/// </summary>
+	/// <returns></returns>
+	UINT GetSapmerDescriptorSize() const
+	{
+		return m_samplerDescriptorSize;
+	}
+	/// <summary>
 	/// レンダリングコンテキストを取得。
 	/// </summary>
 	/// <returns></returns>
@@ -117,6 +123,16 @@ public:
 	D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentFrameBuffuerRTV() const
 	{
 		return m_currentFrameBufferRTVHandle;
+	}
+	
+
+	/// <summary>
+	/// ヌルテクスチャマップを取得。
+	/// </summary>
+	/// <returns></returns>
+	const NullTextureMaps& GetNullTextureMaps() const
+	{
+		return m_nullTextureMaps;
 	}
 private:
 	/// <summary>
@@ -183,6 +199,7 @@ private:
 	/// 描画の完了待ち。
 	/// </summary>
 	void WaitDraw();
+	
 public:
 	enum { FRAME_BUFFER_COUNT = 2 };						//フレームバッファの数。
 private:
@@ -200,12 +217,13 @@ private:
 	ID3D12DescriptorHeap* m_rtvHeap = nullptr;				//レンダリングターゲットビューのディスクリプタヒープ。
 	ID3D12DescriptorHeap* m_dsvHeap = nullptr;				//深度ステンシルビューのディスクリプタヒープ。
 	ID3D12CommandAllocator* m_commandAllocator = nullptr;	//コマンドアロケータ。
-	ID3D12GraphicsCommandList* m_commandList = nullptr;		//コマンドリスト。
+	ID3D12GraphicsCommandList4* m_commandList = nullptr;		//コマンドリスト。
 	ID3D12PipelineState* m_pipelineState = nullptr;			//パイプラインステート。
 	int m_currentBackBufferIndex = 0;						//現在のバックバッファの番号。
 	UINT m_rtvDescriptorSize = 0;							//フレームバッファのディスクリプタのサイズ。
 	UINT m_dsvDescriptorSize = 0;							//深度ステンシルバッファのディスクリプタのサイズ。
 	UINT m_cbrSrvDescriptorSize = 0;						//CBR_SRVのディスクリプタのサイズ。
+	UINT m_samplerDescriptorSize = 0;					//サンプラのディスクリプタのサイズ。			
 	ID3D12Resource* m_renderTargets[FRAME_BUFFER_COUNT] = { nullptr };	//フレームバッファ用のレンダリングターゲット。
 	ID3D12Resource* m_depthStencilBuffer = nullptr;	//深度ステンシルバッファ。
 	D3D12_VIEWPORT m_viewport;			//ビューポート。
@@ -218,10 +236,11 @@ private:
 	HANDLE m_fenceEvent = nullptr;
 	ID3D12Fence* m_fence = nullptr;
 	UINT64 m_fenceValue = 0;
-	UINT m_frameBufferWidth = 0;		//フレームバッファの幅。
-	UINT m_frameBufferHeight = 0;		//フレームバッファの高さ。
-	Camera m_camera2D;					//2Dカメラ。
-	Camera m_camera3D;					//3Dカメラ。
+	UINT m_frameBufferWidth = 0;			//フレームバッファの幅。
+	UINT m_frameBufferHeight = 0;			//フレームバッファの高さ。
+	Camera m_camera2D;						//2Dカメラ。
+	Camera m_camera3D;						//3Dカメラ。
+	NullTextureMaps m_nullTextureMaps;		//ヌルテクスチャマップ。
 };
 extern GraphicsEngine* g_graphicsEngine;	//グラフィックスエンジン
 extern Camera* g_camera2D;					//2Dカメラ。
