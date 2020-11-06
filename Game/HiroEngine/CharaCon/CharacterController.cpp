@@ -1,12 +1,10 @@
-/*!
-* @brief	キャラクタのコリジョンコントロール。
-*/
-
+/// <summary>
+/// キャラクタのコリジョンコントロール。
+/// </summary>
+/// 
 #include "stdafx.h"
-#include "CharaCon/CharacterController.h"
-#include "Physics/CollisionAttr.h"
-
-
+#include "CharacterController.h"
+#include "physics/CollisionAttr.h"
 
 namespace {
 	//衝突したときに呼ばれる関数オブジェクト(地面用)

@@ -1,6 +1,6 @@
 #pragma once
-#include "DebugWireframe.h"
-#include "character/CharacterController.h"
+#include "DebugWireframe/"
+#include "CharaCon/CharacterController.h"
 
 class RigidBody;
 
