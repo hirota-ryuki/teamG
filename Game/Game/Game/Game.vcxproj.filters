@@ -52,8 +52,11 @@
     <Filter Include="HiroEngine\HrioEngine">
       <UniqueIdentifier>{21541520-3b8c-40db-8e7f-0b353d71db05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Player">
-      <UniqueIdentifier>{e15fe3f9-3c68-495e-bc4e-7ed565effba1}</UniqueIdentifier>
+    <Filter Include="HiroEngine\CharaCon">
+      <UniqueIdentifier>{b9f3f962-4969-4841-9e67-b20a67867f99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\physics">
+      <UniqueIdentifier>{77bc3dd8-689e-4365-a2be-df9ec6317316}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -148,11 +151,14 @@
       <Filter>HiroEngine</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="Player.cpp">
-      <Filter>Game\Player</Filter>
+    <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp">
+      <Filter>HiroEngine\CharaCon</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Game</Filter>
+    <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp">
+      <Filter>HiroEngine\physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,11 +280,17 @@
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
       <Filter>HiroEngine\HrioEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Game\Player</Filter>
+    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
+      <Filter>HiroEngine\CharaCon</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="..\..\HiroEngine\physics\CollisionAttr.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\Physics.h">
+      <Filter>HiroEngine\physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -93,8 +93,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	toneModel.Init(toneModelInitData);
 	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
-	test* test1;
-	test1 = NewGO<test>(GOPrio_Defalut);
 	
 	//G-Bufferを作成。
 	RenderTarget albedRT;	//アルベドカラー書き込み用のレンダリングターゲット。
@@ -142,10 +140,17 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//////////////////////////////////////
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 
+	test* test1;
+	test1 = NewGO<test>(GOPrio_Defalut,"test");
+
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
-		GameObjectManager::GetInstance().GetNum();
+		//GameObjectManagerの更新。
+		GameObjectManager::GetInstance().Update();
+		auto test = GameObjectManager::GetInstance().GetListSize();
+		//DeleteGOs("test");
+		test = GameObjectManager::GetInstance().GetListSize();
 		//レンダリング開始。
 		g_engine->BeginFrame();
 		if (g_pad[0]->IsPress(enButtonRight)) {
