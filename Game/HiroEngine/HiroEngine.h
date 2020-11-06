@@ -49,6 +49,8 @@ const UINT FRAME_BUFFER_W = 1280;				//フレームバッファの幅。
 const UINT FRAME_BUFFER_H = 720;				//フレームバッファの高さ。
 
 //追加後のインクルードファイル。
+#include "bulletPhysics/src/btBulletDynamicsCommon.h"
+#include "bulletPhysics/src/BulletCollision/CollisionDispatch/btGhostObject.h"
 #include "physics/Physics.h"
 #include "GameObjectManager/IGameObject.h"
 #include "GameObjectManager/GameObjectManager.h"

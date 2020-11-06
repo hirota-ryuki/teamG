@@ -58,6 +58,9 @@
     <Filter Include="HiroEngine\physics">
       <UniqueIdentifier>{77bc3dd8-689e-4365-a2be-df9ec6317316}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HiroEngine\DebugWireframe">
+      <UniqueIdentifier>{b2a2080a-2089-464c-b56d-1f4b62d3c6eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="system\system.cpp">
@@ -129,9 +132,6 @@
     <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp">
       <Filter>HiroEngine\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
-      <Filter>HiroEngine\Buffer</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\RWStructuredBuffer.cpp">
       <Filter>HiroEngine\Buffer</Filter>
     </ClCompile>
@@ -159,6 +159,12 @@
     </ClCompile>
     <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp">
       <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
+      <Filter>HiroEngine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\git_hirota\GameTemplate\Game\DebugWireframe.cpp">
+      <Filter>HiroEngine\DebugWireframe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +297,9 @@
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\physics\Physics.h">
       <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\git_hirota\GameTemplate\Game\DebugWireframe.h">
+      <Filter>HiroEngine\DebugWireframe</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
