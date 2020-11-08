@@ -11,12 +11,26 @@ DebugWireframe::~DebugWireframe()
 {
 }
 
+void DebugWireframe::Init()
+{
+	//定数バッファを初期化。
+	InitConstantBuffer();
+	//ルートシグネチャを初期化。
+	InitRootSignature();
+	//パイプラインステートを初期化。
+	InitPipelineState();
+}
+
 void DebugWireframe::InitDescriptorHeap()
 {
 
 }
 
-void DebugWireframe::InitPipelineState(RenderContext& rc)
+void DebugWireframe::InitConstantBuffer()
+{
+}
+
+void DebugWireframe::InitPipelineState()
 {
 	// 頂点レイアウトを定義する。
 	D3D12_INPUT_ELEMENT_DESC inputElementDescs[] =
@@ -42,12 +56,25 @@ void DebugWireframe::InitPipelineState(RenderContext& rc)
 	psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 	psoDesc.NumRenderTargets = 3;
 	psoDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;		//アルベドカラー出力用。
+	psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
+	psoDesc.SampleDesc.Count = 1;
+	m_pipelineState.Init(psoDesc);
 }
 
 void DebugWireframe::InitSharder()
 {
 	m_Vshader.LoadVS(L"shader/DebugMode.fx", "VSMain");
 	m_Pshader.LoadPS(L"shader/DebugMode.fx", "PSMain");
+}
+
+void DebugWireframe::InitRootSignature()
+{
+	m_rootSignature.Init(
+		D3D12_FILTER_MIN_MAG_MIP_LINEAR,
+		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
+		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
+		D3D12_TEXTURE_ADDRESS_MODE_WRAP
+	);
 }
 
 void DebugWireframe::Prepare()

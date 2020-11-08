@@ -9,17 +9,29 @@ public:
 	DebugWireframe();
 	~DebugWireframe();
 	/// <summary>
+	/// 初期化。	
+	/// </summary>
+	void Init();
+	/// <summary>
 	/// ディスクリプタヒープの初期化。
 	/// </summary>
 	void InitDescriptorHeap();
 	/// <summary>
+	/// 定数バッファの初期化。
+	/// </summary>
+	void InitConstantBuffer();
+	/// <summary>
 	/// パイプラインステートの初期化。
 	/// </summary>
-	void InitPipelineState(RenderContext& rc);
+	void InitPipelineState();
 	/// <summary>
 	/// シェーダーの初期化。
 	/// </summary>
 	void InitSharder();
+	/// <summary>
+	/// ルートシグネチャの初期化。
+	/// </summary>
+	void InitRootSignature();
 	/// <summary>
 	/// 設定の準備
 	/// </summary>
@@ -29,7 +41,7 @@ public:
 	/// 1フレーム内に一回
 	/// </summary>
 	void Context();
-	//必須
+	/// 必須
 	/// <summary>
 	/// 線ごとに一回ずつ呼ばれる
 	/// </summary>
@@ -54,8 +66,6 @@ private:
 		Vector3 color;
 	};
 	
-	ID3D11Buffer*		m_vertexBuffer = nullptr;			//頂点バッファ。
-	ID3D11Buffer*		m_constantBuffer = nullptr;			//定数バッファ。
 	DescriptorHeap		m_descriptorHeap;		//ディスクリプタヒープ。
 	RootSignature m_rootSignature;					//ルートシグネチャ。
 	PipelineState m_pipelineState;		//パイプラインステート。
