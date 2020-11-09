@@ -19,11 +19,23 @@ void DebugWireframe::Init()
 	InitRootSignature();
 	//パイプラインステートを初期化。
 	InitPipelineState();
+	//ディスクリプタヒープを初期化。
+	InitDescriptorHeap();
 }
 
 void DebugWireframe::InitDescriptorHeap()
 {
-
+	auto& descriptorHeap = m_descriptorHeap;
+	//ディスクリプタヒープにディスクリプタを登録していく。
+	if (m_expandShaderResourceView) {
+		descriptorHeap.RegistShaderResource(EXPAND_SRV_REG__START_NO, *m_expandShaderResourceView);
+	}
+	descriptorHeap.RegistConstantBuffer(0, m_commonConstantBuffer);
+	if (m_expandConstantBuffer.IsValid()) {
+		descriptorHeap.RegistConstantBuffer(1, m_expandConstantBuffer);
+	}
+	//ディスクリプタヒープへの登録を確定させる。
+	descriptorHeap.Commit();
 }
 
 void DebugWireframe::InitConstantBuffer()

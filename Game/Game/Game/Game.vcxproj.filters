@@ -164,6 +164,9 @@
     <ClCompile Include="Player\Player.cpp">
       <Filter>Game\Player</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp">
+      <Filter>HiroEngine\DebugWireframe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="system\system.h">
@@ -290,6 +293,9 @@
     </ClInclude>
     <ClInclude Include="Player\Player.h">
       <Filter>Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h">
+      <Filter>HiroEngine\DebugWireframe</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
