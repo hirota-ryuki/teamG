@@ -163,9 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\HiroEngine\Camera\Camera.cpp" />
-    <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp" />
     <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp" />
-    <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp" />
     <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp" />
     <ClCompile Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.cpp" />
     <ClCompile Include="..\..\HiroEngine\GraphicsEngine.cpp" />
@@ -177,7 +175,6 @@
     <ClCompile Include="..\..\HiroEngine\MeshParts.cpp" />
     <ClCompile Include="..\..\HiroEngine\Model.cpp" />
     <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp" />
-    <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp" />
     <ClCompile Include="..\..\HiroEngine\PipelineState.cpp" />
     <ClCompile Include="..\..\HiroEngine\RenderTarget.cpp" />
     <ClCompile Include="..\..\HiroEngine\RootSignature.cpp" />
@@ -206,10 +203,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\Camera\Camera.h" />
-    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h" />
     <ClInclude Include="..\..\HiroEngine\ConstantBuffer.h" />
     <ClInclude Include="..\..\HiroEngine\d3dx12.h" />
-    <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap.h" />
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap_inline.h" />
     <ClInclude Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.h" />
@@ -227,7 +222,6 @@
     <ClInclude Include="..\..\HiroEngine\MeshParts.h" />
     <ClInclude Include="..\..\HiroEngine\Model.h" />
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h" />
-    <ClInclude Include="..\..\HiroEngine\physics\Physics.h" />
     <ClInclude Include="..\..\HiroEngine\PipelineState.h" />
     <ClInclude Include="..\..\HiroEngine\RenderContext.h" />
     <ClInclude Include="..\..\HiroEngine\RenderContext_inline.h" />
