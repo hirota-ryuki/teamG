@@ -12,34 +12,33 @@ DebugWireframe::~DebugWireframe()
 }
 
 void DebugWireframe::Init()
-{
-	//定数バッファを初期化。
-	InitConstantBuffer();
+{	
 	//ルートシグネチャを初期化。
 	InitRootSignature();
+	//シェーダーを初期化。
+	InitSharder();
 	//パイプラインステートを初期化。
 	InitPipelineState();
+	//定数バッファを初期化。
+	InitConstantBuffer();
 	//ディスクリプタヒープを初期化。
 	InitDescriptorHeap();
 }
 
-void DebugWireframe::InitDescriptorHeap()
+void DebugWireframe::InitRootSignature()
 {
-	auto& descriptorHeap = m_descriptorHeap;
-	//ディスクリプタヒープにディスクリプタを登録していく。
-	if (m_expandShaderResourceView) {
-		descriptorHeap.RegistShaderResource(EXPAND_SRV_REG__START_NO, *m_expandShaderResourceView);
-	}
-	descriptorHeap.RegistConstantBuffer(0, m_commonConstantBuffer);
-	if (m_expandConstantBuffer.IsValid()) {
-		descriptorHeap.RegistConstantBuffer(1, m_expandConstantBuffer);
-	}
-	//ディスクリプタヒープへの登録を確定させる。
-	descriptorHeap.Commit();
+	m_rootSignature.Init(
+		D3D12_FILTER_MIN_MAG_MIP_LINEAR,
+		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
+		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
+		D3D12_TEXTURE_ADDRESS_MODE_WRAP
+	);
 }
 
-void DebugWireframe::InitConstantBuffer()
+void DebugWireframe::InitSharder()
 {
+	m_Vshader.LoadVS(L"shader/DebugMode.fx", "VSMain");
+	m_Pshader.LoadPS(L"shader/DebugMode.fx", "PSMain");
 }
 
 void DebugWireframe::InitPipelineState()
@@ -55,7 +54,6 @@ void DebugWireframe::InitPipelineState()
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc = { 0 };
 	psoDesc.InputLayout = { inputElementDescs, _countof(inputElementDescs) };
 	psoDesc.pRootSignature = m_rootSignature.Get();
-	InitSharder();
 	psoDesc.VS = CD3DX12_SHADER_BYTECODE(m_Vshader.GetCompiledBlob());
 	psoDesc.PS = CD3DX12_SHADER_BYTECODE(m_Pshader.GetCompiledBlob());
 	psoDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
@@ -73,24 +71,43 @@ void DebugWireframe::InitPipelineState()
 	m_pipelineState.Init(psoDesc);
 }
 
-void DebugWireframe::InitSharder()
+void DebugWireframe::InitConstantBuffer()
 {
-	m_Vshader.LoadVS(L"shader/DebugMode.fx", "VSMain");
-	m_Pshader.LoadPS(L"shader/DebugMode.fx", "PSMain");
+	m_constantBuffer.Init(sizeof(Matrix), nullptr);
 }
 
-void DebugWireframe::InitRootSignature()
+void DebugWireframe::InitDescriptorHeap()
 {
-	m_rootSignature.Init(
-		D3D12_FILTER_MIN_MAG_MIP_LINEAR,
-		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
-		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
-		D3D12_TEXTURE_ADDRESS_MODE_WRAP
-	);
+	//ディスクリプタヒープにディスクリプタを登録していく。
+	m_descriptorHeap.RegistConstantBuffer(0, m_constantBuffer);
+	//ディスクリプタヒープへの登録を確定させる。
+	m_descriptorHeap.Commit();
+}
+
+void DebugWireframe::ConstantBufferUpdate()
+{
+	//定数バッファの更新(c++)。
+	//mVPの更新(シェーダー)。
+	Matrix VP;		//ビュー行列とプロジェクション行列
+	//ビューとプロジェクションの掛け算
+	auto v = g_camera3D->GetViewMatrix();
+	auto p = g_camera3D->GetProjectionMatrix();
+	VP.Multiply(v, p);
+	//定数バッファに渡したい変数を格納(m_constantBufferの内容を上書き)
+	m_constantBuffer.CopyToVRAM(&VP);
+}
+
+void DebugWireframe::VertexBufferUpdate()
+{
+	//1. 頂点バッファを作成。
+	int numVertex = 2;
+	int vertexStride = sizeof(TkmFile::SVertex);
+	m_vertexBuffer.Init()
 }
 
 void DebugWireframe::Prepare()
 {
+	
 	////頂点バッファ////
 	//構造体
 	//Description 意味:説明
@@ -108,20 +125,7 @@ void DebugWireframe::Prepare()
 	g_graphicsEngine->GetD3DDevice()->CreateBuffer(&desc, nullptr, &m_vertexBuffer);
 	////頂点終了////
 	
-	////定数バッファ////
-	//ビュー行列とプロジェクション行列を送る用
-	//サイズ 
-	desc.ByteWidth = sizeof(CMatrix);
-	//定数（CONSTANT）用にする
-	desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	//仕上げ
-	g_graphicsEngine->GetD3DDevice()->CreateBuffer(&desc, nullptr, &m_constantBuffer);
-	////定数終了////
 	
-	//シェーダーの設定
-	//wchar_tじゃないからLはいらない
-	m_Vshader.Load("shader/DebugMode.fx", "VSMain", Shader::EnType::VS);
-	m_Pshader.Load("shader/DebugMode.fx", "PSMain", Shader::EnType::PS);
 }
 
 
@@ -135,35 +139,13 @@ void DebugWireframe::Context()
 //1フレーム内にdrawLineは線の数だけ行う
 void DebugWireframe::drawLine(const btVector3 & from, const btVector3 & to, const btVector3 & color)
 {
-	//デバイスコンテキストを取得
-	ID3D11DeviceContext* dc = g_graphicsEngine->GetD3DDeviceContext();
-	
-	//頂点シェーダーをデバイスコンテキストに設定
-	//Shaderは先生のラッパークラス
-	//実際に使うGetBodyで取得したm_shaderはvoid*なので
-	//ID3D11VertexShader*にキャストする必要がある
-	dc->VSSetShader((ID3D11VertexShader*) m_Vshader.GetBody(), nullptr, 0);
+	auto& rc = g_graphicsEngine->GetRenderContext();
+	//定数バッファの更新。
+	ConstantBufferUpdate();
+}
 
-	//ピクセルシェーダーをデバイスコンテキストに設定
-	//頂点シェーダーと同様
-	dc->PSSetShader((ID3D11PixelShader*) m_Pshader.GetBody(), nullptr, 0);
-
-	//定数バッファの設定
-	//mVPの更新
-	CMatrix VP;		//ビュー行列とプロジェクション行列
-	//ビューとプロジェクションの掛け算
-	auto v = g_camera3D.GetViewMatrix();
-	auto p = g_camera3D.GetProjectionMatrix();
-	VP.Mul(v, p);
-	//定数バッファに渡したい変数を格納(m_constantBufferの内容を上書き)
-	dc->UpdateSubresource(m_constantBuffer, 0, nullptr, &VP, 0, 0);
-	//定数バッファをデバイスコンテキストに設定
-	dc->VSSetConstantBuffers(
-		0,//レジスタの場所
-		1,//配列の要素数
-		&m_constantBuffer//定数バッファのポインタ
-	);
-
+void DebugWireframe::drawLine_kari(const btVector3& from, const btVector3& to, const btVector3& color)
+{
 	//頂点バッファの設定
 	//引数のストライドとオフセット用に変数をつくる
 	//引数がポインタのため

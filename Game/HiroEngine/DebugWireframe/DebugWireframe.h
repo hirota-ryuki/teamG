@@ -33,6 +33,14 @@ public:
 	/// </summary>
 	void InitRootSignature();
 	/// <summary>
+	/// 定数バッファの更新。
+	/// </summary>
+	void ConstantBufferUpdate();
+	/// <summary>
+	/// 頂点バッファの更新。
+	/// </summary>
+	void VertexBufferUpdate();
+	/// <summary>
 	/// 設定の準備
 	/// </summary>
 	void Prepare();
@@ -49,6 +57,7 @@ public:
 	/// <param name="to"></param>
 	/// <param name="color"></param>
 	void    drawLine(const btVector3& from, const btVector3& to, const btVector3& color) override;
+	void    drawLine_kari(const btVector3& from, const btVector3& to, const btVector3& color) ;
 	void    setDebugMode(int debugMode) override {};
 	int     getDebugMode() const override 
 	{
@@ -66,12 +75,12 @@ private:
 		Vector3 color;
 	};
 	
-	DescriptorHeap		m_descriptorHeap;		//ディスクリプタヒープ。
-	RootSignature m_rootSignature;					//ルートシグネチャ。
-	PipelineState m_pipelineState;		//パイプラインステート。
-
-
-	Shader m_Vshader;	//頂点シェーダー
-	Shader m_Pshader;	//ピクセルシェーダー
+	ConstantBuffer		m_constantBuffer;			//定数バッファ。
+	VertexBuffer		m_vertexBuffer;				//頂点バッファ。
+	RootSignature		m_rootSignature;			//ルートシグネチャ。
+	Shader				m_Vshader;					//頂点シェーダー。
+	Shader				m_Pshader;					//ピクセルシェーダー。
+	PipelineState		m_pipelineState;			//パイプラインステート。
+	DescriptorHeap		m_descriptorHeap;			//ディスクリプタヒープ。	
 };
 
