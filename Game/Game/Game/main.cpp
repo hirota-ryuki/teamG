@@ -58,41 +58,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
 
 	//ロボットモデルを初期化。
-	modelInitData.m_tkmFilePath = "Assets/modelData/ninjya/ninjya.tkm";
+	modelInitData.m_tkmFilePath = "Assets/modelData/ninja/ninjya.tkm";
 	Model roboModel;
 	roboModel.Init(modelInitData);
 	roboModel.UpdateWorldMatrix({ 50.0f, 0.0f, 0.0f }, g_quatIdentity, { 10.0f, 10.0f, 10.0f });
-	/*
-	//背景モデルを初期化。
-	modelInitData.m_tkmFilePath = "Assets/modelData/bg/bg.tkm";
-	Model bgModel;
-	bgModel.Init(modelInitData);*/
-	/*
-	//半透明の球体モデルを初期化。
-	ModelInitData transModelInitData;
-	transModelInitData.m_tkmFilePath = "Assets/modelData/sphere.tkm";
-	transModelInitData.m_fxFilePath = "Assets/shader/model.fx";
-	//半透明モデルはモデルを描くときにライティングを行うので、ライトの情報を渡す。
-	transModelInitData.m_expandConstantBuffer = &light;
-	transModelInitData.m_expandConstantBufferSize = sizeof(light);
-	//ピクセルシェーダのエントリーポイントが不透明モデルとは異なる。
-	//不透明モデルはPSMain、半透明モデルはPSMainTransを使用する。
-	//ピクセルシェーダの実装は後で確認。
-	transModelInitData.m_psEntryPointFunc = "PSMainTrans";
-	//半透明の球体モデルを初期化。
-	Model sphereModel;
-	sphereModel.Init(transModelInitData);
-	*/
-	//Game* game = NewGO<Game>(GOPrio_Defalut, "Game");
-
-	//step-1 セルルックモデルを初期化。
-	ModelInitData toneModelInitData;
-	toneModelInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
-	toneModelInitData.m_fxFilePath = "Assets/shader/model.fx";
-	toneModelInitData.m_psEntryPointFunc = "PSTone";
-
-	Model toneModel;
-	toneModel.Init(toneModelInitData);
 	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
 	
@@ -150,13 +119,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	{
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
-		auto test = GameObjectManager::GetInstance().GetListSize();
-		//DeleteGOs("test");
-		test = GameObjectManager::GetInstance().GetListSize();
 		//レンダリング開始。
 		g_engine->BeginFrame();
 		
-		//sphereModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
 		//////////////////////////////////////
 		//ここから絵を描くコードを記述する。
 		//////////////////////////////////////
@@ -175,7 +140,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//レンダリングターゲットをクリア。
 		renderContext.ClearRenderTargetViews(ARRAYSIZE(rts), rts);
 		humanModel.Draw(renderContext);
-		/*bgModel.Draw(renderContext);
 		roboModel.Draw(renderContext);
 		*/
 		float lStick_x = (g_pad[0]->GetLStickXF());

@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\HiroEngine\Camera\Camera.cpp" />
     <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp" />
+    <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp" />
     <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp" />
     <ClCompile Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.cpp" />
     <ClCompile Include="..\..\HiroEngine\GraphicsEngine.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="..\..\HiroEngine\Camera\Camera.h" />
     <ClInclude Include="..\..\HiroEngine\ConstantBuffer.h" />
     <ClInclude Include="..\..\HiroEngine\d3dx12.h" />
+    <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap.h" />
     <ClInclude Include="..\..\HiroEngine\DescriptorHeap_inline.h" />
     <ClInclude Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.h" />

@@ -163,6 +163,9 @@
     <ClCompile Include="Player\Player.cpp">
       <Filter>Game\Player</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp">
+      <Filter>HiroEngine\DebugWireframe</Filter>
+    </ClCompile>
     <ClCompile Include="camera\GameCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="Player\Player.h">
       <Filter>Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h">
+      <Filter>HiroEngine\DebugWireframe</Filter>
     </ClInclude>
     <ClInclude Include="camera\GameCamera.h" />
     <ClInclude Include="Game\Game.cpp" />
