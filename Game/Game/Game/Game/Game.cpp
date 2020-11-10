@@ -4,7 +4,6 @@
 
 Game::Game()
 {
-
 }
 
 Game::~Game()
@@ -20,5 +19,4 @@ bool Game::Start()
 
 void Game::Update()
 {
-
 }

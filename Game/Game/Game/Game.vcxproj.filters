@@ -157,13 +157,13 @@
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
       <Filter>HiroEngine\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp">
       <Filter>HiroEngine</Filter>
     </ClCompile>
     <ClCompile Include="Player\Player.cpp">
       <Filter>Game\Player</Filter>
     </ClCompile>
+    <ClCompile Include="camera\GameCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="system\system.h">
@@ -284,12 +284,14 @@
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
       <Filter>HiroEngine\HrioEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h" />
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
     <ClInclude Include="Player\Player.h">
       <Filter>Game\Player</Filter>
     </ClInclude>
+    <ClInclude Include="camera\GameCamera.h" />
+    <ClInclude Include="Game\Game.cpp" />
+    <ClInclude Include="Game\Game.h" />
   </ItemGroup>
 </Project>
