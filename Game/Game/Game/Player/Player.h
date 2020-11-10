@@ -1,4 +1,5 @@
 #pragma once
+
 class Player : public IGameObject
 {
 public:
@@ -24,7 +25,7 @@ private:
 	Model playerModel;
 	//プレイヤーのポジション
 	Vector3 m_position = Vector3::Zero;
-	//プレイヤーのスピードをあつかうよ～ん
+	//プレイヤーのスピードを扱う
 	Vector3 m_moveSpeed = Vector3::Zero;
 	//カメラ前方方向と右方向取得用。
 	Vector3 cameraForward = Vector3::Zero;

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "system/system.h"
 #include "test.h"
-#include "Game.h"
+#include "Game/Game.h"
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
 //関数宣言
 void InitRootSignature(RootSignature& rs);
@@ -18,7 +18,7 @@ struct DirectionalLight {
 	float specPow;		//スペキュラの絞り。
 };
 
-
+class Game;
 ///////////////////////////////////////////////////////////////////
 // ウィンドウプログラムのメイン関数。
 ///////////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	modelInitData.m_fxFilePath = "Assets/shader/model.fx";
 	Model humanModel;
 	humanModel.Init(modelInitData);
-	humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
+	//humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
 
 	//ロボットモデルを初期化。
 	modelInitData.m_tkmFilePath = "Assets/modelData/ninja/ninjya.tkm";
@@ -142,6 +142,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		humanModel.Draw(renderContext);
 		roboModel.Draw(renderContext);
 
+		float lStick_x = (g_pad[0]->GetLStickXF());
+		float lStick_z = (g_pad[0]->GetLStickYF());
+
+		planePos.x += lStick_x;
+		planePos.z += lStick_z;
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
 		
@@ -153,7 +158,22 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//ここからフォワードレンダリング。
 		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
-	
+		
+		////step-2 セルルックモデルの描画
+		//toneModel.Draw(renderContext);
+		
+		//半透明オブジェクトを描画！
+		//sphereModel.Draw(renderContext);
+		humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
+
+		//カメラ
+		Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
+		Vector3 m_target = planePos;
+		m_target.y += 50.0f;
+		Vector3 m_pos = planePos + m_toPos;
+		g_camera3D->SetPosition(m_pos);
+		g_camera3D->SetTarget(m_target);
+		g_camera3D->Update();
 		/////////////////////////////////////////
 		//絵を描くコードを書くのはここまで！！！
 		//////////////////////////////////////
