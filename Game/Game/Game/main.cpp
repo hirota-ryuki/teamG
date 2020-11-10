@@ -141,7 +141,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		renderContext.ClearRenderTargetViews(ARRAYSIZE(rts), rts);
 		humanModel.Draw(renderContext);
 		roboModel.Draw(renderContext);
-		*/
+
 		float lStick_x = (g_pad[0]->GetLStickXF());
 		float lStick_z = (g_pad[0]->GetLStickYF());
 
@@ -159,8 +159,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
 		
-		//step-2 セルルックモデルの描画
-		toneModel.Draw(renderContext);
+		////step-2 セルルックモデルの描画
+		//toneModel.Draw(renderContext);
 		
 		//半透明オブジェクトを描画！
 		//sphereModel.Draw(renderContext);
