@@ -101,6 +101,18 @@ public:
 		return *this;
 	}
 	/// <summary>
+	/// btVector3からCVector3への暗黙の変換。
+	/// </summary>
+	/// <param name="_v">変換前のbtVector3の値。</param>
+	/// <returns>変換後のCVector3の値。</returns>
+	Vector3& operator=(const btVector3& _v)
+	{
+		x = _v.x();
+		y = _v.y();
+		z = _v.z();
+		return *this;
+	}
+	/// <summary>
 	/// コンストラクタ。
 	/// </summary>
 	/// <remarks>

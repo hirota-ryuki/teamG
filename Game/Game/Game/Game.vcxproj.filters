@@ -109,6 +109,9 @@
     <ClCompile Include="test.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp">
+      <Filter>HiroEngine\DebugWireframe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
@@ -255,6 +258,9 @@
     <ClInclude Include="test.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h">
+      <Filter>HiroEngine\DebugWireframe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">
@@ -310,6 +316,9 @@
     </Filter>
     <Filter Include="Game\GameCamera">
       <UniqueIdentifier>{18b672e9-4642-40b1-96fb-50ca3655a8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\DebugWireframe">
+      <UniqueIdentifier>{aa9bbc03-8f6a-4c3f-b3d6-ec0e6ef92692}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

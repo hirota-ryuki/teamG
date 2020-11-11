@@ -1,11 +1,9 @@
 #include "stdafx.h"
 #include "DebugWireframe.h"
 
-
 DebugWireframe::DebugWireframe()
 {
 }
-
 
 DebugWireframe::~DebugWireframe()
 {
@@ -71,6 +69,13 @@ void DebugWireframe::InitPipelineState()
 	m_pipelineState.Init(psoDesc);
 }
 
+void DebugWireframe::InitVertexCBuffer()
+{
+	//2頂点を記録する定数バッファを作成。
+	int vertexStride = sizeof(Vertex);
+	m_vertexCBuffer.Init(sizeof(Vertex) * NUM_VERTEX, nullptr);
+}
+
 void DebugWireframe::InitConstantBuffer()
 {
 	m_constantBuffer.Init(sizeof(Matrix), nullptr);
@@ -82,6 +87,23 @@ void DebugWireframe::InitDescriptorHeap()
 	m_descriptorHeap.RegistConstantBuffer(0, m_constantBuffer);
 	//ディスクリプタヒープへの登録を確定させる。
 	m_descriptorHeap.Commit();
+}
+
+void DebugWireframe::VertexCBufferUpdate(const btVector3& from, const btVector3& to, const btVector3& color)
+{
+	//頂点を書き換える。
+	Vertex vers[2];
+	vers[0].pos = from;
+	vers[0].color = color;
+	vers[1].pos = to;
+	vers[1].color = color;
+	//レンダリングコンテキストを取得。
+	auto& rc = g_graphicsEngine->GetRenderContext();
+	//頂点をどんな感じに描画するのか。
+	//今回は頂点二つの間に線を描く設定。
+	rc.SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+	//定数バッファの更新。
+	m_vertexCBuffer.CopyToVRAM(vers);
 }
 
 void DebugWireframe::ConstantBufferUpdate()
@@ -97,37 +119,12 @@ void DebugWireframe::ConstantBufferUpdate()
 	m_constantBuffer.CopyToVRAM(&VP);
 }
 
-void DebugWireframe::VertexBufferUpdate()
-{
-	//1. 頂点バッファを作成。
-	int numVertex = 2;
-	int vertexStride = sizeof(TkmFile::SVertex);
-	m_vertexBuffer.Init()
-}
-
 void DebugWireframe::Prepare()
 {
 	
-	////頂点バッファ////
-	//構造体
-	//Description 意味:説明
-	D3D11_BUFFER_DESC desc{};
-	//使い方　
-	desc.Usage = D3D11_USAGE_DEFAULT;
-	//サイズ 
-	desc.ByteWidth = sizeof(Vertex) * 2;
-	//頂点用にする
-	desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	//0はCPUからアクセスできない。
-	//0なら書かなくて良い。
-	desc.CPUAccessFlags = 0;
-	//仕上げ
-	g_graphicsEngine->GetD3DDevice()->CreateBuffer(&desc, nullptr, &m_vertexBuffer);
-	////頂点終了////
 	
 	
 }
-
 
 bool hoge = false;
 void DebugWireframe::Context()
@@ -139,47 +136,11 @@ void DebugWireframe::Context()
 //1フレーム内にdrawLineは線の数だけ行う
 void DebugWireframe::drawLine(const btVector3 & from, const btVector3 & to, const btVector3 & color)
 {
-	auto& rc = g_graphicsEngine->GetRenderContext();
+	//頂点バッファの更新。
+	VertexCBufferUpdate(from, to, color);
 	//定数バッファの更新。
 	ConstantBufferUpdate();
-}
-
-void DebugWireframe::drawLine_kari(const btVector3& from, const btVector3& to, const btVector3& color)
-{
-	//頂点バッファの設定
-	//引数のストライドとオフセット用に変数をつくる
-	//引数がポインタのため
-	UINT ver = sizeof(Vertex);
-	UINT offset = 0;
-	//定数バッファをデバイスコンテキストに設定
-	dc->IASetVertexBuffers(
-		0,					//レジスタの場所
-		1,					//配列の要素数
-		&m_vertexBuffer,	//定数バッファのポインタ
-		&ver,				//頂点のサイズ,ストライド
-		&offset				//頂点の配列のスタート地点,オフセット
-	);
-
-	//頂点の情報がどんな感じに入っているのかがわかる
-	dc->IASetInputLayout(m_Vshader.GetInputLayout());
-
-	//頂点をどんな感じに描画するのか
-	//今回は頂点二つの間に線を描く設定
-	dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
-
-	//頂点を書き換えてドローする関数
-	Vertex vers[2];
-	vers[0].pos = from;
-	vers[0].color = color;
-	vers[1].pos = to;
-	vers[1].color = color;
-
-	//引数verはver[0]のアドレス
-	//Prepare関数のByteWidthでサイズを*2にすることで
-	//verの要素数が二つであることがわかる
-	dc->UpdateSubresource(m_vertexBuffer, 0, nullptr, vers, 0, 0);
-
-	//描画
-	//2は頂点数、0はオフセット
-	dc->Draw(2, 0);
+	//レンダリングコンテキストを取得。
+	auto& rc = g_graphicsEngine->GetRenderContext();
+	rc.DrawIndexed(NUM_VERTEX);
 }
