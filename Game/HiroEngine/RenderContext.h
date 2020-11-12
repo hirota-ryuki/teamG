@@ -186,12 +186,13 @@ public:
 	void WaitUntilFinishDrawingToRenderTarget(RenderTarget& renderTarget);
 	void WaitUntilFinishDrawingToRenderTarget( ID3D12Resource* renderTarget )
 	{
+		CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(
+			renderTarget,
+			D3D12_RESOURCE_STATE_RENDER_TARGET,
+			D3D12_RESOURCE_STATE_PRESENT);
 		m_commandList->ResourceBarrier(
 			1,
-			&CD3DX12_RESOURCE_BARRIER::Transition(
-				renderTarget,
-				D3D12_RESOURCE_STATE_RENDER_TARGET,
-				D3D12_RESOURCE_STATE_PRESENT));
+			&barrier);
 	}
 	/// <summary>
 	/// レンダリングターゲットとして使用可能になるまで待つ。
@@ -204,10 +205,8 @@ public:
 	void WaitUntilToPossibleSetRenderTarget(RenderTarget& renderTarget);
 	void WaitUntilToPossibleSetRenderTarget( ID3D12Resource* renderTarget)
 	{
-		m_commandList->ResourceBarrier(
-			1,
-			&CD3DX12_RESOURCE_BARRIER::Transition(renderTarget, D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET)
-		);
+		CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTarget, D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
+		m_commandList->ResourceBarrier(1,&barrier);
 	}
 	/// <summary>
 	/// リソースバリア。
@@ -225,10 +224,8 @@ public:
 	/// <param name="afterState"></param>
 	void TransitionResourceState(ID3D12Resource* resrouce , D3D12_RESOURCE_STATES beforeState, D3D12_RESOURCE_STATES afterState)
 	{
-		m_commandList->ResourceBarrier(
-			1,
-			&CD3DX12_RESOURCE_BARRIER::Transition(resrouce, beforeState, afterState)
-		);
+		CD3DX12_RESOURCE_BARRIER barrier = CD3DX12_RESOURCE_BARRIER::Transition(resrouce, beforeState, afterState);
+		m_commandList->ResourceBarrier(1,&barrier);
 	}
 	/// <summary>
 	/// コマンドリストを閉じる
