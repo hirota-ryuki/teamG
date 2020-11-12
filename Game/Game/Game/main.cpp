@@ -101,23 +101,12 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	Sprite defferdLightinSpr;
 	defferdLightinSpr.Init(spriteInitData);
 
-	//////////////////////////////////////
-	// 初期化を行うコードを書くのはここまで！！！
-	//////////////////////////////////////
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
-
-
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
-		//GameObjectManagerの更新。
-		GameObjectManager::GetInstance().Update();
 		//レンダリング開始。
 		g_engine->BeginFrame();
-		
-		//////////////////////////////////////
-		//ここから絵を描くコードを記述する。
-		//////////////////////////////////////
 
 		//レンダリングターゲットをG-Bufferに変更して書き込む。
 		RenderTarget* rts[] = {
@@ -132,6 +121,17 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		renderContext.SetRenderTargets(ARRAYSIZE(rts), rts);
 		//レンダリングターゲットをクリア。
 		renderContext.ClearRenderTargetViews(ARRAYSIZE(rts), rts);
+
+		//////////////////////////////////////
+		//ここからコードを記述する。
+		//////////////////////////////////////
+
+		//物理エンジンの更新。
+		g_physics.Update();
+
+		//GameObjectManagerの更新。
+		GameObjectManager::GetInstance().Update();
+
 		humanModel.Draw(renderContext);
 
 		float lStick_x = (g_pad[0]->GetLStickXF());
