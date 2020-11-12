@@ -57,11 +57,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	humanModel.Init(modelInitData);
 	//humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
 
-	//ロボットモデルを初期化。
-	modelInitData.m_tkmFilePath = "Assets/modelData/ninja/ninjya.tkm";
-	Model roboModel;
-	roboModel.Init(modelInitData);
-	roboModel.UpdateWorldMatrix({ 50.0f, 0.0f, 0.0f }, g_quatIdentity, { 10.0f, 10.0f, 10.0f });
 	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
 	
@@ -111,8 +106,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//////////////////////////////////////
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 
-	test* test1;
-	test1 = NewGO<test>(GOPrio_Defalut,"test");
 
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
@@ -140,7 +133,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//レンダリングターゲットをクリア。
 		renderContext.ClearRenderTargetViews(ARRAYSIZE(rts), rts);
 		humanModel.Draw(renderContext);
-		roboModel.Draw(renderContext);
 
 		float lStick_x = (g_pad[0]->GetLStickXF());
 		float lStick_z = (g_pad[0]->GetLStickYF());
@@ -158,10 +150,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//ここからフォワードレンダリング。
 		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
-		
-		////step-2 セルルックモデルの描画
-		//toneModel.Draw(renderContext);
-		
+	
 		//半透明オブジェクトを描画！
 		//sphereModel.Draw(renderContext);
 		humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);

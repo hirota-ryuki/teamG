@@ -114,9 +114,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
-      <Filter>HiroEngine\HrioEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
@@ -261,6 +258,7 @@
     <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h">
       <Filter>HiroEngine\DebugWireframe</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">
@@ -319,6 +317,9 @@
     </Filter>
     <Filter Include="HiroEngine\DebugWireframe">
       <UniqueIdentifier>{aa9bbc03-8f6a-4c3f-b3d6-ec0e6ef92692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\physics">
+      <UniqueIdentifier>{a60f2ac1-1dab-41f5-a2b5-15383fe0bd78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

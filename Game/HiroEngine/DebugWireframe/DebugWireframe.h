@@ -1,5 +1,5 @@
 #pragma once
-#include "bulletPhysics/src/LinearMath/btIDebugDraw.h"
+#include "LinearMath/btIDebugDraw.h"
 #include "Shader.h"
 
 class DebugWireframe :
