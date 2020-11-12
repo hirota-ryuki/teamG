@@ -1,5 +1,5 @@
 #pragma once
-#include "bulletPhysics/src/LinearMath/btIDebugDraw.h"
+#include "LinearMath/btIDebugDraw.h"
 #include "Shader.h"
 
 class DebugWireframe :
@@ -17,6 +17,10 @@ public:
 	/// </summary>
 	void InitDescriptorHeap();
 	/// <summary>
+	/// 2頂点を記録する定数バッファの初期化。
+	/// </summary>
+	void InitVertexCBuffer();
+	/// <summary>
 	/// 定数バッファの初期化。
 	/// </summary>
 	void InitConstantBuffer();
@@ -33,13 +37,13 @@ public:
 	/// </summary>
 	void InitRootSignature();
 	/// <summary>
+	/// 2頂点を記録する定数バッファの更新。
+	/// </summary>
+	void VertexCBufferUpdate(const btVector3& from, const btVector3& to, const btVector3& color);
+	/// <summary>
 	/// 定数バッファの更新。
 	/// </summary>
 	void ConstantBufferUpdate();
-	/// <summary>
-	/// 頂点バッファの更新。
-	/// </summary>
-	void VertexBufferUpdate();
 	/// <summary>
 	/// 設定の準備
 	/// </summary>
@@ -57,7 +61,6 @@ public:
 	/// <param name="to"></param>
 	/// <param name="color"></param>
 	void    drawLine(const btVector3& from, const btVector3& to, const btVector3& color) override;
-	void    drawLine_kari(const btVector3& from, const btVector3& to, const btVector3& color) ;
 	void    setDebugMode(int debugMode) override {};
 	int     getDebugMode() const override 
 	{
@@ -76,11 +79,13 @@ private:
 	};
 	
 	ConstantBuffer		m_constantBuffer;			//定数バッファ。
-	VertexBuffer		m_vertexBuffer;				//頂点バッファ。
+	ConstantBuffer		m_vertexCBuffer;			//2頂点を記録する定数バッファ。頂点バッファ(VertexBuffer)ではない。
 	RootSignature		m_rootSignature;			//ルートシグネチャ。
 	Shader				m_Vshader;					//頂点シェーダー。
 	Shader				m_Pshader;					//ピクセルシェーダー。
 	PipelineState		m_pipelineState;			//パイプラインステート。
 	DescriptorHeap		m_descriptorHeap;			//ディスクリプタヒープ。	
+	const int			NUM_VERTEX = 2;				//頂点の個数。線を形成するための最低限の数。
+
 };
 

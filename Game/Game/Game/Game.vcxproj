@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\HiroEngine\Camera\Camera.cpp" />
     <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp" />
+    <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp" />
     <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp" />
     <ClCompile Include="..\..\HiroEngine\GameObjectManager\GameObjectManager.cpp" />
     <ClCompile Include="..\..\HiroEngine\GraphicsEngine.cpp" />
@@ -189,6 +190,7 @@
     <ClCompile Include="..\..\HiroEngine\tkFile\TkmFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TksFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp" />
+    <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
     <ClInclude Include="Game\Game.cpp" />
     <ClCompile Include="camera\GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
