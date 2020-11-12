@@ -259,6 +259,7 @@
       <Filter>HiroEngine\DebugWireframe</Filter>
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
+    <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">
