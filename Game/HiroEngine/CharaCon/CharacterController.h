@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include "Physics/CapsuleCollider.h"
-#include "Physics/RigidBody.h"
+#include "physics/CapsuleCollider.h"
+#include "physics/RigidBody.h"
 
 
 /*!

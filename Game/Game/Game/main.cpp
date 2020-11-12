@@ -101,6 +101,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	Sprite defferdLightinSpr;
 	defferdLightinSpr.Init(spriteInitData);
 
+	//デバッグモードのオンオフ。
+	bool isDebug = false;
+
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
@@ -127,7 +130,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//////////////////////////////////////
 
 		//物理エンジンの更新。
-		//g_physics.Update();
+		g_physics.Update();
 
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
@@ -150,10 +153,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//ここからフォワードレンダリング。
 		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
-	
-		//半透明オブジェクトを描画！
-		//sphereModel.Draw(renderContext);
-		humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
 
 		//カメラ
 		Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
@@ -163,9 +162,19 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		g_camera3D->SetPosition(m_pos);
 		g_camera3D->SetTarget(m_target);
 		g_camera3D->Update();
-		/////////////////////////////////////////
-		//絵を描くコードを書くのはここまで！！！
-		//////////////////////////////////////
+		
+		//デバッグモード。
+		//DubugMode(isDebug);
+		//ボタンで切り替え
+		if (g_pad[0]->IsTrigger(enButtonSelect))
+		{
+			isDebug = !isDebug;
+		}
+		if (isDebug)
+		{
+			//デバッグモード
+			g_physics.DebugDraw();
+		}
 		//レンダリング終了。
 		g_engine->EndFrame();
 	}
@@ -181,4 +190,9 @@ void InitRootSignature(RootSignature& rs)
 		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
 		D3D12_TEXTURE_ADDRESS_MODE_WRAP,
 		D3D12_TEXTURE_ADDRESS_MODE_WRAP);
+}
+
+//デバッグモード。
+void DubugMode(bool& isDebug) {
+	
 }

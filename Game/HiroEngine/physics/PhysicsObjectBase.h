@@ -23,7 +23,7 @@ namespace hrEngine {
 		/*!
 		* @brief	静的物理オブジェクト作成処理の共通処理。
 		*/
-		virtual void CreateCommon(CVector3 pos, CQuaternion rot) = 0;
+		virtual void CreateCommon(Vector3 pos, Quaternion rot) = 0;
 	public:
 		/*!
 		 *@brief	コンストラクタ。
@@ -44,7 +44,7 @@ namespace hrEngine {
 		 *@param[in]	rot			回転。
 		 *@param[in]	size		サイズ。
 		 */
-		void CreateBox(CVector3 pos, CQuaternion rot, CVector3 size);
+		void CreateBox(Vector3 pos, Quaternion rot, Vector3 size);
 		/*!
 		 * @brief	カプセル形状のゴーストオブジェクトを作成。
 		 *@param[in]	pos			座標。
@@ -52,23 +52,23 @@ namespace hrEngine {
 		 *@param[in]	radius		カプセルの半径。
 		 *@param[in]	height		カプセルの高さ。
 		 */
-		void CreateCapsule(CVector3 pos, CQuaternion rot, float radius, float height);
+		void CreateCapsule(Vector3 pos, Quaternion rot, float radius, float height);
 		/*!
 		* @brief	球体形状のゴーストオブジェクトを作成。
 		*@param[in]	pos			座標。
 		*@param[in]	rot			回転。
 		*@param[in]	radius		球体の半径。
 		*/
-		void CreateSphere(CVector3 pos, CQuaternion rot, float radius);
+		void CreateSphere(Vector3 pos, Quaternion rot, float radius);
 		/*!
 		* @brief	メッシュ形状のゴーストオブジェクトを作成。
 		*@param[in]	pos					座標。
 		*@param[in]	rot					回転。
 		*@param[in]	skinModelData		スキンモデルデータ。
 		*/
-		//void CreateMesh(CVector3 pos, CQuaternion rot, const CSkinModelData& skinModelData);
-		/*void CreateMesh(CVector3 pos, CQuaternion rot, CVector3 scale, const SkinModel& skinModel);
-		void CreateMesh(CVector3 pos, CQuaternion rot, CVector3 scale, SkinModelRender* skinModelRender);*/
+		//void CreateMesh(Vector3 pos, Quaternion rot, const CSkinModelData& skinModelData);
+		/*void CreateMesh(Vector3 pos, Quaternion rot, Vector3 scale, const SkinModel& skinModel);
+		void CreateMesh(Vector3 pos, Quaternion rot, Vector3 scale, SkinModelRender* skinModelRender);*/
 	protected:
 		std::unique_ptr<ICollider> m_collider;	//!<コライダー。
 	};

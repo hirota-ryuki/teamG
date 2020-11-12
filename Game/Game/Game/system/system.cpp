@@ -84,6 +84,8 @@ void InitGame(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, in
 	g_engine->Init(g_hWnd, FRAME_BUFFER_W, FRAME_BUFFER_H);
 	//ゲームオブジェクトマネージャーの生成。
 	GameObjectManager::GetInstance();
+	//フィジックスを初期化。
+	g_physics.Init();
 }
 //ウィンドウメッセージをディスパッチ。falseが返ってきたら、ゲーム終了。
 bool DispatchWindowMessage()

@@ -18,8 +18,8 @@
 #include <Xinput.h>
 #include <array>
 
-#include "bulletPhysics/src/btBulletDynamicsCommon.h"
-#include "bulletPhysics/src/BulletCollision\CollisionDispatch\btGhostObject.h"
+#include "btBulletDynamicsCommon.h"
+#include "BulletCollision\CollisionDispatch\btGhostObject.h"
 
 #include "d3dx12.h"
 #include "math/Math.h"
@@ -43,6 +43,8 @@
 
 #include "RenderContext_inline.h"
 #include "DescriptorHeap_inline.h"
+
+#include "physics/Physics.h"
 
 #include "Sprite.h"
 #include "Model.h"

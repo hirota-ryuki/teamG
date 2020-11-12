@@ -112,6 +112,27 @@
     <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp">
       <Filter>HiroEngine\DebugWireframe</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\PhysicsObjectBase.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\SphereCollider.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\BoxCollider.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\physics\CapsuleCollider.cpp">
+      <Filter>HiroEngine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp">
+      <Filter>HiroEngine\CharaCon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
@@ -260,6 +281,33 @@
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
     <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\Physics.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\ICollider.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\CapsuleCollider.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\CollisionAttr.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\PhysicsObjectBase.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\SphereCollider.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h">
+      <Filter>HiroEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
+      <Filter>HiroEngine\CharaCon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">
@@ -321,6 +369,9 @@
     </Filter>
     <Filter Include="HiroEngine\physics">
       <UniqueIdentifier>{a60f2ac1-1dab-41f5-a2b5-15383fe0bd78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\CharaCon">
+      <UniqueIdentifier>{02ecfb35-3e4b-486f-bf58-bc125f4507ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

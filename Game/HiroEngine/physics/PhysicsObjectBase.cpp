@@ -9,7 +9,7 @@
 #include "physics/SphereCollider.h"
 namespace hrEngine {
 
-	void CPhysicsObjectBase::CreateBox(CVector3 pos, CQuaternion rot, CVector3 size)
+	void CPhysicsObjectBase::CreateBox(Vector3 pos, Quaternion rot, Vector3 size)
 	{
 		Release();
 		auto boxCollider = std::make_unique<BoxCollider>();
@@ -17,7 +17,7 @@ namespace hrEngine {
 		m_collider = move(boxCollider);
 		CreateCommon(pos, rot);
 	}
-	void CPhysicsObjectBase::CreateCapsule(CVector3 pos, CQuaternion rot, float radius, float height)
+	void CPhysicsObjectBase::CreateCapsule(Vector3 pos, Quaternion rot, float radius, float height)
 	{
 		Release();
 		auto capusuleCollider = std::make_unique<CapsuleCollider>();
@@ -26,7 +26,7 @@ namespace hrEngine {
 		CreateCommon(pos, rot);
 	}
 
-	void CPhysicsObjectBase::CreateSphere(CVector3 pos, CQuaternion rot, float radius)
+	void CPhysicsObjectBase::CreateSphere(Vector3 pos, Quaternion rot, float radius)
 	{
 		Release();
 		auto sphereCollider = std::make_unique<SphereCollider>();
@@ -35,7 +35,7 @@ namespace hrEngine {
 		CreateCommon(pos, rot);
 	}
 
-	/*void CPhysicsObjectBase::CreateMesh(CVector3 pos, CQuaternion rot, const SkinModelData& skinModelData)
+	/*void CPhysicsObjectBase::CreateMesh(Vector3 pos, Quaternion rot, const SkinModelData& skinModelData)
 	{
 		Release();
 		auto meshCollider = make_unique<MeshCollider>();
@@ -43,11 +43,11 @@ namespace hrEngine {
 		m_collider = move(meshCollider);
 		CreateCommon(pos, rot);
 	}*/
-	/*void CPhysicsObjectBase::CreateMesh(CVector3 pos, CQuaternion rot, CVector3 scale, SkinModelRender* skinModelRender)
+	/*void CPhysicsObjectBase::CreateMesh(Vector3 pos, Quaternion rot, Vector3 scale, SkinModelRender* skinModelRender)
 	{
 		CreateMesh(pos, rot, scale, skinModelRender->GetModel());
 	}
-	void CPhysicsObjectBase::CreateMesh(CVector3 pos, CQuaternion rot, CVector3 scale, const SkinModel& skinModel)
+	void CPhysicsObjectBase::CreateMesh(Vector3 pos, Quaternion rot, Vector3 scale, const SkinModel& skinModel)
 	{
 		Release();
 		CMatrix mScale;

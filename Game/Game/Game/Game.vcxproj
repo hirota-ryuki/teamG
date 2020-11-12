@@ -163,6 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\HiroEngine\Camera\Camera.cpp" />
+    <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp" />
     <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp" />
     <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp" />
@@ -176,6 +177,12 @@
     <ClCompile Include="..\..\HiroEngine\MeshParts.cpp" />
     <ClCompile Include="..\..\HiroEngine\Model.cpp" />
     <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\BoxCollider.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\CapsuleCollider.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\PhysicsObjectBase.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\SphereCollider.cpp" />
     <ClCompile Include="..\..\HiroEngine\PipelineState.cpp" />
     <ClCompile Include="..\..\HiroEngine\RenderTarget.cpp" />
     <ClCompile Include="..\..\HiroEngine\RootSignature.cpp" />
@@ -190,7 +197,16 @@
     <ClCompile Include="..\..\HiroEngine\tkFile\TkmFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TksFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp" />
+    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h" />
     <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\CapsuleCollider.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\CollisionAttr.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\ICollider.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\Physics.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\PhysicsObjectBase.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\SphereCollider.h" />
     <ClInclude Include="Game\Game.cpp" />
     <ClCompile Include="camera\GameCamera.cpp" />
     <ClCompile Include="main.cpp" />

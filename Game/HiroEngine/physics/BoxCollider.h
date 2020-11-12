@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "Physics/ICollider.h"
+#include "physics/ICollider.h"
 
 
 class BoxCollider : public ICollider
@@ -19,7 +19,7 @@ public:
 	*@param[in] radius	カプセルの半径。
 	*@param[in]	height	カプセルの高さ。
 	*/
-	void Create(CVector3 halfSize)
+	void Create(Vector3 halfSize)
 	{
 		btVector3 btSize;
 		btSize.setX(halfSize.x);
