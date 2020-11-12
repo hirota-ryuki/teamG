@@ -35,11 +35,29 @@ void Player::RenderUpdate()
 //移動処理を書いた関数。
 void Player::MoveOperation()
 {
-	const float ZERO = 0.0f;			//0です。
 	const float HALF = 0.5f;			//0.5です。
-	////stickの入力に合わせて動きます。
+	//stickの入力に合わせて動きます。
 	float lStick_x = (g_pad[0]->GetLStickXF());
 	float lStick_z = (g_pad[0]->GetLStickYF());
+	//カメラから移動の処理に加える前方と左右の値取得。
+	GetCameraVector();
+	//XZ成分の移動速度をクリア。
+	m_moveSpeed.x = ZERO;
+	m_moveSpeed.z = ZERO;
+	//移動。
+	if (HALF < g_pad[0]->GetLStickXF() || HALF > g_pad[0]->GetLStickYF())
+	{
+		m_moveSpeed += (cameraForward * m_speed * lStick_x) * m_runSpeed;
+		m_moveSpeed += (cameraRight * m_speed * lStick_z) * m_runSpeed;
+	}
+	//モデルに映したいけど間違ってると思います。
+	//廣田君キャラコン作って♡
+	playerModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
+	m_position = m_moveSpeed;
+}
+//移動時にカメラから取得するもの。
+void Player::GetCameraVector()
+{
 	//カメラの前方方向
 	cameraForward = g_camera3D->GetForward();
 	cameraRight = g_camera3D->GetRight();
@@ -48,17 +66,21 @@ void Player::MoveOperation()
 	cameraForward.Normalize();
 	cameraRight.y = ZERO;
 	cameraRight.Normalize();
-	////XZ成分の移動速度をクリア。
-	//m_moveSpeed.x = ZERO;
-	//m_moveSpeed.z = ZERO;
-	////移動。
-	//if (HALF < g_pad[0]->GetLStickXF() || HALF > g_pad[0]->GetLStickYF())
-	//{
-		m_moveSpeed += cameraForward * m_speed * lStick_x;
-		m_moveSpeed += cameraRight * m_speed * lStick_z;
-	//}
-	////モデルに映したいけど間違ってると思います。
-	////廣田君キャラコン作って♡
-	playerModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
-	m_position = m_moveSpeed;
+}
+//コントローラー入力処理。
+void Player::PlayerInputProcessing()
+{
+	const int RUNSPEED = 2;
+	//Aボタンが押されたとき。
+	if (g_pad[0]->IsTrigger(enButtonA))
+	{
+		//話しかけたり、物を拾ったり、基本的に選択するときにOKサイン出す。
+		//ただ今、選択物がないため処理が未完成。後々追加されるであろう。
+	}
+	//Bボタンが押されたとき。
+	if (g_pad[0]->IsTrigger(enButtonB))
+	{
+		//移動のスピード上げます。
+		m_runSpeed = RUNSPEED;
+	}
 }

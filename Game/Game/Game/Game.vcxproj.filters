@@ -111,9 +111,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\HiroEngine\HiroEngine.h">
-      <Filter>HiroEngine\HrioEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
       <Filter>HiroEngine</Filter>
     </ClInclude>
@@ -255,6 +252,7 @@
     <ClInclude Include="test.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\HiroEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">

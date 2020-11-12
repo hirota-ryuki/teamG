@@ -1,6 +1,7 @@
 #pragma once
 
 class Player;
+class GameCamera;
 class RenderContext;
 class Game : public IGameObject
 {
@@ -18,7 +19,7 @@ public:
 	void Update()override;
 
 private:
-	//プレイヤー
-	Player* m_player;
+	Player* m_player;					//プレイヤー。
+	GameCamera* m_gameCamera;			//カメラ。
 };
 
