@@ -103,6 +103,15 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 	//デバッグモードのオンオフ。
 	bool isDebug = false;
+	Vector3 m_position = Vector3::Zero;
+	CharacterController m_charaCon;								//キャラクターコントローラー。
+
+	//キャラコンの初期化
+	m_charaCon.Init(
+		80.f,
+		200.f,
+		m_position
+	);
 
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	// ここからゲームループ。
