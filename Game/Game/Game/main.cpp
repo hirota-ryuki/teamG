@@ -2,6 +2,7 @@
 #include "system/system.h"
 #include "test.h"
 #include "Game.h"
+#include "BackGround/BackGround.h"
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
 //関数宣言
 void InitRootSignature(RootSignature& rs);
@@ -102,7 +103,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	
 	//ディファードライティングで使用するテクスチャにワールド座標テクスチャを追加。
 	spriteInitData.m_textures[2] = &worldPosRT.GetRenderTargetTexture();
-
 	spriteInitData.m_fxFilePath = "Assets/shader/sprite.fx";
 	spriteInitData.m_expandConstantBuffer = &light;
 	spriteInitData.m_expandConstantBufferSize = sizeof(light);
@@ -123,6 +123,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	);
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	Game* game = NewGO<Game>();
+	//BackGround* bg = NewGO<BackGround>();
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
@@ -153,7 +154,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
-		planePos.z += lStick_z;
+	
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
 		

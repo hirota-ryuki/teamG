@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Player/Player.h"
 #include"camera/GameCamera.h"
+#include "BackGround/BackGround.h"
 
 Game::Game()
 {
@@ -25,6 +26,8 @@ bool Game::Start()
 {
 	//ê∂ê¨àÍóó
 	m_player = NewGO<Player>();
+	BackGround* bg = NewGO<BackGround>();
+
 	m_gameCamera = NewGO<GameCamera>();
 	m_gameCamera->BindPlayer(m_player);
 	return true;

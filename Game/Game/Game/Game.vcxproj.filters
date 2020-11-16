@@ -389,9 +389,4 @@
       <UniqueIdentifier>{05d961e3-a05a-437f-a0e2-ae25023d6e32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\modelData\background\karimodel.fbx" />
-    <None Include="Assets\modelData\background\karimodel.tkm" />
-    <None Include="Assets\modelData\unityChan.tkm" />
-  </ItemGroup>
 </Project>
