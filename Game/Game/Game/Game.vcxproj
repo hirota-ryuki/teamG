@@ -192,6 +192,7 @@
     <ClCompile Include="..\..\HiroEngine\RWStructuredBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\Shader.cpp" />
     <ClCompile Include="..\..\HiroEngine\Skeleton.cpp" />
+    <ClCompile Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.cpp" />
     <ClCompile Include="..\..\HiroEngine\Sprite.cpp" />
     <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\Texture.cpp" />
@@ -212,6 +213,8 @@
     <ClInclude Include="..\..\HiroEngine\physics\PhysicsObjectBase.h" />
     <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h" />
     <ClInclude Include="..\..\HiroEngine\physics\SphereCollider.h" />
+    <ClInclude Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.h" />
+    <ClInclude Include="Game\Game.cpp" />
     <ClCompile Include="camera\GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player\Player.cpp" />

@@ -136,6 +136,9 @@
     <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp">
       <Filter>HiroEngine\CharaCon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.cpp">
+      <Filter>HiroEngine\SkinModelRender</Filter>
+    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -312,6 +315,12 @@
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.h">
+      <Filter>HiroEngine\SkinModelRender</Filter>
+    </ClInclude>
     <ClInclude Include="BackGround\BackGround.h" />
   </ItemGroup>
   <ItemGroup>
@@ -377,6 +386,9 @@
     </Filter>
     <Filter Include="HiroEngine\CharaCon">
       <UniqueIdentifier>{02ecfb35-3e4b-486f-bf58-bc125f4507ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HiroEngine\SkinModelRender">
+      <UniqueIdentifier>{05d961e3-a05a-437f-a0e2-ae25023d6e32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

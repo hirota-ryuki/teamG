@@ -47,7 +47,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	light.color.y = 1.0f;
 	light.color.z = 1.0f;
 	light.eyePos = g_camera3D->GetPosition();
-
+	/*
 	//モデルを初期化。
 	ModelInitData modelInitData;
 	////人型モデルを初期化。
@@ -56,10 +56,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	Model humanModel;
 	humanModel.Init(modelInitData);
 	//humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
-
-
+	*/
+	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
-
+	
 	//G-Bufferを作成。
 	RenderTarget albedRT;	//アルベドカラー書き込み用のレンダリングターゲット。
 	albedRT.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, 1, 1, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_FORMAT_D32_FLOAT);
@@ -74,10 +74,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	);
 	RenderTarget worldPosRT;
 	worldPosRT.Create(
-		FRAME_BUFFER_W,
-		FRAME_BUFFER_H,
-		1,
-		1,
+		FRAME_BUFFER_W, 
+		FRAME_BUFFER_H, 
+		1, 
+		1, 
 		DXGI_FORMAT_R32G32B32A32_FLOAT,		//ワールド座標を記録するので、32ビット浮動小数点バッファを利用する。
 		DXGI_FORMAT_UNKNOWN
 	);
@@ -90,7 +90,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//ディファードライティングで使用するテクスチャを設定。
 	spriteInitData.m_textures[0] = &albedRT.GetRenderTargetTexture();
 	spriteInitData.m_textures[1] = &normalRT.GetRenderTargetTexture();
-
+	
 	//ディファードライティングで使用するテクスチャにワールド座標テクスチャを追加。
 	spriteInitData.m_textures[2] = &worldPosRT.GetRenderTargetTexture();
 
@@ -112,9 +112,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		200.f,
 		m_position
 	);
-	//SkinModelRender* model = NewGO<SkinModelRender>(GOPrio_Defalut);
+	SkinModelRender* model = NewGO<SkinModelRender>();
+	model->Init("Assets/modelData/unityChan.tkm");
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
-	Game* game = NewGO<Game>(GOPrio_Defalut);
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
@@ -145,34 +145,34 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
-		//humanModel.Draw(renderContext);
+		humanModel.Draw(renderContext);
 
-		/*float lStick_x = (g_pad[0]->GetLStickXF());
+		float lStick_x = (g_pad[0]->GetLStickXF());
 		float lStick_z = (g_pad[0]->GetLStickYF());
 
 		planePos.x += lStick_x;
-		planePos.z += lStick_z;*/
+		planePos.z += lStick_z;
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
-
+		
 		//レンダリング先をフレームバッファに戻してスプライトをレンダリングする
 		g_graphicsEngine->ChangeRenderTargetToFrameBuffer(renderContext);
 		//G-Bufferの内容を元にしてディファードライティング。
 		defferdLightinSpr.Draw(renderContext);
-
+		
 		//ここからフォワードレンダリング。
 		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
-	
-		/*//カメラ
+
+		//カメラ
 		Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
 		Vector3 m_target = planePos;
 		m_target.y += 50.0f;
 		Vector3 m_pos = planePos + m_toPos;
 		g_camera3D->SetPosition(m_pos);
 		g_camera3D->SetTarget(m_target);
-		g_camera3D->Update();*/
-
+		g_camera3D->Update();
+		
 		//デバッグモード。
 		//DubugMode(isDebug);
 		//ボタンで切り替え
