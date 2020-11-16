@@ -112,6 +112,12 @@
     <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp">
       <Filter>HiroEngine\DebugWireframe</Filter>
     </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp">
       <Filter>HiroEngine\physics</Filter>
     </ClCompile>
@@ -267,12 +273,6 @@
     <ClInclude Include="..\..\HiroEngine\util\Util.h">
       <Filter>HiroEngine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Game.cpp">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Game.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="test.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -307,6 +307,12 @@
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
       <Filter>HiroEngine\CharaCon</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

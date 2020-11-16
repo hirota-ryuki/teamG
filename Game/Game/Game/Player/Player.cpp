@@ -3,7 +3,6 @@
 
 Player::Player()
 {
-	
 }
 
 Player::~Player()
@@ -17,20 +16,27 @@ bool Player::Start()
 	playerInitData.m_fxFilePath = "Assets/shader/model.fx";
 	//モデルにぶち込むぜ。
 	playerModel.Init(playerInitData);
+	//キャラコンの初期化
+	m_charaCon.Init(
+		80.f,
+		200.f,
+		m_position
+	);
 	//auto& renderContext = g_graphicsEngine->GetRenderContext();
 	return true;
 }
 //更新関数
 void Player::Update()
 {
-	RenderUpdate();
-	MoveOperation();
+	RenderUpdate();					//描画更新。
+	MoveOperation();				//移動処理。
+	PlayerInputProcessing();		//入力処理。
 }
 //描画更新関数。後に消える可能性大。
 void Player::RenderUpdate()
 {
-	//playerModel.Draw(d);
-	playerModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
+	auto& renderContext = g_graphicsEngine->GetRenderContext();
+	playerModel.Draw(renderContext);
 }
 //移動処理を書いた関数。
 void Player::MoveOperation()
@@ -52,8 +58,9 @@ void Player::MoveOperation()
 	}
 	//モデルに映したいけど間違ってると思います。
 	//廣田君キャラコン作って♡
+	m_position = m_charaCon.Execute(60 / 1, m_moveSpeed);
 	playerModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
-	m_position = m_moveSpeed;
+	//m_position = m_moveSpeed;
 }
 //移動時にカメラから取得するもの。
 void Player::GetCameraVector()

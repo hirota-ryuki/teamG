@@ -1,42 +1,41 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "system/system.h"
 #include "test.h"
 #include "Game/Game.h"
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
-//ŠÖ”éŒ¾
+//ï¿½Öï¿½ï¿½éŒ¾
 void InitRootSignature(RootSignature& rs);
 
 /// <summary>
-/// ƒfƒBƒŒƒNƒVƒ‡ƒiƒ‹ƒ‰ƒCƒg
+/// ï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½Vï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½g
 /// </summary>
 struct DirectionalLight {
 	Vector3  color;
-	float pad0;			//ƒpƒfƒBƒ“ƒOB
+	float pad0;			//ï¿½pï¿½fï¿½Bï¿½ï¿½ï¿½Oï¿½B
 	Vector3  direction;
-	float pad1;			//ƒpƒfƒBƒ“ƒOB
-	Vector3 eyePos;		//‹“_
-	float specPow;		//ƒXƒyƒLƒ…ƒ‰‚Ìi‚èB
+	float pad1;			//ï¿½pï¿½fï¿½Bï¿½ï¿½ï¿½Oï¿½B
+	Vector3 eyePos;		//ï¿½ï¿½ï¿½_
+	float specPow;		//ï¿½Xï¿½yï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ìiï¿½ï¿½B
 };
 
-class Game;
 ///////////////////////////////////////////////////////////////////
-// ƒEƒBƒ“ƒhƒEƒvƒƒOƒ‰ƒ€‚ÌƒƒCƒ“ŠÖ”B
+// ï¿½Eï¿½Bï¿½ï¿½ï¿½hï¿½Eï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½Cï¿½ï¿½ï¿½Öï¿½ï¿½B
 ///////////////////////////////////////////////////////////////////
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
 {
-	//ƒQ[ƒ€‚Ì‰Šú‰»B
+	//ï¿½Qï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, TEXT("Game"));
 
 	//////////////////////////////////////
-	// ‚±‚±‚©‚ç‰Šú‰»‚ğs‚¤ƒR[ƒh‚ğ‹Lq‚·‚éB
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Rï¿½[ï¿½hï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½B
 	//////////////////////////////////////
 
 
-	//ƒ‹[ƒgƒVƒOƒlƒ`ƒƒ‚ğì¬B
+	//ï¿½ï¿½ï¿½[ï¿½gï¿½Vï¿½Oï¿½lï¿½`ï¿½ï¿½ï¿½ï¿½ì¬ï¿½B
 	RootSignature rootSignature;
 	InitRootSignature(rootSignature);
 
-	//ƒfƒBƒŒƒNƒVƒ‡ƒ“ƒ‰ƒCƒg
+	//ï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½g
 	DirectionalLight light;
 	light.direction.x = 1.0f;
 	light.direction.y = -1.0f;
@@ -48,9 +47,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	light.color.z = 1.0f;
 	light.eyePos = g_camera3D->GetPosition();
 
-	//ƒ‚ƒfƒ‹‚ğ‰Šú‰»B
+	//ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 	ModelInitData modelInitData;
-	////lŒ^ƒ‚ƒfƒ‹‚ğ‰Šú‰»B
+	////ï¿½lï¿½^ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 	modelInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
 	modelInitData.m_fxFilePath = "Assets/shader/model.fx";
 	Model humanModel;
@@ -60,10 +59,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
 	
-	//G-Buffer‚ğì¬B
-	RenderTarget albedRT;	//ƒAƒ‹ƒxƒhƒJƒ‰[‘‚«‚İ—p‚ÌƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒgB
+	//G-Bufferï¿½ï¿½ì¬ï¿½B
+	RenderTarget albedRT;	//ï¿½Aï¿½ï¿½ï¿½xï¿½hï¿½Jï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ—pï¿½Ìƒï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½B
 	albedRT.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, 1, 1, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_FORMAT_D32_FLOAT);
-	RenderTarget normalRT;	//–@ü‘‚«‚İ—p‚ÌƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒgB
+	RenderTarget normalRT;	//ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ—pï¿½Ìƒï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½B
 	normalRT.Create(
 		FRAME_BUFFER_W, 
 		FRAME_BUFFER_H, 
@@ -78,104 +77,109 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		FRAME_BUFFER_H, 
 		1, 
 		1, 
-		DXGI_FORMAT_R32G32B32A32_FLOAT,		//ƒ[ƒ‹ƒhÀ•W‚ğ‹L˜^‚·‚é‚Ì‚ÅA32ƒrƒbƒg•‚“®¬”“_ƒoƒbƒtƒ@‚ğ—˜—p‚·‚éB
+		DXGI_FORMAT_R32G32B32A32_FLOAT,		//ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½ï¿½Lï¿½^ï¿½ï¿½ï¿½ï¿½Ì‚ÅA32ï¿½rï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½oï¿½bï¿½tï¿½@ï¿½ğ—˜—pï¿½ï¿½ï¿½ï¿½B
 		DXGI_FORMAT_UNKNOWN
 	);
 
-	//ƒ|ƒXƒgƒGƒtƒFƒNƒg“I‚ÉƒfƒBƒtƒ@[ƒhƒ‰ƒCƒeƒBƒ“ƒO‚ğs‚¤‚½‚ß‚ÌƒXƒvƒ‰ƒCƒg‚ğ‰Šú‰»B
+	//ï¿½|ï¿½Xï¿½gï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½Iï¿½Éƒfï¿½Bï¿½tï¿½@ï¿½[ï¿½hï¿½ï¿½ï¿½Cï¿½eï¿½Bï¿½ï¿½ï¿½Oï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ß‚ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 	SpriteInitData spriteInitData;
-	//‰æ–Ê‘S‘Ì‚ÉƒŒƒ“ƒ_ƒŠƒ“ƒO‚·‚é‚Ì‚Å•‚Æ‚‚³‚ÍƒtƒŒ[ƒ€ƒoƒbƒtƒ@‚Ì•‚Æ‚‚³‚Æ“¯‚¶B
+	//ï¿½ï¿½Ê‘Sï¿½Ì‚Éƒï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½Ì‚Å•ï¿½ï¿½Æï¿½ï¿½ï¿½ï¿½Íƒtï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½oï¿½bï¿½tï¿½@ï¿½Ì•ï¿½ï¿½Æï¿½ï¿½ï¿½ï¿½Æ“ï¿½ï¿½ï¿½ï¿½B
 	spriteInitData.m_width = FRAME_BUFFER_W;
 	spriteInitData.m_height = FRAME_BUFFER_H;
-	//ƒfƒBƒtƒ@[ƒhƒ‰ƒCƒeƒBƒ“ƒO‚Åg—p‚·‚éƒeƒNƒXƒ`ƒƒ‚ğİ’èB
+	//ï¿½fï¿½Bï¿½tï¿½@ï¿½[ï¿½hï¿½ï¿½ï¿½Cï¿½eï¿½Bï¿½ï¿½ï¿½Oï¿½Ågï¿½pï¿½ï¿½ï¿½ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½İ’ï¿½B
 	spriteInitData.m_textures[0] = &albedRT.GetRenderTargetTexture();
 	spriteInitData.m_textures[1] = &normalRT.GetRenderTargetTexture();
 	
-	//ƒfƒBƒtƒ@[ƒhƒ‰ƒCƒeƒBƒ“ƒO‚Åg—p‚·‚éƒeƒNƒXƒ`ƒƒ‚Éƒ[ƒ‹ƒhÀ•WƒeƒNƒXƒ`ƒƒ‚ğ’Ç‰ÁB
+	//ï¿½fï¿½Bï¿½tï¿½@ï¿½[ï¿½hï¿½ï¿½ï¿½Cï¿½eï¿½Bï¿½ï¿½ï¿½Oï¿½Ågï¿½pï¿½ï¿½ï¿½ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½Éƒï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ï¿½B
 	spriteInitData.m_textures[2] = &worldPosRT.GetRenderTargetTexture();
 
 	spriteInitData.m_fxFilePath = "Assets/shader/sprite.fx";
 	spriteInitData.m_expandConstantBuffer = &light;
 	spriteInitData.m_expandConstantBufferSize = sizeof(light);
-	//‰Šú‰»ƒf[ƒ^‚ğg‚Á‚ÄƒXƒvƒ‰ƒCƒg‚ğì¬B
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½gï¿½ï¿½ï¿½ÄƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ì¬ï¿½B
 	Sprite defferdLightinSpr;
 	defferdLightinSpr.Init(spriteInitData);
 
-	//ƒfƒoƒbƒOƒ‚[ƒh‚ÌƒIƒ“ƒIƒtB
+	//ï¿½fï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½[ï¿½hï¿½ÌƒIï¿½ï¿½ï¿½Iï¿½tï¿½B
 	bool isDebug = false;
+	Vector3 m_position = Vector3::Zero;
+	CharacterController m_charaCon;								//ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½B
+
+	//ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+	m_charaCon.Init(
+		80.f,
+		200.f,
+		m_position
+	);
 
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
-	// ‚±‚±‚©‚çƒQ[ƒ€ƒ‹[ƒvB
+	NewGO<Game>(GOPrio_Defalut,"MainGame");
+	//NewGO<test>(GOPrio_Defalut,"Game");
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½vï¿½B
 	while (DispatchWindowMessage())
 	{
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒOŠJnB
+		//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Jï¿½nï¿½B
 		g_engine->BeginFrame();
 
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg‚ğG-Buffer‚É•ÏX‚µ‚Ä‘‚«‚ŞB
+		//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½ï¿½G-Bufferï¿½É•ÏXï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ŞB
 		RenderTarget* rts[] = {
-			&albedRT,	//0”Ô–Ú‚ÌƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg
-			&normalRT,	//1”Ô–Ú‚ÌƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg
-			&worldPosRT	//2”Ô–Ú‚ÌƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg
+			&albedRT,	//0ï¿½Ô–Ú‚Ìƒï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½g
+			&normalRT,	//1ï¿½Ô–Ú‚Ìƒï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½g
+			&worldPosRT	//2ï¿½Ô–Ú‚Ìƒï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½g
 		};
 
-		//‚Ü‚¸AƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg‚Æ‚µ‚Äİ’è‚Å‚«‚é‚æ‚¤‚É‚È‚é‚Ü‚Å‘Ò‚ÂB
+		//ï¿½Ü‚ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½Æ‚ï¿½ï¿½Äİ’ï¿½Å‚ï¿½ï¿½ï¿½æ‚¤ï¿½É‚È‚ï¿½Ü‚Å‘Ò‚ÂB
 		renderContext.WaitUntilToPossibleSetRenderTargets(ARRAYSIZE(rts), rts);
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg‚ğİ’èB
+		//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½ï¿½İ’ï¿½B
 		renderContext.SetRenderTargets(ARRAYSIZE(rts), rts);
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg‚ğƒNƒŠƒAB
+		//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½ï¿½Nï¿½ï¿½ï¿½Aï¿½B
 		renderContext.ClearRenderTargetViews(ARRAYSIZE(rts), rts);
 
 		//////////////////////////////////////
-		//‚±‚±‚©‚çƒR[ƒh‚ğ‹Lq‚·‚éB
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½[ï¿½hï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½B
 		//////////////////////////////////////
 
-		//•¨—ƒGƒ“ƒWƒ“‚ÌXVB
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½ÌXï¿½Vï¿½B
 		g_physics.Update();
 
-		//GameObjectManager‚ÌXVB
+		//GameObjectManagerï¿½ÌXï¿½Vï¿½B
 		GameObjectManager::GetInstance().Update();
 
-		humanModel.Draw(renderContext);
+		//humanModel.Draw(renderContext);
 
-		float lStick_x = (g_pad[0]->GetLStickXF());
-		float lStick_z = (g_pad[0]->GetLStickYF());
+		//float lStick_x = (g_pad[0]->GetLStickXF());
+		//float lStick_z = (g_pad[0]->GetLStickYF());
 
-		planePos.x += lStick_x;
-		planePos.z += lStick_z;
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg‚Ö‚Ì‘‚«‚İ‘Ò‚¿B
+		//planePos.x += lStick_x;
+		//planePos.z += lStick_z;
+		//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½Ö‚Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ‘Ò‚ï¿½ï¿½B
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
 		
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒOæ‚ğƒtƒŒ[ƒ€ƒoƒbƒtƒ@‚É–ß‚µ‚ÄƒXƒvƒ‰ƒCƒg‚ğƒŒƒ“ƒ_ƒŠƒ“ƒO‚·‚é
+		//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½oï¿½bï¿½tï¿½@ï¿½É–ß‚ï¿½ï¿½ÄƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
 		g_graphicsEngine->ChangeRenderTargetToFrameBuffer(renderContext);
-		//G-Buffer‚Ì“à—e‚ğŒ³‚É‚µ‚ÄƒfƒBƒtƒ@[ƒhƒ‰ƒCƒeƒBƒ“ƒOB
+		//G-Bufferï¿½Ì“ï¿½eï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½Äƒfï¿½Bï¿½tï¿½@ï¿½[ï¿½hï¿½ï¿½ï¿½Cï¿½eï¿½Bï¿½ï¿½ï¿½Oï¿½B
 		defferdLightinSpr.Draw(renderContext);
 		
-		//‚±‚±‚©‚çƒtƒHƒ[ƒhƒŒƒ“ƒ_ƒŠƒ“ƒOB
-		//[“xƒXƒeƒ“ƒVƒ‹ƒrƒ…[‚ğG-Buffer‚ğì¬‚µ‚½‚Æ‚«‚Ì‚à‚Ì‚É•ÏX‚·‚éB
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½Hï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½B
+		//ï¿½[ï¿½xï¿½Xï¿½eï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½rï¿½ï¿½ï¿½[ï¿½ï¿½G-Bufferï¿½ï¿½ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ì‚ï¿½Ì‚É•ÏXï¿½ï¿½ï¿½ï¿½B
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
+	
+		//åŠé€æ˜ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æç”»ï¼
+		//sphereModel.Draw(renderContext);
+		//humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
 
-		//ƒJƒƒ‰
-		Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
-		Vector3 m_target = planePos;
-		m_target.y += 50.0f;
-		Vector3 m_pos = planePos + m_toPos;
-		g_camera3D->SetPosition(m_pos);
-		g_camera3D->SetTarget(m_target);
-		g_camera3D->Update();
-		
-		//ƒfƒoƒbƒOƒ‚[ƒhB
-		//DubugMode(isDebug);
-		//ƒ{ƒ^ƒ“‚ÅØ‚è‘Ö‚¦
-		if (g_pad[0]->IsTrigger(enButtonSelect))
-		{
-			isDebug = !isDebug;
-		}
-		if (isDebug)
-		{
-			//ƒfƒoƒbƒOƒ‚[ƒh
-			g_physics.DebugDraw();
-		}
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒOI—¹B
+		//ï¿½Jï¿½ï¿½ï¿½ï¿½
+		//Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
+		//Vector3 m_target = planePos;
+		//m_target.y += 50.0f;
+		//Vector3 m_pos = planePos + m_toPos;
+		//g_camera3D->SetPosition(m_pos);
+		//g_camera3D->SetTarget(m_target);
+		//g_camera3D->Update();
+		/////////////////////////////////////////
+		//çµµã‚’æãã‚³ãƒ¼ãƒ‰ã‚’æ›¸ãã®ã¯ã“ã“ã¾ã§ï¼ï¼ï¼
+		//////////////////////////////////////
+		//ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Iï¿½ï¿½ï¿½B
 		g_engine->EndFrame();
 	}
 
@@ -183,7 +187,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 }
 
 
-//ƒ‹[ƒgƒVƒOƒlƒ`ƒƒ‚Ì‰Šú‰»B
+//ï¿½ï¿½ï¿½[ï¿½gï¿½Vï¿½Oï¿½lï¿½`ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 void InitRootSignature(RootSignature& rs)
 {
 	rs.Init(D3D12_FILTER_MIN_MAG_MIP_LINEAR,
@@ -192,7 +196,7 @@ void InitRootSignature(RootSignature& rs)
 		D3D12_TEXTURE_ADDRESS_MODE_WRAP);
 }
 
-//ƒfƒoƒbƒOƒ‚[ƒhB
+//ï¿½fï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½[ï¿½hï¿½B
 void DubugMode(bool& isDebug) {
 	
 }

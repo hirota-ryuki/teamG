@@ -1,4 +1,5 @@
 #pragma once
+#include "CharaCon/CharacterController.h"
 
 class Player : public IGameObject
 {
@@ -51,6 +52,8 @@ private:
 	//走るときに速さ掛ける変数。
 	int m_runSpeed = 1;
 	//マジックナンバーを防ぐゼロ。
-	const float ZERO = 0.0f;			
+	const float ZERO = 0.0f;		
+	CharacterController m_charaCon;								//キャラクターコントローラー。
+
 };
 
