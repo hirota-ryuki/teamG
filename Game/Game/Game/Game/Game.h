@@ -17,9 +17,8 @@ public:
 	/// ゲームのアプデ
 	/// </summary>
 	void Update()override;
-
 private:
-	Player* m_player;					//プレイヤー。
-	GameCamera* m_gameCamera;			//カメラ。
+	Player* m_player = nullptr;					//プレイヤー。
+	GameCamera* m_gameCamera = nullptr;			//カメラ。
 };
 

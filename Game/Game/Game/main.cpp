@@ -18,7 +18,6 @@ struct DirectionalLight {
 	float specPow;		//スペキュラの絞り。
 };
 
-class Game;
 ///////////////////////////////////////////////////////////////////
 // ウィンドウプログラムのメイン関数。
 ///////////////////////////////////////////////////////////////////
@@ -102,6 +101,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	defferdLightinSpr.Init(spriteInitData);
 
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
+	NewGO<Game>(GOPrio_Defalut,"MainGame");
+	//NewGO<test>(GOPrio_Defalut,"Game");
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
@@ -132,13 +133,13 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
-		humanModel.Draw(renderContext);
+		//humanModel.Draw(renderContext);
 
-		float lStick_x = (g_pad[0]->GetLStickXF());
-		float lStick_z = (g_pad[0]->GetLStickYF());
+		//float lStick_x = (g_pad[0]->GetLStickXF());
+		//float lStick_z = (g_pad[0]->GetLStickYF());
 
-		planePos.x += lStick_x;
-		planePos.z += lStick_z;
+		//planePos.x += lStick_x;
+		//planePos.z += lStick_z;
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
 		
@@ -153,16 +154,16 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	
 		//半透明オブジェクトを描画！
 		//sphereModel.Draw(renderContext);
-		humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
+		//humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
 
 		//カメラ
-		Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
-		Vector3 m_target = planePos;
-		m_target.y += 50.0f;
-		Vector3 m_pos = planePos + m_toPos;
-		g_camera3D->SetPosition(m_pos);
-		g_camera3D->SetTarget(m_target);
-		g_camera3D->Update();
+		//Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
+		//Vector3 m_target = planePos;
+		//m_target.y += 50.0f;
+		//Vector3 m_pos = planePos + m_toPos;
+		//g_camera3D->SetPosition(m_pos);
+		//g_camera3D->SetTarget(m_target);
+		//g_camera3D->Update();
 		/////////////////////////////////////////
 		//絵を描くコードを書くのはここまで！！！
 		//////////////////////////////////////
