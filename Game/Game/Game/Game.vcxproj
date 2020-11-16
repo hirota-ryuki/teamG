@@ -200,7 +200,6 @@
     <ClCompile Include="..\..\HiroEngine\tkFile\TkmFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\tkFile\TksFile.cpp" />
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp" />
-    <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
     <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h" />
@@ -211,7 +210,7 @@
     <ClInclude Include="..\..\HiroEngine\physics\PhysicsObjectBase.h" />
     <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h" />
     <ClInclude Include="..\..\HiroEngine\physics\SphereCollider.h" />
-    <ClInclude Include="Game\Game.cpp" />
+    <ClInclude Include="Game.cpp" />
     <ClCompile Include="camera\GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player\Player.cpp" />

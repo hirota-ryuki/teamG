@@ -115,9 +115,6 @@
     <ClCompile Include="Title.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Game.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp">
       <Filter>HiroEngine\physics</Filter>
     </ClCompile>
@@ -305,13 +302,13 @@
     <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h">
       <Filter>HiroEngine\physics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
-      <Filter>HiroEngine\CharaCon</Filter>
-    </ClInclude>
     <ClInclude Include="Title.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.cpp">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
