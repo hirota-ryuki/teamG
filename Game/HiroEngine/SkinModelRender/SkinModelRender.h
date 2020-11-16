@@ -6,7 +6,7 @@ public:
 	SkinModelRender();
 	~SkinModelRender();
 	void Update() override;
-	bool Start() override;
+	bool Start() override { return true; };
 	void Draw() override;
 	/// <summary>
 	/// ワールド行列を更新。
@@ -16,7 +16,8 @@ public:
 	/// スキンモデルの初期化。
 	/// </summary>
 	/// <param name="texFilePath">モデルのファイルパス</param>
-	void Init(const wchar_t* texFilePath);
+	void Init(const char* texFilePath);
+	/*
 	/// <summary>
 	/// 法線マップの初期化処理。
 	/// </summary>
@@ -26,14 +27,14 @@ public:
 	/// スペキュラマップの初期化処理。
 	/// </summary>
 	/// <param name="filePath">スペキュラマップのファイルパス。</param>
-	void InitSpecMap(const wchar_t* filePath);
+	void InitSpecMap(const wchar_t* filePath);*/
 	/// <summary>
 	/// 座標、回転を設定
 	/// 拡大率は触れないように
 	/// </summary>
 	/// <param name="pos">座標</param>
 	/// <param name="rot">回転</param>
-	void SetData(CVector3 pos, CQuaternion rot)
+	void SetData(Vector3 pos, Quaternion rot)
 	{
 		m_pos = pos;
 		m_rot = rot;
@@ -43,7 +44,7 @@ public:
 	/// 座標を設定
 	/// </summary>
 	/// <param name="pos">座標</param>
-	void SetPos(CVector3 pos)
+	void SetPos(Vector3 pos)
 	{
 		m_pos = pos;
 	}
@@ -51,7 +52,7 @@ public:
 	/// ポジションを取得。
 	/// </summary>
 	/// <returns>座標。</returns>
-	CVector3 GetPos()
+	Vector3 GetPos()
 	{
 		return m_pos;
 	}
@@ -59,7 +60,7 @@ public:
 	/// 回転を設定
 	/// </summary>
 	/// <param name="pos">回転</param>
-	void SetRot(CQuaternion rot)
+	void SetRot(Quaternion rot)
 	{
 		m_rot = rot;
 	}
@@ -67,7 +68,7 @@ public:
 	/// 回転を取得。
 	/// </summary>
 	/// <returns>回転。</returns>
-	CQuaternion GetRot()
+	Quaternion GetRot()
 	{
 		return m_rot;
 	}
@@ -91,24 +92,25 @@ public:
 	/// スキンモデルを取得。
 	/// </summary>
 	/// <returns>スキンモデル</returns>
-	SkinModel& GetModel()
+	Model& GetModel()
 	{
 		return m_model;
 	}
 	/*!
 	* @brief	モデルの前方方向を取得。
 	*/
-	const CVector3& GetForward() const
+	const Vector3& GetForward() const
 	{
 		return m_forward;
 	}
 	/*!
 	* @brief	モデルの横方方向を取得。
 	*/
-	const CVector3& GetRight() const
+	const Vector3& GetRight() const
 	{
 		return m_right;
 	}
+	/*
 	void SetLight(int light, CVector4 direction, float color) {
 		m_model.SetLight(light, direction, color);
 	}
@@ -160,18 +162,18 @@ public:
 	/// アンビエントライトをセット。
 	/// </summary>
 	/// <param name="spec">アンビエントライト</param>
-	void SetAmbientLight(CVector3 ambientLight) {
+	void SetAmbientLight(Vector3 ambientLight) {
 		m_model.SetAmbientLight(ambientLight);
-	}
+	}*/
 private:
-	SkinModel		m_model;								//スキンモデル。
-	CVector3		m_pos = CVector3::Zero();
-	CQuaternion		m_rot = CQuaternion::SpriteRot();
-	CVector3		m_scale = CVector3::One();
+	Model		m_model;								//スキンモデル。
+	Vector3		m_pos = Vector3::Zero;
+	Quaternion		m_rot = Quaternion::Identity;
+	Vector3		m_scale = Vector3::One;
 	bool			m_isActive = true;
 	bool			m_isUpdate = false;						//Update関数が呼ばれたかどうか。
-	CVector3		m_forward = CVector3::Front();			//カメラの前方。
-	CVector3		m_right = CVector3::Right();			//カメラの右。
-	CMatrix			m_viewMatrixInv = CMatrix::Identity();	//ビューの逆行列。
+	Vector3		m_forward = Vector3::Front;			//カメラの前方。
+	Vector3		m_right = Vector3::Right;			//カメラの右。
+	Matrix			m_viewMatrixInv = Matrix::Identity;	//ビューの逆行列。
 	bool			m_isShadow = true;						//影を落とすかどうか。
 };

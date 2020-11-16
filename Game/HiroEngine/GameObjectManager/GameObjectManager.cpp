@@ -35,6 +35,14 @@ void GameObjectManager::Delete()
 
 void GameObjectManager::Render()
 {
+	//ƒhƒ[
+	for (int i = 0; i < GOPrio_num; i++) {
+		for (auto go : m_goList[i]) {
+			if (!go->m_isDelete) {
+				go->Draw();
+			}
+		}
+	}
 }
 
 void GameObjectManager::StartAndUpdate()

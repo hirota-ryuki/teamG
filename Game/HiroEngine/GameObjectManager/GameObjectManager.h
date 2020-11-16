@@ -115,7 +115,7 @@ private:
 };
 
 template <class T>
-static inline T* NewGO(int prio, const char* objectName = nullptr)
+static inline T* NewGO(int prio = GOPrio_Defalut, const char* objectName = nullptr)
 {
 	return GameObjectManager::GetInstance().NewGO<T>(prio, objectName);
 }

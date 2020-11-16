@@ -44,8 +44,6 @@
 #include "RenderContext_inline.h"
 #include "DescriptorHeap_inline.h"
 
-#include "physics/Physics.h"
-
 #include "Sprite.h"
 #include "Model.h"
 #include "HID/GamePad.h"
@@ -54,6 +52,7 @@ const UINT FRAME_BUFFER_W = 1280;				//フレームバッファの幅。
 const UINT FRAME_BUFFER_H = 720;				//フレームバッファの高さ。
 
 //追加後のインクルードファイル。
-//#include "physics/Physics.h"
+#include "physics/Physics.h"
 #include "GameObjectManager/IGameObject.h"
 #include "GameObjectManager/GameObjectManager.h"
+#include "SkinModelRender/SkinModelRender.h"

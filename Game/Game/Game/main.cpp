@@ -47,7 +47,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	light.color.y = 1.0f;
 	light.color.z = 1.0f;
 	light.eyePos = g_camera3D->GetPosition();
-
+	/*
 	//モデルを初期化。
 	ModelInitData modelInitData;
 	////人型モデルを初期化。
@@ -56,7 +56,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	Model humanModel;
 	humanModel.Init(modelInitData);
 	//humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
-
+	*/
 	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
 	
@@ -112,7 +112,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		200.f,
 		m_position
 	);
-
+	SkinModelRender* model = NewGO<SkinModelRender>();
+	model->Init("Assets/modelData/unityChan.tkm");
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
@@ -144,7 +145,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
-		humanModel.Draw(renderContext);
+		//humanModel.Draw(renderContext);
 
 		float lStick_x = (g_pad[0]->GetLStickXF());
 		float lStick_z = (g_pad[0]->GetLStickYF());
