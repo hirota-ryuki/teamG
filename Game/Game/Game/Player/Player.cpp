@@ -11,32 +11,23 @@ Player::~Player()
 
 bool Player::Start()
 {
-	//プレイヤーを生成するモデルとシェーダーの情報。
-	playerInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
-	playerInitData.m_fxFilePath = "Assets/shader/model.fx";
+	playerModel = NewGO<SkinModelRender>();
 	//モデルにぶち込むぜ。
-	playerModel.Init(playerInitData);
+	playerModel->Init("Assets/modelData/unityChan.tkm");
+	playerModel->SetPos(m_position);
 	//キャラコンの初期化
 	m_charaCon.Init(
 		80.f,
 		200.f,
 		m_position
 	);
-	//auto& renderContext = g_graphicsEngine->GetRenderContext();
 	return true;
 }
 //更新関数
 void Player::Update()
 {
-	RenderUpdate();					//描画更新。
 	MoveOperation();				//移動処理。
 	PlayerInputProcessing();		//入力処理。
-}
-//描画更新関数。後に消える可能性大。
-void Player::RenderUpdate()
-{
-	auto& renderContext = g_graphicsEngine->GetRenderContext();
-	playerModel.Draw(renderContext);
 }
 //移動処理を書いた関数。
 void Player::MoveOperation()
@@ -58,7 +49,7 @@ void Player::MoveOperation()
 	}
 	//モデル映してます。
 	//m_position = m_charaCon.Execute(60 / 1, m_moveSpeed);
-	playerModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
+	playerModel->SetPos(m_position);
 	m_position = m_moveSpeed;
 }
 //移動時にカメラから取得するもの。

@@ -315,13 +315,11 @@
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game.cpp">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.h">
       <Filter>HiroEngine\SkinModelRender</Filter>
     </ClInclude>
     <ClInclude Include="BackGround\BackGround.h" />
+    <ClInclude Include="Game\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">
@@ -393,5 +391,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\modelData\background\karimodel.fbx" />
+    <None Include="Assets\modelData\background\karimodel.tkm" />
+    <None Include="Assets\modelData\unityChan.tkm" />
   </ItemGroup>
 </Project>

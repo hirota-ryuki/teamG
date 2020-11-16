@@ -20,10 +20,6 @@ public:
 	/// </summary>
 	void MoveOperation();
 	/// <summary>
-	/// 描画の更新関数。
-	/// </summary>
-	void RenderUpdate();
-	/// <summary>
 	/// 移動処理の中でカメラの前方と左右の取得するための関数。
 	/// </summary>
 	void GetCameraVector();
@@ -35,7 +31,7 @@ private:
 	//プレイヤーのモデル生成する情報握ります。
 	ModelInitData playerInitData;
 	//プレイヤーのモデル。
-	Model playerModel;
+	SkinModelRender* playerModel = nullptr;
 	//プレイヤーのポジション
 	Vector3 m_position = Vector3::Zero;
 	//プレイヤーのスピードを扱う
