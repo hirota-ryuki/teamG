@@ -7,6 +7,14 @@ public:
 	Player();
 	~Player();
 	/// <summary>
+	/// プレイヤーのポジションを取得したい時
+	/// </summary>
+	const Vector3& GetPos() const
+	{
+		return m_position;
+	}
+private:
+	/// <summary>
 	/// 初めの一歩。
 	/// </summary>
 	/// <returns></returns>

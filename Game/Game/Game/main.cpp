@@ -153,7 +153,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
-		planePos.z += lStick_z;
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
 		
