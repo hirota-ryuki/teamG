@@ -52,7 +52,7 @@ private:
 	//大きさ
 	Vector3 m_scale = {1.0f,1.0f,1.0f};
 	//移動速度。
-	float m_speed = 450.0f;
+	float m_speed = 10.0f;
 	//走るときに速さ掛ける変数。
 	int m_runSpeed = 1;
 	//マジックナンバーを防ぐゼロ。

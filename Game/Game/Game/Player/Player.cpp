@@ -27,12 +27,12 @@ bool Player::Start()
 void Player::Update()
 {
 	MoveOperation();				//移動処理。
-	PlayerInputProcessing();		//入力処理。
+	//PlayerInputProcessing();		//入力処理。
 }
 //移動処理を書いた関数。
 void Player::MoveOperation()
 {
-	const float HALF = 0.5f;			//0.5です。
+	/*const float HALF = 0.5f;			//0.5です。
 	//stickの入力に合わせて動きます。
 	float lStick_x = (g_pad[0]->GetLStickXF());
 	float lStick_z = (g_pad[0]->GetLStickYF());
@@ -50,7 +50,33 @@ void Player::MoveOperation()
 	//モデル映してます。
 	//m_position = m_charaCon.Execute(60 / 1, m_moveSpeed);
 	playerModel->SetPos(m_position);
-	m_position = m_moveSpeed;
+	m_position = m_moveSpeed;*/
+
+	//左スティックの入力量を受け取る。
+	float lStick_x = g_pad[0]->GetLStickXF();
+	float lStick_y = g_pad[0]->GetLStickYF();
+
+	//カメラの前方方向と右方向を取得。
+	Vector3 cameraForward = g_camera3D->GetForward();
+	Vector3 cameraRight = g_camera3D->GetRight();
+
+	//XZ平面での前方方向、右方向に変換する。
+	cameraForward.y = 0.0f;
+	cameraForward.Normalize();
+	cameraRight.y = 0.0f;
+	cameraRight.Normalize();
+
+	//XZ成分の移動速度をクリア。
+	m_moveSpeed.x = 0.f;
+	m_moveSpeed.z = 0.f;
+	//m_moveSpeed.y -= 240.f * 1.f / 60.f;
+	m_moveSpeed += cameraForward * lStick_y * m_speed;		//奥方向への移動速度を代入。
+	m_moveSpeed += cameraRight * lStick_x * m_speed;		//右方向への移動速度を加算。
+	//m_position += m_moveSpeed;
+	m_position = m_charaCon.Execute(1.f / 60.f, m_moveSpeed);
+	playerModel->SetPos(m_position);
+
+
 }
 //移動時にカメラから取得するもの。
 void Player::GetCameraVector()

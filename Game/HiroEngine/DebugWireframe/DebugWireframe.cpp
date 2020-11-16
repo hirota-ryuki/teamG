@@ -142,5 +142,6 @@ void DebugWireframe::drawLine(const btVector3 & from, const btVector3 & to, cons
 	ConstantBufferUpdate();
 	//レンダリングコンテキストを取得。
 	auto& rc = g_graphicsEngine->GetRenderContext();
+	rc.SetPipelineState(m_pipelineState);
 	rc.DrawIndexed(NUM_VERTEX);
 }

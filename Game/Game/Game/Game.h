@@ -10,14 +10,15 @@ public:
 	Game();
 	~Game();
 	/// <summary>
-	/// すたーと関数
+	/// 開始関数。
 	/// </summary>
 	/// <returns></returns>
-	bool Start()override;
+	bool Start() override;
 	/// <summary>
-	/// ゲームのアプデ
+	/// 更新関数。
 	/// </summary>
-	void Update()override;
+	void Update() override;
+	void OnDestroy() override;
 private:
 	Player* m_player = nullptr;					//プレイヤー。
 	GameCamera* m_gameCamera = nullptr;			//カメラ。
