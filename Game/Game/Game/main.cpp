@@ -24,6 +24,15 @@ class Game;
 ///////////////////////////////////////////////////////////////////
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
 {
+	/*
+	//カレントディレクトリをAssetsに。
+	size_t dir = 0;
+	wchar_t wtextname[MAX_PATH] = { 0 };
+	char textname[MAX_PATH] = { "Assets" };
+	//char dir = { Assets };
+
+	mbstowcs_s(&dir, wtextname, sizeof(MAX_PATH), textname, _TRUNCATE);
+	SetCurrentDirectory(wtextname);*/
 	//ゲームの初期化。
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, TEXT("Game"));
 
@@ -145,7 +154,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
-		humanModel.Draw(renderContext);
 
 		float lStick_x = (g_pad[0]->GetLStickXF());
 		float lStick_z = (g_pad[0]->GetLStickYF());
