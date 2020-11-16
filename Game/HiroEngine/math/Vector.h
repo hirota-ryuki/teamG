@@ -171,11 +171,19 @@ public:
 		vec.y = _y;
 		vec.z = _z;
 	}
+
+	void Set(btVector3& _v)
+	{
+		Set(_v.x(), _v.y(), _v.z());
+	}
+
 	template<class TVector>
 	void Set(TVector& _v)
 	{
 		Set(_v.x, _v.y, _v.z);
 	}
+	
+	
 		
 	/// <summary>
 	/// ベクトルの加算。

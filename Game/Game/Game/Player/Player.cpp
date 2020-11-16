@@ -16,6 +16,13 @@ bool Player::Start()
 	playerInitData.m_fxFilePath = "Assets/shader/model.fx";
 	//モデルにぶち込むぜ。
 	playerModel.Init(playerInitData);
+	//キャラコンの初期化
+	m_charaCon.Init(
+		80.f,
+		200.f,
+		m_position
+	);
+	//auto& renderContext = g_graphicsEngine->GetRenderContext();
 	return true;
 }
 //更新関数
@@ -51,8 +58,9 @@ void Player::MoveOperation()
 	}
 	//モデルに映したいけど間違ってると思います。
 	//廣田君キャラコン作って♡
+	m_position = m_charaCon.Execute(60 / 1, m_moveSpeed);
 	playerModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
-	m_position = m_moveSpeed;
+	//m_position = m_moveSpeed;
 }
 //移動時にカメラから取得するもの。
 void Player::GetCameraVector()

@@ -17,10 +17,10 @@ MeshCollider::~MeshCollider()
  * @brief	CSkinModelからメッシュコライダーを生成。
  *@param[in]	model		スキンモデル。
  */
-void MeshCollider::CreateFromSkinModel( const SkinModel& model, const CMatrix* offsetMatrix )
+void MeshCollider::CreateFromSkinModel( const SkinModel& model, const Matrix* offsetMatrix )
 {
-	CMatrix mBias;
-	mBias.MakeRotationX(CMath::PI * -0.5f);
+	Matrix mBias;
+	mBias.MakeRotationX(Math::PI * -0.5f);
 	m_stridingMeshInterface = std::make_unique<btTriangleIndexVertexArray>();
 
 	model.FindMesh([&](const auto& mesh){

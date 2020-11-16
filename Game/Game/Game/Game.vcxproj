@@ -79,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/../HiroEngine;$(SolutionDir)/../HiroEngine/bulletPhysics/src;$(SolutionDir)/Sample_00;$(ProjectDir)/../../HiroEngine;$(ProjectDir)/bulletPhysics/src;$(SolutionDir)/../Game/Game</IncludePath>
-    <LibraryPath>$(SolutionDir)/../HiroEngine/DirectXTK/Bin/Desktop_2019_Win10/x64/Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)/../HiroEngine/DirectXTK/Bin/Desktop_2019_Win10/x64/Debug;$(SolutionDir)/x64/Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -89,7 +89,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)/../HiroEngine;$(SolutionDir)/../HiroEngine/bulletPhysics/src;$(SolutionDir)/Sample_00;$(ProjectDir)/bulletPhysics/src</IncludePath>
-    <LibraryPath>$(SolutionDir)/../HiroEngine/DirectXTK/Bin/Desktop_2019_Win10/x64/Release;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)/../HiroEngine/DirectXTK/Bin/Desktop_2019_Win10/x64/Release;$(SolutionDir)/x64/Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,6 +117,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>Default</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -153,17 +154,19 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>DXGI.lib;dxguid.lib;DirectXTK12.lib;d3d12.lib;d3dcompiler.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DXGI.lib;dxguid.lib;DirectXTK12.lib;d3d12.lib;d3dcompiler.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;BulletCollision_Release.lib;BulletDynamics_Release.lib;LinearMath_Release.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\HiroEngine\Camera\Camera.cpp" />
+    <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp" />
     <ClCompile Include="..\..\HiroEngine\ConstantBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp" />
     <ClCompile Include="..\..\HiroEngine\DescriptorHeap.cpp" />
@@ -177,6 +180,12 @@
     <ClCompile Include="..\..\HiroEngine\MeshParts.cpp" />
     <ClCompile Include="..\..\HiroEngine\Model.cpp" />
     <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\BoxCollider.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\CapsuleCollider.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\Physics.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\PhysicsObjectBase.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp" />
+    <ClCompile Include="..\..\HiroEngine\physics\SphereCollider.cpp" />
     <ClCompile Include="..\..\HiroEngine\PipelineState.cpp" />
     <ClCompile Include="..\..\HiroEngine\RenderTarget.cpp" />
     <ClCompile Include="..\..\HiroEngine\RootSignature.cpp" />
@@ -194,6 +203,15 @@
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\CapsuleCollider.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\CollisionAttr.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\ICollider.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\Physics.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\PhysicsObjectBase.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\RigidBody.h" />
+    <ClInclude Include="..\..\HiroEngine\physics\SphereCollider.h" />
+    <ClInclude Include="Game\Game.cpp" />
     <ClCompile Include="camera\GameCamera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player\Player.cpp" />

@@ -8,7 +8,7 @@
 
 namespace {
 	//衝突したときに呼ばれる関数オブジェクト(地面用)
-	struct SweepResudltGround : public btCollisionWorld::ConvexResultCallback
+	struct SweepResultGround : public btCollisionWorld::ConvexResultCallback
 	{
 		bool isHit = false;									//衝突フラグ。
 		Vector3 hitPos = Vector3(0.0f, -FLT_MAX, 0.0f);	//衝突点。
@@ -67,7 +67,7 @@ namespace {
 		{
 			//衝突点の法線を引っ張ってくる。
 			Vector3 hitNormalTmp;
-			hitNormalTmp.Set(convexResult.m_hitNormalLocal);
+			hitNormalTmp = convexResult.m_hitNormalLocal;
 			//上方向と衝突点の法線のなす角度を求める。
 			float angle = fabsf(acosf(hitNormalTmp.Dot(Vector3::Up)));
 			if (convexResult.m_hitCollisionObject == me) {

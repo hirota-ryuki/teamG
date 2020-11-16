@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "physics/Physics.h"
-#include "Physics/RigidBody.h"
+#include "physics/RigidBody.h"
 
 
 PhysicsWorld g_physics;
@@ -41,7 +41,7 @@ void PhysicsWorld::Init()
 	Release();
 
 	//デバッグワイヤーフレームの準備
-	dw.Prepare();
+	dw.Init();
 
 	//物理エンジンを初期化。
 	///collision configuration contains default setup for memory, collision setup. Advanced users can create their own configuration.
