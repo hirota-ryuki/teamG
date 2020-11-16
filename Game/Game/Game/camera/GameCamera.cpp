@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameCamera.h"
-
+#include"Player/Player.h"
 GameCamera::GameCamera()
 {
 
@@ -13,16 +13,15 @@ GameCamera::~GameCamera()
 
 bool GameCamera::Start()
 {
+	//カメラ
+	m_target = m_player->GetPos();
+	m_target.y += 50.0f;
 	return true;
 }
 
 void GameCamera::Update()
 {
-	//カメラ
-	Vector3 m_toPos = { 0.0f, 100.0f, 300.0f };
-	Vector3 m_target = m_playerPos;
-	m_target.y += 50.0f;
-	Vector3 m_pos = m_playerPos + m_toPos;
+	m_position = m_playerPos + m_toPos;
 	//視点
 	g_camera3D->SetTarget(m_target);
 	//座標

@@ -11,7 +11,7 @@ Game::Game()
 
 Game::~Game()
 {
-	//ƒQ[ƒ€‚ªÁ‚¦‚é‚·‚×‚Ä‚ğÁ–Å‚³‚¹‚Ü‚·B
+	//?Q?[??????????????????????????B
 	if (m_player != nullptr)
 	{
 		DeleteGO(m_player);
@@ -20,11 +20,14 @@ Game::~Game()
 	{
 		DeleteGO(m_gameCamera);
 	}
+	if (m_bg != nullptr) {
+		DeleteGO(m_bg);
+	}
 }
 
 bool Game::Start()
 {
-	//¶¬ˆê——
+	//??????
 	m_player = NewGO<Player>();
 	BackGround* bg = NewGO<BackGround>();
 
