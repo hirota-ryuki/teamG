@@ -112,9 +112,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		200.f,
 		m_position
 	);
-	SkinModelRender* model = NewGO<SkinModelRender>();
-	model->Init("Assets/modelData/unityChan.tkm");
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
+	Game* game = NewGO<Game>();
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
@@ -145,13 +144,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
-		humanModel.Draw(renderContext);
-
-		float lStick_x = (g_pad[0]->GetLStickXF());
-		float lStick_z = (g_pad[0]->GetLStickYF());
-
-		planePos.x += lStick_x;
-		planePos.z += lStick_z;
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
 		

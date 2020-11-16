@@ -24,8 +24,8 @@ Game::~Game()
 bool Game::Start()
 {
 	//¶¬ˆê——
-	m_player = NewGO<Player>(GOPrio_Defalut, "Player");
-	m_gameCamera = NewGO<GameCamera>(GOPrio_Defalut, "GameCamera");
+	m_player = NewGO<Player>();
+	m_gameCamera = NewGO<GameCamera>();
 	m_gameCamera->BindPlayer(m_player);
 	return true;
 }
