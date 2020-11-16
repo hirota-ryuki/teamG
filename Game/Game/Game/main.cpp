@@ -1,41 +1,42 @@
 ﻿#include "stdafx.h"
 #include "system/system.h"
 #include "test.h"
-#include "Game/Game.h"
+#include "Game.h"
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
-//�֐��錾
+//関数宣言
 void InitRootSignature(RootSignature& rs);
 
 /// <summary>
-/// �f�B���N�V���i�����C�g
+/// ディレクショナルライト
 /// </summary>
 struct DirectionalLight {
 	Vector3  color;
-	float pad0;			//�p�f�B���O�B
+	float pad0;			//パディング。
 	Vector3  direction;
-	float pad1;			//�p�f�B���O�B
-	Vector3 eyePos;		//���_
-	float specPow;		//�X�y�L�����̍i��B
+	float pad1;			//パディング。
+	Vector3 eyePos;		//視点
+	float specPow;		//スペキュラの絞り。
 };
 
+class Game;
 ///////////////////////////////////////////////////////////////////
-// �E�B���h�E�v���O�����̃��C���֐��B
+// ウィンドウプログラムのメイン関数。
 ///////////////////////////////////////////////////////////////////
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
 {
-	//�Q�[���̏������B
+	//ゲームの初期化。
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, TEXT("Game"));
 
 	//////////////////////////////////////
-	// �������珉������s���R�[�h��L�q����B
+	// ここから初期化を行うコードを記述する。
 	//////////////////////////////////////
 
 
-	//���[�g�V�O�l�`����쐬�B
+	//ルートシグネチャを作成。
 	RootSignature rootSignature;
 	InitRootSignature(rootSignature);
 
-	//�f�B���N�V�������C�g
+	//ディレクションライト
 	DirectionalLight light;
 	light.direction.x = 1.0f;
 	light.direction.y = -1.0f;
@@ -47,139 +48,144 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	light.color.z = 1.0f;
 	light.eyePos = g_camera3D->GetPosition();
 
-	//���f����������B
+	//モデルを初期化。
 	ModelInitData modelInitData;
-	////�l�^���f����������B
+	////人型モデルを初期化。
 	modelInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
 	modelInitData.m_fxFilePath = "Assets/shader/model.fx";
 	Model humanModel;
 	humanModel.Init(modelInitData);
 	//humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
 
-	
+
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
-	
-	//G-Buffer��쐬�B
-	RenderTarget albedRT;	//�A���x�h�J���[�������ݗp�̃����_�����O�^�[�Q�b�g�B
+
+	//G-Bufferを作成。
+	RenderTarget albedRT;	//アルベドカラー書き込み用のレンダリングターゲット。
 	albedRT.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, 1, 1, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_FORMAT_D32_FLOAT);
-	RenderTarget normalRT;	//�@���������ݗp�̃����_�����O�^�[�Q�b�g�B
+	RenderTarget normalRT;	//法線書き込み用のレンダリングターゲット。
 	normalRT.Create(
-		FRAME_BUFFER_W, 
-		FRAME_BUFFER_H, 
-		1, 
-		1, 
-		DXGI_FORMAT_R32G32B32A32_FLOAT, 
+		FRAME_BUFFER_W,
+		FRAME_BUFFER_H,
+		1,
+		1,
+		DXGI_FORMAT_R32G32B32A32_FLOAT,
 		DXGI_FORMAT_UNKNOWN
 	);
 	RenderTarget worldPosRT;
 	worldPosRT.Create(
-		FRAME_BUFFER_W, 
-		FRAME_BUFFER_H, 
-		1, 
-		1, 
-		DXGI_FORMAT_R32G32B32A32_FLOAT,		//���[���h���W��L�^����̂ŁA32�r�b�g���������_�o�b�t�@�𗘗p����B
+		FRAME_BUFFER_W,
+		FRAME_BUFFER_H,
+		1,
+		1,
+		DXGI_FORMAT_R32G32B32A32_FLOAT,		//ワールド座標を記録するので、32ビット浮動小数点バッファを利用する。
 		DXGI_FORMAT_UNKNOWN
 	);
 
-	//�|�X�g�G�t�F�N�g�I�Ƀf�B�t�@�[�h���C�e�B���O��s�����߂̃X�v���C�g��������B
+	//ポストエフェクト的にディファードライティングを行うためのスプライトを初期化。
 	SpriteInitData spriteInitData;
-	//��ʑS�̂Ƀ����_�����O����̂ŕ��ƍ����̓t���[���o�b�t�@�̕��ƍ����Ɠ����B
+	//画面全体にレンダリングするので幅と高さはフレームバッファの幅と高さと同じ。
 	spriteInitData.m_width = FRAME_BUFFER_W;
 	spriteInitData.m_height = FRAME_BUFFER_H;
-	//�f�B�t�@�[�h���C�e�B���O�Ŏg�p����e�N�X�`����ݒ�B
+	//ディファードライティングで使用するテクスチャを設定。
 	spriteInitData.m_textures[0] = &albedRT.GetRenderTargetTexture();
 	spriteInitData.m_textures[1] = &normalRT.GetRenderTargetTexture();
-	
-	//�f�B�t�@�[�h���C�e�B���O�Ŏg�p����e�N�X�`���Ƀ��[���h���W�e�N�X�`����ǉ��B
+
+	//ディファードライティングで使用するテクスチャにワールド座標テクスチャを追加。
 	spriteInitData.m_textures[2] = &worldPosRT.GetRenderTargetTexture();
 
 	spriteInitData.m_fxFilePath = "Assets/shader/sprite.fx";
 	spriteInitData.m_expandConstantBuffer = &light;
 	spriteInitData.m_expandConstantBufferSize = sizeof(light);
-	//�������f�[�^��g���ăX�v���C�g��쐬�B
+	//初期化データを使ってスプライトを作成。
 	Sprite defferdLightinSpr;
 	defferdLightinSpr.Init(spriteInitData);
 
-	//�f�o�b�O���[�h�̃I���I�t�B
+	//デバッグモードのオンオフ。
 	bool isDebug = false;
 	Vector3 m_position = Vector3::Zero;
-	CharacterController m_charaCon;								//�L�����N�^�[�R���g���[���[�B
+	CharacterController m_charaCon;								//キャラクターコントローラー。
 
-	//�L�����R���̏�����
+	//キャラコンの初期化
 	m_charaCon.Init(
 		80.f,
 		200.f,
 		m_position
 	);
-
+	//SkinModelRender* model = NewGO<SkinModelRender>(GOPrio_Defalut);
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
-	NewGO<Game>(GOPrio_Defalut,"MainGame");
-	//NewGO<test>(GOPrio_Defalut,"Game");
-	// ��������Q�[�����[�v�B
+	Game* game = NewGO<Game>(GOPrio_Defalut);
+	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
-		//�����_�����O�J�n�B
+		//レンダリング開始。
 		g_engine->BeginFrame();
 
-		//�����_�����O�^�[�Q�b�g��G-Buffer�ɕύX���ď������ށB
+		//レンダリングターゲットをG-Bufferに変更して書き込む。
 		RenderTarget* rts[] = {
-			&albedRT,	//0�Ԗڂ̃����_�����O�^�[�Q�b�g
-			&normalRT,	//1�Ԗڂ̃����_�����O�^�[�Q�b�g
-			&worldPosRT	//2�Ԗڂ̃����_�����O�^�[�Q�b�g
+			&albedRT,	//0番目のレンダリングターゲット
+			&normalRT,	//1番目のレンダリングターゲット
+			&worldPosRT	//2番目のレンダリングターゲット
 		};
 
-		//�܂��A�����_�����O�^�[�Q�b�g�Ƃ��Đݒ�ł���悤�ɂȂ�܂ő҂B
+		//まず、レンダリングターゲットとして設定できるようになるまで待つ。
 		renderContext.WaitUntilToPossibleSetRenderTargets(ARRAYSIZE(rts), rts);
-		//�����_�����O�^�[�Q�b�g��ݒ�B
+		//レンダリングターゲットを設定。
 		renderContext.SetRenderTargets(ARRAYSIZE(rts), rts);
-		//�����_�����O�^�[�Q�b�g��N���A�B
+		//レンダリングターゲットをクリア。
 		renderContext.ClearRenderTargetViews(ARRAYSIZE(rts), rts);
 
 		//////////////////////////////////////
-		//��������R�[�h��L�q����B
+		//ここからコードを記述する。
 		//////////////////////////////////////
 
-		//�����G���W���̍X�V�B
+		//物理エンジンの更新。
 		g_physics.Update();
 
-		//GameObjectManager�̍X�V�B
+		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
 
 		//humanModel.Draw(renderContext);
 
-		//float lStick_x = (g_pad[0]->GetLStickXF());
-		//float lStick_z = (g_pad[0]->GetLStickYF());
+		/*float lStick_x = (g_pad[0]->GetLStickXF());
+		float lStick_z = (g_pad[0]->GetLStickYF());
 
-		//planePos.x += lStick_x;
-		//planePos.z += lStick_z;
-		//�����_�����O�^�[�Q�b�g�ւ̏������ݑ҂��B
+		planePos.x += lStick_x;
+		planePos.z += lStick_z;*/
+		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
-		
-		//�����_�����O���t���[���o�b�t�@�ɖ߂��ăX�v���C�g������_�����O����
+
+		//レンダリング先をフレームバッファに戻してスプライトをレンダリングする
 		g_graphicsEngine->ChangeRenderTargetToFrameBuffer(renderContext);
-		//G-Buffer�̓�e����ɂ��ăf�B�t�@�[�h���C�e�B���O�B
+		//G-Bufferの内容を元にしてディファードライティング。
 		defferdLightinSpr.Draw(renderContext);
-		
-		//��������t�H���[�h�����_�����O�B
-		//�[�x�X�e���V���r���[��G-Buffer��쐬�����Ƃ��̂�̂ɕύX����B
+
+		//ここからフォワードレンダリング。
+		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
 	
-		//半透明オブジェクトを描画！
-		//sphereModel.Draw(renderContext);
-		//humanModel.UpdateWorldMatrix(planePos, g_quatIdentity, g_vec3One);
+		/*//カメラ
+		Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
+		Vector3 m_target = planePos;
+		m_target.y += 50.0f;
+		Vector3 m_pos = planePos + m_toPos;
+		g_camera3D->SetPosition(m_pos);
+		g_camera3D->SetTarget(m_target);
+		g_camera3D->Update();*/
 
-		//�J����
-		//Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
-		//Vector3 m_target = planePos;
-		//m_target.y += 50.0f;
-		//Vector3 m_pos = planePos + m_toPos;
-		//g_camera3D->SetPosition(m_pos);
-		//g_camera3D->SetTarget(m_target);
-		//g_camera3D->Update();
-		/////////////////////////////////////////
-		//絵を描くコードを書くのはここまで！！！
-		//////////////////////////////////////
-		//�����_�����O�I���B
+		//デバッグモード。
+		//DubugMode(isDebug);
+		//ボタンで切り替え
+		if (g_pad[0]->IsTrigger(enButtonSelect))
+		{
+			isDebug = !isDebug;
+		}
+		if (isDebug)
+		{
+			//デバッグモード
+			g_physics.DebugDraw();
+		}
+		//レンダリング終了。
 		g_engine->EndFrame();
 	}
 
@@ -187,7 +193,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 }
 
 
-//���[�g�V�O�l�`���̏������B
+//ルートシグネチャの初期化。
 void InitRootSignature(RootSignature& rs)
 {
 	rs.Init(D3D12_FILTER_MIN_MAG_MIP_LINEAR,
@@ -196,7 +202,7 @@ void InitRootSignature(RootSignature& rs)
 		D3D12_TEXTURE_ADDRESS_MODE_WRAP);
 }
 
-//�f�o�b�O���[�h�B
+//デバッグモード。
 void DubugMode(bool& isDebug) {
-	
+
 }

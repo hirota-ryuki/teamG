@@ -136,6 +136,10 @@
     <ClCompile Include="..\..\HiroEngine\CharaCon\CharacterController.cpp">
       <Filter>HiroEngine\CharaCon</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround\BackGround.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
@@ -305,12 +309,10 @@
     <ClInclude Include="Title.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Game.h">
+    <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game.cpp">
-      <Filter>Game</Filter>
-    </ClInclude>
+    <ClInclude Include="BackGround\BackGround.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">
@@ -376,5 +378,8 @@
     <Filter Include="HiroEngine\CharaCon">
       <UniqueIdentifier>{02ecfb35-3e4b-486f-bf58-bc125f4507ad}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\modelData\background\karimodel.fbx" />
   </ItemGroup>
 </Project>

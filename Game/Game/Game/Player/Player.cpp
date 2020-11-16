@@ -56,11 +56,10 @@ void Player::MoveOperation()
 		m_moveSpeed += (cameraForward * m_speed * lStick_x) * m_runSpeed;
 		m_moveSpeed += (cameraRight * m_speed * lStick_z) * m_runSpeed;
 	}
-	//モデルに映したいけど間違ってると思います。
-	//廣田君キャラコン作って♡
-	m_position = m_charaCon.Execute(60 / 1, m_moveSpeed);
+	//モデル映してます。
+	//m_position = m_charaCon.Execute(60 / 1, m_moveSpeed);
 	playerModel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
-	//m_position = m_moveSpeed;
+	m_position = m_moveSpeed;
 }
 //移動時にカメラから取得するもの。
 void Player::GetCameraVector()
