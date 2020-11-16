@@ -10,6 +10,15 @@ SkinModelRender::~SkinModelRender()
 {
 }
 
+void SkinModelRender::Init(const char* texFilePath)
+{
+	//モデルを初期化。
+	ModelInitData modelInitData;
+	modelInitData.m_tkmFilePath = texFilePath;
+	modelInitData.m_fxFilePath = "Assets/shader/model.fx";
+	m_model.Init(modelInitData);
+}
+
 void SkinModelRender::Update()
 {	
 	UpdateWorldMatrix();
@@ -17,10 +26,7 @@ void SkinModelRender::Update()
 		ShadowMap::GetInstance().RegistShadowCaster(&m_model);
 	}*/
 }
-bool SkinModelRender::Start()
-{
-	return true;
-}
+
 void SkinModelRender::UpdateWorldMatrix()
 {
 	//ワールド行列の更新。
@@ -32,12 +38,8 @@ void SkinModelRender::Draw()
 {
 	if (m_isUpdate) {
 		if (m_isActive) {
-			//モデル
-			m_model.Draw(
-				enRenderMode_Normal,
-				g_camera3D.GetViewMatrix(),
-				g_camera3D.GetProjectionMatrix()
-			);
+			auto& rc = g_graphicsEngine->GetRenderContext();
+			m_model.Draw(rc);
 		}
 	}	
 	//ビュー行列の逆行列を計算。
@@ -48,12 +50,7 @@ void SkinModelRender::Draw()
 	m_right.Set(m_viewMatrixInv.m[0][0], m_viewMatrixInv.m[0][1], m_viewMatrixInv.m[0][2]);
 }
 
-void SkinModelRender::Init(const wchar_t * texFilePath)
-{
-	//cmoファイルの読み込み。
-	m_model.Init(texFilePath);
-}
-
+/*
 void SkinModelRender::InitNormalMap(const wchar_t * filePath)
 {
 	m_model.InitNormalMap(filePath);
@@ -62,4 +59,4 @@ void SkinModelRender::InitNormalMap(const wchar_t * filePath)
 void SkinModelRender::InitSpecMap(const wchar_t * filePath)
 {
 	m_model.InitSpecMap(filePath);
-}
+}*/
