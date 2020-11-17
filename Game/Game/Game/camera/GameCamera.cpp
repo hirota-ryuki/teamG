@@ -14,7 +14,7 @@ GameCamera::~GameCamera()
 bool GameCamera::Start()
 {
 	//ƒJƒƒ‰
-	m_target = m_player->GetPos();
+	//m_target = m_player->GetPos();
 	m_target.y += 50.0f;
 	return true;
 }

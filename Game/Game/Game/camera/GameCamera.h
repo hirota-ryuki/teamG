@@ -8,13 +8,6 @@ public:
 	~GameCamera();
 	bool Start()override;
 	void Update()override;
-/// <summary>
-/// プレイヤーを参照。
-/// </summary>
-	void BindPlayer(Player* pl)
-	{
-		m_player = pl;
-	}
 private:
 	Player* m_player = nullptr;		//プレイヤー。
 

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Game.h"
 #include "Player/Player.h"
-#include"camera/GameCamera.h"
+#include "camera/GameCamera.h"
 #include "BackGround/BackGround.h"
 
 //FindGO‚É‚Â‚¢‚Ä
@@ -55,7 +55,6 @@ bool Game::Start()
 	//BackGround* bg = NewGO<BackGround>();
 
 	m_gameCamera = NewGO<GameCamera>();
-	m_gameCamera->BindPlayer(m_player);
 	return true;
 }
 
