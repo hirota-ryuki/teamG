@@ -11,24 +11,26 @@ Player::~Player()
 
 bool Player::Start()
 {
-	playerModel = NewGO<SkinModelRender>();
-	//モデルにぶち込むぜ。
-	playerModel->Init("Assets/modelData/unityChan.tkm");
-	playerModel->SetPos(m_position);
-	//キャラコンの初期化
-	m_charaCon.Init(
-		80.f,
-		200.f,
-		m_position
-	);
+	//モデルの初期化。
+	InitModel();
+	//キャラコンの初期化。
+	m_charaCon.Init(80.f, 200.f, m_position);
 	return true;
 }
-//更新関数
+//更新関数。
 void Player::Update()
 {
 	MoveOperation();				//移動処理。
 	//PlayerInputProcessing();		//入力処理。
 }
+
+void Player::InitModel()
+{
+	playerModel = NewGO<SkinModelRender>();
+	playerModel->Init("Assets/modelData/unityChan.tkm");
+	playerModel->SetPos(m_position);
+}
+
 //移動処理を書いた関数。
 void Player::MoveOperation()
 {
@@ -72,7 +74,6 @@ void Player::MoveOperation()
 	//m_moveSpeed.y -= 240.f * 1.f / 60.f;
 	m_moveSpeed += cameraForward * lStick_y * m_speed;		//奥方向への移動速度を代入。
 	m_moveSpeed += cameraRight * lStick_x * m_speed;		//右方向への移動速度を加算。
-	//m_position += m_moveSpeed;
 	m_position = m_charaCon.Execute(1.f / 60.f, m_moveSpeed);
 	playerModel->SetPos(m_position);
 

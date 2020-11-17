@@ -19,6 +19,8 @@ void DebugWireframe::Init()
 	InitPipelineState();
 	//定数バッファを初期化。
 	InitConstantBuffer();
+	//2頂点を記録する定数バッファの初期化。
+	InitVertexCBuffer();
 	//ディスクリプタヒープを初期化。
 	InitDescriptorHeap();
 }
@@ -72,8 +74,7 @@ void DebugWireframe::InitPipelineState()
 void DebugWireframe::InitVertexCBuffer()
 {
 	//2頂点を記録する定数バッファを作成。
-	int vertexStride = sizeof(Vertex);
-	m_vertexCBuffer.Init(sizeof(Vertex) * NUM_VERTEX, nullptr);
+	m_vertexCBuffer.Init(sizeof(Vertex) * NUM_VERTEX);
 }
 
 void DebugWireframe::InitConstantBuffer()
@@ -92,11 +93,15 @@ void DebugWireframe::InitDescriptorHeap()
 void DebugWireframe::VertexCBufferUpdate(const btVector3& from, const btVector3& to, const btVector3& color)
 {
 	//頂点を書き換える。
-	Vertex vers[2];
+	Vertex vers[2];/*
 	vers[0].pos = from;
 	vers[0].color = color;
 	vers[1].pos = to;
-	vers[1].color = color;
+	vers[1].color = color;*/
+	vers[0].pos = Vector3{ 10,10,10 };
+	vers[0].color = Vector3{ 10,10,10 };
+	vers[1].pos = Vector3{ 10,10,10 };
+	vers[1].color = Vector3{ 10,10,10 };
 	//レンダリングコンテキストを取得。
 	auto& rc = g_graphicsEngine->GetRenderContext();
 	//頂点をどんな感じに描画するのか。
@@ -119,19 +124,13 @@ void DebugWireframe::ConstantBufferUpdate()
 	m_constantBuffer.CopyToVRAM(&VP);
 }
 
-void DebugWireframe::Prepare()
-{
-	
-	
-	
-}
-
 bool hoge = false;
+/*
 void DebugWireframe::Context()
 {
 	//デバイスコンテキストにモデルクラス等の設定が
 	//残っているため上書きする（更新）	
-}
+}*/
 
 //1フレーム内にdrawLineは線の数だけ行う
 void DebugWireframe::drawLine(const btVector3 & from, const btVector3 & to, const btVector3 & color)
@@ -143,5 +142,6 @@ void DebugWireframe::drawLine(const btVector3 & from, const btVector3 & to, cons
 	//レンダリングコンテキストを取得。
 	auto& rc = g_graphicsEngine->GetRenderContext();
 	rc.SetPipelineState(m_pipelineState);
+	rc.SetDescriptorHeap(m_descriptorHeap);
 	rc.DrawIndexed(NUM_VERTEX);
 }

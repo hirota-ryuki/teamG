@@ -40,7 +40,7 @@ void PhysicsWorld::Init()
 {
 	Release();
 
-	//デバッグワイヤーフレームの準備
+	//デバッグワイヤーフレームの初期化。
 	dw.Init();
 
 	//物理エンジンを初期化。
@@ -65,9 +65,8 @@ void PhysicsWorld::Init()
 
 	dynamicWorld->setGravity(btVector3(0, -10, 0));
 
-	//デバッグワイヤーフレームをダイナミックワールドに設定
-	//ここでdrawLineを勝手に呼んでくれる
-	//流石です
+	//デバッグワイヤーフレームをダイナミックワールドに設定。
+	//これでdrawLineを勝手に呼んでくれる。
 	dynamicWorld->setDebugDrawer(&dw);
 }
 void PhysicsWorld::Update()
@@ -85,7 +84,6 @@ void PhysicsWorld::RemoveRigidBody(RigidBody& rb)
 
 void PhysicsWorld::DebugDraw()
 {
-	dw.Context();
 	//実際にdrawLineを呼んでます。
 	dynamicWorld->debugDrawWorld();
 }

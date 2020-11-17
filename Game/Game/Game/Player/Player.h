@@ -24,6 +24,10 @@ private:
 	/// </summary>
 	void Update()override;
 	/// <summary>
+	/// モデルの初期化。
+	/// </summary>
+	void InitModel();
+	/// <summary>
 	/// プレイヤーの移動処理が入った関数。
 	/// </summary>
 	void MoveOperation();

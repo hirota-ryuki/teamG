@@ -12,50 +12,9 @@ public:
 	/// 初期化。	
 	/// </summary>
 	void Init();
+	/// 必須。
 	/// <summary>
-	/// ディスクリプタヒープの初期化。
-	/// </summary>
-	void InitDescriptorHeap();
-	/// <summary>
-	/// 2頂点を記録する定数バッファの初期化。
-	/// </summary>
-	void InitVertexCBuffer();
-	/// <summary>
-	/// 定数バッファの初期化。
-	/// </summary>
-	void InitConstantBuffer();
-	/// <summary>
-	/// パイプラインステートの初期化。
-	/// </summary>
-	void InitPipelineState();
-	/// <summary>
-	/// シェーダーの初期化。
-	/// </summary>
-	void InitSharder();
-	/// <summary>
-	/// ルートシグネチャの初期化。
-	/// </summary>
-	void InitRootSignature();
-	/// <summary>
-	/// 2頂点を記録する定数バッファの更新。
-	/// </summary>
-	void VertexCBufferUpdate(const btVector3& from, const btVector3& to, const btVector3& color);
-	/// <summary>
-	/// 定数バッファの更新。
-	/// </summary>
-	void ConstantBufferUpdate();
-	/// <summary>
-	/// 設定の準備
-	/// </summary>
-	void Prepare();
-	/// <summary>
-	/// デバイスコンテキストに設定
-	/// 1フレーム内に一回
-	/// </summary>
-	void Context();
-	/// 必須
-	/// <summary>
-	/// 線ごとに一回ずつ呼ばれる
+	/// 線ごとに一回ずつ呼ばれる。
 	/// </summary>
 	/// <param name="from"></param>
 	/// <param name="to"></param>
@@ -71,6 +30,39 @@ public:
 	void    drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime, const btVector3& color) override {};
 	void    reportErrorWarning(const char* warningString) override {};
 	void    draw3dText(const btVector3& location, const char* textString) override {};
+private:
+	/// <summary>
+	/// ルートシグネチャの初期化。
+	/// </summary>
+	void InitRootSignature();
+	/// <summary>
+	/// シェーダーの初期化。
+	/// </summary>
+	void InitSharder();
+	/// <summary>
+	/// パイプラインステートの初期化。
+	/// </summary>
+	void InitPipelineState();
+	/// <summary>
+	/// 2頂点を記録する定数バッファの初期化。
+	/// </summary>
+	void InitVertexCBuffer();
+	/// <summary>
+	/// 定数バッファの初期化。
+	/// </summary>
+	void InitConstantBuffer();
+	/// <summary>
+	/// ディスクリプタヒープの初期化。
+	/// </summary>
+	void InitDescriptorHeap();	
+	/// <summary>
+	/// 2頂点を記録する定数バッファの更新。
+	/// </summary>
+	void VertexCBufferUpdate(const btVector3& from, const btVector3& to, const btVector3& color);
+	/// <summary>
+	/// 定数バッファの更新。
+	/// </summary>
+	void ConstantBufferUpdate();
 private:
 	struct Vertex 
 	{
