@@ -175,7 +175,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		g_camera3D->SetPosition(m_pos);
 		g_camera3D->SetTarget(m_target);
 		g_camera3D->Update();
-		
+		g_physics.DebugDraw();
 		//デバッグモード。
 		//DubugMode(isDebug);
 		//ボタンで切り替え
@@ -186,7 +186,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		if (isDebug)
 		{
 			//デバッグモード
-			g_physics.DebugDraw();
+			
 		}
 		//レンダリング終了。
 		g_engine->EndFrame();
