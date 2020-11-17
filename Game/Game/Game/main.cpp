@@ -1,6 +1,5 @@
 ﻿#include "stdafx.h"
 #include "system/system.h"
-#include "test.h"
 #include "Game.h"
 #include "BackGround/BackGround.h"
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
@@ -175,7 +174,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		g_camera3D->SetPosition(m_pos);
 		g_camera3D->SetTarget(m_target);
 		g_camera3D->Update();
-		g_physics.DebugDraw();
+		//g_physics.DebugDraw();
 		//デバッグモード。
 		//DubugMode(isDebug);
 		//ボタンで切り替え
