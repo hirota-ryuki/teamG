@@ -28,6 +28,10 @@ void GameCamera::Update()
 	{
 		isCameraTagChange_flag = true;
 	}
+	else if (g_pad[0]->IsTrigger(enButtonB))
+	{
+		isCameraTagChange_flag = false;
+	}
 }
 //カメラが動く処理。
 void GameCamera::MoveCamera()
@@ -59,7 +63,11 @@ void GameCamera::StopCamera()
 //カメラの視点変更
 void GameCamera::ChangePointOfView()
 {
-	if (isCameraTagChange_flag /*&& 指定場所の条件 */)
+	if (!isCameraTagChange_flag)
+	{
+		m_cameraState = toPlayer;
+	}
+	else if (isCameraTagChange_flag /*&& 指定場所の条件 */)
 	{
 		m_cameraState = toPosition1;
 		/*//時間経過でfalseに
