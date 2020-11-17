@@ -21,38 +21,19 @@ bool Player::Start()
 void Player::Update()
 {
 	MoveOperation();				//移動処理。
+	PlayerRotation();				//回転処理。
 	//PlayerInputProcessing();		//入力処理。
 }
-
+//モデル呼び出し
 void Player::InitModel()
 {
 	playerModel = NewGO<SkinModelRender>();
 	playerModel->Init("Assets/modelData/unityChan.tkm");
 	playerModel->SetPos(m_position);
 }
-
 //移動処理を書いた関数。
 void Player::MoveOperation()
 {
-	/*const float HALF = 0.5f;			//0.5です。
-	//stickの入力に合わせて動きます。
-	float lStick_x = (g_pad[0]->GetLStickXF());
-	float lStick_z = (g_pad[0]->GetLStickYF());
-	//カメラから移動の処理に加える前方と左右の値取得。
-	GetCameraVector();
-	//XZ成分の移動速度をクリア。
-	m_moveSpeed.x = ZERO;
-	m_moveSpeed.z = ZERO;
-	//移動。
-	if (HALF < g_pad[0]->GetLStickXF() || HALF > g_pad[0]->GetLStickYF())
-	{
-		m_moveSpeed += (cameraForward * m_speed * lStick_x) * m_runSpeed;
-		m_moveSpeed += (cameraRight * m_speed * lStick_z) * m_runSpeed;
-	}
-	//モデル映してます。
-	//m_position = m_charaCon.Execute(60 / 1, m_moveSpeed);
-	playerModel->SetPos(m_position);
-	m_position = m_moveSpeed;*/
 
 	//左スティックの入力量を受け取る。
 	float lStick_x = g_pad[0]->GetLStickXF();
@@ -63,17 +44,17 @@ void Player::MoveOperation()
 	Vector3 cameraRight = g_camera3D->GetRight();
 
 	//XZ平面での前方方向、右方向に変換する。
-	cameraForward.y = 0.0f;
+	cameraForward.y = ZERO;
 	cameraForward.Normalize();
-	cameraRight.y = 0.0f;
+	cameraRight.y = ZERO;
 	cameraRight.Normalize();
 
 	//XZ成分の移動速度をクリア。
-	m_moveSpeed.x = 0.f;
-	m_moveSpeed.z = 0.f;
+	m_moveSpeed.x = ZERO;
+	m_moveSpeed.z = ZERO;
 	//m_moveSpeed.y -= 240.f * 1.f / 60.f;
-	m_moveSpeed += cameraForward * lStick_y * m_speed;		//奥方向への移動速度を代入。
-	m_moveSpeed += cameraRight * lStick_x * m_speed;		//右方向への移動速度を加算。
+	m_moveSpeed -= cameraForward * lStick_y * m_speed;		//奥方向への移動速度を代入。
+	m_moveSpeed -= cameraRight * lStick_x * m_speed;		//右方向への移動速度を加算。
 	m_position = m_charaCon.Execute(1.f / 60.f, m_moveSpeed);
 	playerModel->SetPos(m_position);
 
@@ -85,6 +66,7 @@ void Player::GetCameraVector()
 	//カメラの前方方向
 	cameraForward = g_camera3D->GetForward();
 	cameraRight = g_camera3D->GetRight();
+
 	//XZ平面での前方方向、右方向に変換
 	cameraForward.y = ZERO;
 	cameraForward.Normalize();
@@ -106,5 +88,23 @@ void Player::PlayerInputProcessing()
 	{
 		//移動のスピード上げます。
 		m_runSpeed = RUNSPEED;
+	}
+}
+//プレイヤーの回転処理。
+void Player::PlayerRotation()
+{
+	//動いている方向に向く処理
+	float m_rot = atan2(m_moveSpeed.x, m_moveSpeed.z);
+	m_rotating.SetRotation(Vector3::AxisY, m_rot);
+
+	//移動に合わせて回転の処理
+	if (m_moveSpeed.x != ZERO || m_moveSpeed.z != ZERO)
+	{
+		m_rotation = m_rotating;
+		playerModel->SetRot(m_rotation);
+	}
+	else if(m_moveSpeed.x == ZERO || m_moveSpeed.z == ZERO)
+	{
+		playerModel->SetRot(m_rotation);
 	}
 }
