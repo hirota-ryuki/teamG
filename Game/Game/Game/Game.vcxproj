@@ -204,6 +204,7 @@
     <ClCompile Include="BackGround\BackGround.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Villager.cpp" />
     <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
     <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h" />
     <ClInclude Include="..\..\HiroEngine\physics\CapsuleCollider.h" />
@@ -226,6 +227,7 @@
     </ClCompile>
     <ClCompile Include="system\system.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClInclude Include="Villager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\Camera\Camera.h" />
@@ -274,6 +276,12 @@
     <ClInclude Include="test.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TrianglePolygon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\modelData\background\Model.tkm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\modelData\background\Midori.DDS" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

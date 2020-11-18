@@ -2,6 +2,7 @@
 #include "system/system.h"
 #include "test.h"
 #include "Game.h"
+#include "Title.h"
 #include "BackGround/BackGround.h"
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
 //関数宣言
@@ -20,6 +21,7 @@ struct DirectionalLight {
 };
 
 class Game;
+class Title;
 ///////////////////////////////////////////////////////////////////
 // ウィンドウプログラムのメイン関数。
 ///////////////////////////////////////////////////////////////////
@@ -57,16 +59,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	light.color.y = 1.0f;
 	light.color.z = 1.0f;
 	light.eyePos = g_camera3D->GetPosition();
-	/*
-	//モデルを初期化。
-	ModelInitData modelInitData;
-	////人型モデルを初期化。
-	modelInitData.m_tkmFilePath = "Assets/modelData/unityChan.tkm";
-	modelInitData.m_fxFilePath = "Assets/shader/model.fx";
-	Model humanModel;
-	humanModel.Init(modelInitData);
-	//humanModel.UpdateWorldMatrix({ -50.0f, 0.0f, 0.0f }, g_quatIdentity, g_vec3One);
-	*/
 	
 	Vector3 planePos = { 0.0f, 0.0f, 20.0f };
 	
@@ -113,16 +105,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//デバッグモードのオンオフ。
 	bool isDebug = false;
 	Vector3 m_position = Vector3::Zero;
-	//CharacterController m_charaCon;								//キャラクターコントローラー。
-	/*
-	//キャラコンの初期化
-	m_charaCon.Init(
-		80.f,
-		200.f,
-		m_position
-	);*/
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	Game* game = NewGO<Game>();
+	//Title* title = NewGO<Title>();
 	//BackGround* bg = NewGO<BackGround>();
 	// ここからゲームループ。
 	while (DispatchWindowMessage())

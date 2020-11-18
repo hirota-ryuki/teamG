@@ -52,12 +52,12 @@ bool Game::Start()
 {
 	//¶¬ˆê——B
 	m_player = NewGO<Player>();
-	//BackGround* bg = NewGO<BackGround>();
-
+	m_bg = NewGO<BackGround>();
 	m_gameCamera = NewGO<GameCamera>();
 	return true;
 }
 
 void Game::Update()
 {
+
 }

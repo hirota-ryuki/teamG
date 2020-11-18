@@ -143,6 +143,7 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="BackGround\BackGround.cpp" />
+    <ClCompile Include="Villager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
@@ -320,6 +321,7 @@
     </ClInclude>
     <ClInclude Include="BackGround\BackGround.h" />
     <ClInclude Include="Game\Game.cpp" />
+    <ClInclude Include="Villager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">
@@ -388,5 +390,11 @@
     <Filter Include="HiroEngine\SkinModelRender">
       <UniqueIdentifier>{05d961e3-a05a-437f-a0e2-ae25023d6e32}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\modelData\background\Model.tkm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\modelData\background\Midori.DDS" />
   </ItemGroup>
 </Project>
