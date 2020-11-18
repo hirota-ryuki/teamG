@@ -136,13 +136,15 @@
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="BackGround\BackGround.cpp" />
+    <ClCompile Include="Title\Title.cpp">
+      <Filter>Game\Title</Filter>
+    </ClCompile>
     <ClCompile Include="BackGround\BackGround.cpp">
       <Filter>Game\BackGround</Filter>
     </ClCompile>
-    <ClCompile Include="BackGround\BackGround.cpp" />
-    <ClCompile Include="villagercharacter\Villager.cpp" />
-    <ClCompile Include="Title\Title.cpp">
-      <Filter>Game\Title</Filter>
+    <ClCompile Include="villagercharacter\Villager.cpp">
+      <Filter>Game\Villager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,13 +318,15 @@
     <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
       <Filter>HiroEngine\CharaCon</Filter>
     </ClInclude>
+    <ClInclude Include="BackGround\BackGround.h" />
+    <ClInclude Include="Title\Title.h">
+      <Filter>Game\Title</Filter>
+    </ClInclude>
     <ClInclude Include="BackGround\BackGround.h">
       <Filter>Game\BackGround</Filter>
     </ClInclude>
-    <ClInclude Include="BackGround\BackGround.h" />
-    <ClInclude Include="villagercharacter\Villager.h" />
-    <ClInclude Include="Title\Title.h">
-      <Filter>Game\Title</Filter>
+    <ClInclude Include="villagercharacter\Villager.h">
+      <Filter>Game\Villager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -398,11 +402,8 @@
     <Filter Include="Game\BackGround">
       <UniqueIdentifier>{eabbe91c-2fe1-4fe1-8580-25ab91020953}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\modelData\background\Model.tkm" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\modelData\background\Midori.DDS" />
+    <Filter Include="Game\Villager">
+      <UniqueIdentifier>{9646bb47-838c-42e4-a0f7-b79b1a87a79f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
