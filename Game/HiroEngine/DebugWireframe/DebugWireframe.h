@@ -32,7 +32,10 @@ public:
 	void    draw3dText(const btVector3& location, const char* textString) override {};
 	void Begin()
 	{
+		m_numLine = 0;
+		m_vertexList.clear();
 	}
+	void End();
 private:
 	/// <summary>
 	/// ルートシグネチャの初期化。
@@ -76,14 +79,16 @@ private:
 		Vector3 pos;
 		Vector3 color;
 	};
-	
+	std::vector<Vertex>	m_vertexList;				//描画する頂点のリスト
 	ConstantBuffer		m_constantBuffer;			//定数バッファ。
 	VertexBuffer		m_vertexCBuffer;
+	IndexBuffer			m_indexBuffer;
 	RootSignature		m_rootSignature;			//ルートシグネチャ。
 	Shader				m_Vshader;					//頂点シェーダー。
 	Shader				m_Pshader;					//ピクセルシェーダー。
 	PipelineState		m_pipelineState;			//パイプラインステート。
 	DescriptorHeap		m_descriptorHeap;			//ディスクリプタヒープ。	
-	const int			NUM_VERTEX = 2;				//頂点の個数。線を形成するための最低限の数。
+	static const int	MAX_VERTEX = 10000000;		//頂点の最大数。
+	int m_numLine = 0;								//描画するラインの数。
 };
 

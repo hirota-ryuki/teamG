@@ -57,7 +57,7 @@ private:
 	Quaternion m_rotating = Quaternion::Identity;	//モデルが動いてるとき使う回転変数。
 	
 	const float ZERO = 0.0f;						//マジックナンバーを防ぐゼロ。
-	float m_speed = 20.0f;							//移動速度。
+	float m_speed = 100.0f;							//移動速度。
 		
 	int m_runSpeed = 1;								//走るときに速さ掛ける変数。
 };

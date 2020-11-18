@@ -28,8 +28,8 @@ struct SPSIn{
 //ピクセルシェーダーからの出力。
 struct SPSOut{
 	float4 albedo	: SV_Target0;	//アルベド
-	float3 normal	: SV_Target1;	//法線。
-	float3 worldPos : SV_Target2;	//ワールド座標。
+	float4 normal	: SV_Target1;	//法線。
+	float4 worldPos : SV_Target2;	//ワールド座標。
 };
 //モデルテクスチャ。
 Texture2D<float4> g_texture : register(t0);	
@@ -66,9 +66,9 @@ SPSOut PSMain( SPSIn psIn )
 	//アルベドカラーを出力。
 	psOut.albedo = g_texture.Sample(g_sampler, psIn.uv);
 	//法線を出力。
-	psOut.normal = psIn.normal;
+    psOut.normal = float4(psIn.normal, 1.0f);
 
-	psOut.worldPos = psIn.worldPos;
+    psOut.worldPos = float4(psIn.worldPos, 1.0f);
 	return psOut;
 }
 //step-3 ライトの情報を受け取るための定数バッファを追加。

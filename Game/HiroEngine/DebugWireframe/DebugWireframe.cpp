@@ -23,6 +23,14 @@ void DebugWireframe::Init()
 	InitVertexCBuffer();
 	//ディスクリプタヒープを初期化。
 	InitDescriptorHeap();
+	m_indexBuffer.Init(sizeof(std::uint16_t) * MAX_VERTEX, sizeof(std::uint16_t));
+	static std::uint16_t indices[MAX_VERTEX];
+	for (int i = 0; i < MAX_VERTEX; i++) {
+		indices[i] = i;
+	}
+	m_indexBuffer.Copy(indices);
+
+
 }
 
 void DebugWireframe::InitRootSignature()
@@ -70,12 +78,14 @@ void DebugWireframe::InitPipelineState()
 	psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
 	psoDesc.SampleDesc.Count = 1;
 	m_pipelineState.Init(psoDesc);
+	//最大長点数分のメモリは先に確保しておく。
+	m_vertexList.reserve(MAX_VERTEX);
 }
 
 void DebugWireframe::InitVertexCBuffer()
 {
 	//2頂点を記録する定数バッファを作成。
-	m_vertexCBuffer.Init(sizeof(Vertex) * NUM_VERTEX, sizeof(Vertex));
+	m_vertexCBuffer.Init(sizeof(Vertex) * MAX_VERTEX, sizeof(Vertex));
 }
 
 void DebugWireframe::InitConstantBuffer()
@@ -100,8 +110,14 @@ void DebugWireframe::VertexCBufferUpdate(const btVector3& from, const btVector3&
 	vers[1].pos = to;
 	vers[1].color = color;
 	
-	//頂点バッファの更新。
-	m_vertexCBuffer.Copy(vers);
+	m_vertexList.push_back(vers[0]);
+	m_vertexList.push_back(vers[1]);
+
+	if (m_vertexList.size() > MAX_VERTEX) {
+		//描画できるラインは50万本まで。増やしたければMAX_VERTEXを増やしてください。
+		std::abort();
+	}
+
 }
 
 void DebugWireframe::ConstantBufferUpdate()
@@ -128,10 +144,11 @@ void DebugWireframe::RenderContextUpdate()
 	rc.SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 	//頂点バッファを設定。
 	rc.SetVertexBuffer(m_vertexCBuffer);
+	rc.SetIndexBuffer(m_indexBuffer);
 	//ディスクリプタヒープに設定。
 	rc.SetDescriptorHeap(m_descriptorHeap);
 	//ドローコール。
-	rc.DrawIndexed(NUM_VERTEX);
+	rc.DrawIndexed(m_vertexList.size());
 }
 
 //1フレーム内にdrawLineは線の数だけ行う
@@ -139,14 +156,13 @@ void DebugWireframe::drawLine(const btVector3 & from, const btVector3 & to, cons
 {
 	//頂点バッファの更新。
 	VertexCBufferUpdate(from, to,color);
+}
+void DebugWireframe::End()
+{
+	//頂点をコピー。
+	m_vertexCBuffer.Copy(&m_vertexList.front());
 
-	static int test = false;
-
-	VertexCBufferUpdate(btVector3(test, 1, 1), btVector3(test, 1, 1), color);
-	test++;
-
-	//定数バッファの更新。
 	ConstantBufferUpdate();
-	//レンダーコンテキストの更新。
+
 	RenderContextUpdate();
 }

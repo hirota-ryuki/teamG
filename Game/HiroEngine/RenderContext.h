@@ -34,6 +34,7 @@ public:
 	{
 		m_commandList->IASetIndexBuffer(&ib.GetView());
 	}
+
 	/// <summary>
 	/// プリミティブのトポロジーを設定。
 	/// </summary>
