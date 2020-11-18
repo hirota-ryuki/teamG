@@ -55,10 +55,9 @@ void Player::MoveOperation()
 	//m_moveSpeed.y -= 240.0f * 1.0f / 60.0f;
 	m_moveSpeed -= cameraForward * lStick_y * m_speed;		//奥方向への移動速度を代入。
 	m_moveSpeed -= cameraRight * lStick_x * m_speed;		//右方向への移動速度を加算。
-	m_charaCon.SetPosition(m_position);
 	m_position = m_charaCon.Execute(1.0f / 60.0f, m_moveSpeed);
-	m_playerModel->SetPos(m_position);
-
+	m_charaCon.SetPosition(m_position);
+	m_playerModel->SetPos(m_charaCon.GetPosition());
 }
 //移動時にカメラから取得するもの。
 void Player::GetCameraVector()

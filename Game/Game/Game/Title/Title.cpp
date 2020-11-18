@@ -3,7 +3,6 @@
 #include"Game.h"
 Title::Title()
 {
-	//SpriteInitData‚Éî•ñ‚Ô‚¿‚ñ‚ÅSprite‚Åƒhƒ[‚·‚éB
 	
 }
 

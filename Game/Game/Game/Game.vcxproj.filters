@@ -136,14 +136,14 @@
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>Game\Title</Filter>
-    </ClCompile>
     <ClCompile Include="BackGround\BackGround.cpp">
       <Filter>Game\BackGround</Filter>
     </ClCompile>
     <ClCompile Include="BackGround\BackGround.cpp" />
-    <ClCompile Include="Villager.cpp" />
+    <ClCompile Include="villagercharacter\Villager.cpp" />
+    <ClCompile Include="Title\Title.cpp">
+      <Filter>Game\Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
@@ -313,9 +313,6 @@
     <ClInclude Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.h">
       <Filter>HiroEngine\SkinModelRender</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>Game\Title</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
       <Filter>HiroEngine\CharaCon</Filter>
     </ClInclude>
@@ -323,8 +320,10 @@
       <Filter>Game\BackGround</Filter>
     </ClInclude>
     <ClInclude Include="BackGround\BackGround.h" />
-    <ClInclude Include="Game\Game.cpp" />
-    <ClInclude Include="Villager.h" />
+    <ClInclude Include="villagercharacter\Villager.h" />
+    <ClInclude Include="Title\Title.h">
+      <Filter>Game\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">

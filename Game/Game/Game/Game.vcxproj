@@ -203,9 +203,9 @@
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp" />
     <ClCompile Include="BackGround\BackGround.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Title\Title.cpp" />
     <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h" />
-    <ClCompile Include="Villager.cpp" />
+    <ClCompile Include="villagercharacter\Villager.cpp" />
     <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h" />
     <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h" />
     <ClInclude Include="..\..\HiroEngine\physics\CapsuleCollider.h" />
@@ -226,8 +226,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="system\system.cpp" />
-    <ClCompile Include="test.cpp" />
-    <ClInclude Include="Villager.h" />
+    <ClInclude Include="villagercharacter\Villager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\Camera\Camera.h" />
@@ -273,7 +272,7 @@
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="system\system.h" />
-    <ClInclude Include="Title.h" />
+    <ClInclude Include="Title\Title.h" />
     <ClInclude Include="TrianglePolygon.h" />
   </ItemGroup>
   <ItemGroup>
