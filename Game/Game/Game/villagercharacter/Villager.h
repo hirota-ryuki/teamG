@@ -8,6 +8,7 @@ public:
 private:
 	bool Start()override;
 	void Update()override;
+	void OnDestroy()override;
 	void InitModel();
 private:
 	SkinModelRender* m_villagerModel = nullptr;		//プレイヤーのモデル。

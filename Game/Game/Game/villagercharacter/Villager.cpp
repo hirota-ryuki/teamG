@@ -17,7 +17,6 @@ void Villager::InitModel()
 {
 	m_villagerModel = NewGO<SkinModelRender>();
 	m_villagerModel->Init("Assets/modelData/unityChan.tkm");
-	m_position;
 	m_villagerModel->SetPos(m_position);
 }
 //åpè≥ÇµÇΩéûÇ…égÇ§ó\íËÇ≈Ç†ÇÈÅB
@@ -26,4 +25,9 @@ void Villager::InitModel(const char* texFilePath)
 	m_villagerModel = NewGO<SkinModelRender>();
 	m_villagerModel->Init(texFilePath);
 	m_villagerModel->SetPos(m_position);
+}
+
+void Villager::OnDestroy()
+{
+	DeleteGO(m_villagerModel);
 }
