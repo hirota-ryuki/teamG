@@ -8,42 +8,42 @@ public:
 	bool Start() override;
 	void Update() override;
 	void DrawHUD() override;
-	void SetData(const CVector2& pos, const CQuaternion rot, const CVector3 scale)
+	void SetData(const Vector2& pos, const Quaternion rot, const Vector3 scale)
 	{
-		m_pos = CVector3{ pos.x,pos.y, 0.0f };
+		m_pos = Vector3{ pos.x,pos.y, 0.0f };
 		m_rot = rot;
 		m_scale = scale;
 	}
 	/// <summary>
 	/// 座標をセット。
 	/// </summary>
-	void SetPos(const CVector2& pos)
+	void SetPos(const Vector2& pos)
 	{
-		m_pos = CVector3{ pos.x,pos.y, 0.0f };
+		m_pos = Vector3{ pos.x,pos.y, 0.0f };
 	}
 	/// <summary>
 	/// 座標を取得。
 	/// </summary>
 	/// <param name="m_rot">座標。</param>
-	CVector2 GetPos()
+	Vector2 GetPos()
 	{
-		CVector2 pos = { m_pos.x,m_pos.y };
+		Vector2 pos = { m_pos.x,m_pos.y };
 		return pos;
 	}
 	/// <summary>
 	/// 回転をセット。
 	/// </summary>
-	void SetRot(const CQuaternion rot)
+	void SetRot(const Quaternion rot)
 	{
 		m_rot = rot;
-		m_rot.Multiply(CQuaternion::SpriteRot());
+		//m_rot.Multiply(Quaternion::SpriteRot());
 		m_isMulti = true;
 	}
 	/// <summary>
 	/// 回転を取得。
 	/// </summary>
 	/// <param name="m_rot">回転。</param>
-	CQuaternion GetRot()
+	Quaternion GetRot()
 	{
 		return m_rot;
 	}
@@ -52,13 +52,13 @@ public:
 	/// 元の画像が反転されて描画されるため、
 	/// 一回だけ実行させなければならない。
 	/// </summary>
-	void RotMultiply()
-	{
-		if (!m_isMulti) {
-			m_rot.Multiply(CQuaternion::SpriteRot());
-			m_isMulti = true;
-		}
-	}
+	//void RotMultiply()
+	//{
+	//	if (!m_isMulti) {
+	//		m_rot.Multiply(Quaternion::SpriteRot());
+	//		m_isMulti = true;
+	//	}
+	//}
 	/// <summary>
 	/// アルファ値をセット。
 	/// </summary>
@@ -107,9 +107,9 @@ public:
 	}
 private:
 	Sprite		m_sprite;
-	CVector3	m_pos = CVector3::Zero();
-	CQuaternion m_rot = CQuaternion::Identity();
-	CVector3	m_scale = CVector3::One();
+	Vector3		m_pos = Vector3::Zero;
+	Quaternion	m_rot = Quaternion::Identity;
+	Vector3		m_scale = Vector3::One;
 	float		m_alpha = 1.0f;					//スプライトのα値。
 	bool		m_isActive = true;				//画像がドローされているかどうか。
 	bool		m_isMulti = false;				//画像を反転させたかどうか。
