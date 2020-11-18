@@ -52,5 +52,6 @@ float4 PSMain(PSInput input) : SV_Target
 
 	//float4‚É‚·‚é
 	//1‚ÍƒAƒ‹ƒtƒ@
-	return float4(input.color,1);
+    return float4(1.0, 0, 0, 1);
+	//return float4(input.color,1);
 }

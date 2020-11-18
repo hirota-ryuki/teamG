@@ -106,14 +106,8 @@
     <ClCompile Include="main.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.cpp">
       <Filter>HiroEngine\DebugWireframe</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\HiroEngine\physics\RigidBody.cpp">
       <Filter>HiroEngine\physics</Filter>
@@ -141,6 +135,12 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Game\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround\BackGround.cpp">
+      <Filter>Game\BackGround</Filter>
     </ClCompile>
     <ClCompile Include="BackGround\BackGround.cpp" />
     <ClCompile Include="Villager.cpp" />
@@ -278,9 +278,6 @@
     <ClInclude Include="..\..\HiroEngine\util\Util.h">
       <Filter>HiroEngine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="test.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\DebugWireframe\DebugWireframe.h">
       <Filter>HiroEngine\DebugWireframe</Filter>
     </ClInclude>
@@ -310,14 +307,20 @@
     <ClInclude Include="..\..\HiroEngine\physics\BoxCollider.h">
       <Filter>HiroEngine\physics</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.h">
       <Filter>HiroEngine\SkinModelRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Game\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
+      <Filter>HiroEngine\CharaCon</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround\BackGround.h">
+      <Filter>Game\BackGround</Filter>
     </ClInclude>
     <ClInclude Include="BackGround\BackGround.h" />
     <ClInclude Include="Game\Game.cpp" />
@@ -389,6 +392,12 @@
     </Filter>
     <Filter Include="HiroEngine\SkinModelRender">
       <UniqueIdentifier>{05d961e3-a05a-437f-a0e2-ae25023d6e32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Title">
+      <UniqueIdentifier>{5e29bb56-f0e9-4f8c-a1e5-f0738658ef3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\BackGround">
+      <UniqueIdentifier>{eabbe91c-2fe1-4fe1-8580-25ab91020953}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

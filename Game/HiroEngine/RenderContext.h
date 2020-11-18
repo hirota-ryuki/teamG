@@ -34,6 +34,7 @@ public:
 	{
 		m_commandList->IASetIndexBuffer(&ib.GetView());
 	}
+
 	/// <summary>
 	/// プリミティブのトポロジーを設定。
 	/// </summary>
@@ -251,6 +252,15 @@ public:
 	{
 		m_commandList->DrawIndexedInstanced(indexCount, 1, 0, 0, 0);
 	}
+
+	/// <summary>
+	/// インデックスなしプリミティブを描画。
+	/// </summary>
+	/// <param name="vertexCount"></param>
+	void Draw(UINT vertexCount) {
+		m_commandList->DrawInstanced(vertexCount, 1, 0, 0);
+	}
+
 	/// <summary>
 	/// コンピュートシェーダーをディスパッチ。
 	/// </summary>

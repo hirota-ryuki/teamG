@@ -84,8 +84,11 @@ void PhysicsWorld::RemoveRigidBody(RigidBody& rb)
 
 void PhysicsWorld::DebugDraw()
 {
+	dw.Begin();
 	//ŽÀÛ‚ÉdrawLine‚ðŒÄ‚ñ‚Å‚Ü‚·B
 	dynamicWorld->debugDrawWorld();
+
+	dw.End();
 }
 
 void PhysicsWorld::ContactTest(

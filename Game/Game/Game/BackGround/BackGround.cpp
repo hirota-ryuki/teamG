@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "BackGround.h"
 
 BackGround::BackGround()
@@ -25,7 +25,7 @@ void BackGround::Update()
 void BackGround::InitModel()
 {
 	m_bg = NewGO<SkinModelRender>();
-	//ƒ‚ƒfƒ‹ƒhƒ[‚µ‚Ä‚Ü‚·B
+	//ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½hï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ä‚Ü‚ï¿½ï¿½B
 	m_bg->Init("Assets/modelData/background/Model.tkm");
 	m_bg->SetPos(m_position);
 }
