@@ -58,6 +58,13 @@ public:
 	/// </summary>
 	/// <param name="renderContext">レンダリングコンテキスト/param>
 	void Draw(RenderContext& renderContext);
+	/// <summary>
+	/// アルファ値をセット。
+	/// </summary>
+	/// <param name="alpha">アルファ値。</param>
+	void SetAlpha(const float alpha) {
+		m_alpha = alpha;
+	}
 private:
 	/// <summary>
 	/// テクスチャを初期化。
@@ -89,15 +96,16 @@ private:
 	/// <param name="initData"></param>
 	void InitConstantBuffer(const SpriteInitData& initData);
 private:
-	IndexBuffer m_indexBuffer;			//インデックスバッファ。
-	VertexBuffer m_vertexBuffer;		//頂点バッファ。
-	int m_numTexture = 0;				//テクスチャの枚数。
-	Texture m_textures[MAX_TEXTURE];	//テクスチャ。
-	Texture* m_textureExternal[MAX_TEXTURE] = {nullptr};	//外部から指定されたテクスチャ
-	Vector3 m_position ;				//座標。
-	Vector2 m_size;						//サイズ。
-	Quaternion m_rotation ;			//回転。
-	Matrix m_world;					//ワールド行列。
+	IndexBuffer		m_indexBuffer;									//インデックスバッファ。
+	VertexBuffer	m_vertexBuffer;									//頂点バッファ。
+	int				m_numTexture = 0;								//テクスチャの枚数。
+	Texture			m_textures[MAX_TEXTURE];						//テクスチャ。
+	Texture*		m_textureExternal[MAX_TEXTURE] = {nullptr};		//外部から指定されたテクスチャ
+	Vector3			m_position;										//座標。
+	Vector2			m_size;											//サイズ。
+	Quaternion		m_rotation;										//回転。
+	Matrix			m_world;										//ワールド行列。
+	float			m_alpha = 1.0f;									//アルファ値。画像の不透明度。
 
 	struct LocalConstantBuffer {
 		Matrix mvp;

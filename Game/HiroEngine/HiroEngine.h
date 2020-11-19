@@ -56,3 +56,4 @@ const UINT FRAME_BUFFER_H = 720;				//フレームバッファの高さ。
 #include "GameObjectManager/IGameObject.h"
 #include "GameObjectManager/GameObjectManager.h"
 #include "SkinModelRender/SkinModelRender.h"
+#include "Sprite/SpriteRender.h"

@@ -14,7 +14,7 @@ public:
 	/// <param name="texFilePath">ファイルパス。</param>
 	/// <param name="w">横幅。</param>
 	/// <param name="h">縦幅。</param>
-	void Init(const char* texFilePath, float w, float h);
+	void Init(const wchar_t* texFilePath, float w, float h);
 	/// <summary>
 	/// データをセット。
 	/// </summary>
