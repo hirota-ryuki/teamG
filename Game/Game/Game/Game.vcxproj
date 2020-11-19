@@ -194,6 +194,7 @@
     <ClCompile Include="..\..\HiroEngine\Skeleton.cpp" />
     <ClCompile Include="..\..\HiroEngine\SkinModelRender\SkinModelRender.cpp" />
     <ClCompile Include="..\..\HiroEngine\Sprite.cpp" />
+    <ClCompile Include="..\..\HiroEngine\Sprite\SpriteRender.cpp" />
     <ClCompile Include="..\..\HiroEngine\StructuredBuffer.cpp" />
     <ClCompile Include="..\..\HiroEngine\Texture.cpp" />
     <ClCompile Include="..\..\HiroEngine\hrEngine.cpp" />
@@ -226,6 +227,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="system\system.cpp" />
+    <ClInclude Include="..\..\HiroEngine\Sprite\SpriteRender.h" />
     <ClInclude Include="villagercharacter\Villager.h" />
   </ItemGroup>
   <ItemGroup>

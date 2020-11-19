@@ -14,9 +14,10 @@ bool SpriteRender::Start()
 	return true;
 }
 
-void SpriteRender::Init(const wchar_t* texFilePath, float w, float h)
+void SpriteRender::Init(const char* texFilePath, float w, float h)
 {
-	m_sprite.Init(texFilePath, w, h);
+	SpriteInitData		m_spriteInitData;
+	m_spriteInitData.m_ddsFilePath[0] = texFilePath;
 }
 
 void SpriteRender::Update()

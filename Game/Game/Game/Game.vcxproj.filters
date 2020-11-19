@@ -146,6 +146,9 @@
     <ClCompile Include="villagercharacter\Villager.cpp">
       <Filter>Game\Villager</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\Sprite\SpriteRender.cpp">
+      <Filter>HiroEngine\Sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
@@ -327,6 +330,9 @@
     </ClInclude>
     <ClInclude Include="villagercharacter\Villager.h">
       <Filter>Game\Villager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\Sprite\SpriteRender.h">
+      <Filter>HiroEngine\Sprite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
