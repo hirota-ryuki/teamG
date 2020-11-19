@@ -17,20 +17,14 @@ void DebugWireframe::Init()
 	InitSharder();
 	//パイプラインステートを初期化。
 	InitPipelineState();
+	//頂点バッファの初期化。
+	InitVertexBuffer();
+	//インデックスバッファの初期化。
+	InitIndexBuffer();
 	//定数バッファを初期化。
 	InitConstantBuffer();
-	//2頂点を記録する定数バッファの初期化。
-	InitVertexCBuffer();
 	//ディスクリプタヒープを初期化。
 	InitDescriptorHeap();
-	m_indexBuffer.Init(sizeof(std::uint16_t) * MAX_VERTEX, sizeof(std::uint16_t));
-	static std::uint16_t indices[MAX_VERTEX];
-	for (int i = 0; i < MAX_VERTEX; i++) {
-		indices[i] = i;
-	}
-	m_indexBuffer.Copy(indices);
-
-
 }
 
 void DebugWireframe::InitRootSignature()
@@ -82,10 +76,21 @@ void DebugWireframe::InitPipelineState()
 	m_vertexList.reserve(MAX_VERTEX);
 }
 
-void DebugWireframe::InitVertexCBuffer()
+void DebugWireframe::InitVertexBuffer()
 {
-	//2頂点を記録する定数バッファを作成。
-	m_vertexCBuffer.Init(sizeof(Vertex) * MAX_VERTEX, sizeof(Vertex));
+	//頂点バッファを作成。
+	m_vertexBuffer.Init(sizeof(Vertex) * MAX_VERTEX, sizeof(Vertex));
+}
+
+void DebugWireframe::InitIndexBuffer()
+{
+	//インデックスバッファの初期化。
+	m_indexBuffer.Init(sizeof(std::uint16_t) * MAX_VERTEX, sizeof(std::uint16_t));
+	static std::uint16_t indices[MAX_VERTEX];
+	for (int i = 0; i < MAX_VERTEX; i++) {
+		indices[i] = i;
+	}
+	m_indexBuffer.Copy(indices);
 }
 
 void DebugWireframe::InitConstantBuffer()
@@ -101,7 +106,7 @@ void DebugWireframe::InitDescriptorHeap()
 	m_descriptorHeap.Commit();
 }
 
-void DebugWireframe::VertexCBufferUpdate(const btVector3& from, const btVector3& to, const btVector3& color)
+void DebugWireframe::VertexBufferUpdate(const btVector3& from, const btVector3& to, const btVector3& color)
 {
 	//頂点を書き換える。
 	Vertex vers[2];
@@ -117,7 +122,6 @@ void DebugWireframe::VertexCBufferUpdate(const btVector3& from, const btVector3&
 		//描画できるラインは50万本まで。増やしたければMAX_VERTEXを増やしてください。
 		std::abort();
 	}
-
 }
 
 void DebugWireframe::ConstantBufferUpdate()
@@ -143,7 +147,7 @@ void DebugWireframe::RenderContextUpdate()
 	//今回は頂点二つの間に線を描く設定。
 	rc.SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 	//頂点バッファを設定。
-	rc.SetVertexBuffer(m_vertexCBuffer);
+	rc.SetVertexBuffer(m_vertexBuffer);
 	rc.SetIndexBuffer(m_indexBuffer);
 	//ディスクリプタヒープに設定。
 	rc.SetDescriptorHeap(m_descriptorHeap);
@@ -155,12 +159,13 @@ void DebugWireframe::RenderContextUpdate()
 void DebugWireframe::drawLine(const btVector3 & from, const btVector3 & to, const btVector3 & color)
 {
 	//頂点バッファの更新。
-	VertexCBufferUpdate(from, to,color);
+	VertexBufferUpdate(from, to,color);
 }
+
 void DebugWireframe::End()
 {
 	//頂点をコピー。
-	m_vertexCBuffer.Copy(&m_vertexList.front());
+	m_vertexBuffer.Copy(&m_vertexList.front());
 
 	ConstantBufferUpdate();
 
