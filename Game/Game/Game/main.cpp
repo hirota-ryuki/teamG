@@ -107,8 +107,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	Game* game = NewGO<Game>();
 	//Title* title = NewGO<Title>();
 	//BackGround* bg = NewGO<BackGround>();
-	SpriteRender* sp = NewGO<SpriteRender>();
-	sp->Init("Assets/sprite/onepiece.dds", 1280.0f, 780.0f);
+	/*SpriteRender* sp = NewGO<SpriteRender>(GOPrio_Sprite);
+	sp->Init("Assets/sprite/onepiece.dds", 1280.0f, 780.0f);*/
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{

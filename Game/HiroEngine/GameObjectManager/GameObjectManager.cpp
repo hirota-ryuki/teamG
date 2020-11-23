@@ -43,6 +43,14 @@ void GameObjectManager::Render()
 			}
 		}
 	}
+	//ƒhƒ[
+	for (int i = 0; i < GOPrio_num; i++) {
+		for (auto go : m_goList[i]) {
+			if (!go->m_isDelete) {
+				go->DrawHUD();
+			}
+		}
+	}
 }
 
 void GameObjectManager::StartAndUpdate()

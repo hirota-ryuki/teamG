@@ -14,7 +14,7 @@ public:
 	/// <param name="texFilePath">ファイルパス。</param>
 	/// <param name="w">横幅。</param>
 	/// <param name="h">縦幅。</param>
-	void Init(const wchar_t* texFilePath, float w, float h);
+	void Init(const char* texFilePath, float w, float h);
 	/// <summary>
 	/// データをセット。
 	/// </summary>
@@ -49,7 +49,7 @@ public:
 	void SetRot(const Quaternion rot)
 	{
 		m_rot = rot;
-		//m_rot.Multiply(Quaternion::SpriteRot());
+		m_rot.Multiply(Quaternion::SpriteRot());
 		m_isMulti = true;
 	}
 	/// <summary>
@@ -65,13 +65,13 @@ public:
 	/// 元の画像が反転されて描画されるため、
 	/// 一回だけ実行させなければならない。
 	/// </summary>
-	//void RotMultiply()
-	//{
-	//	if (!m_isMulti) {
-	//		m_rot.Multiply(Quaternion::SpriteRot());
-	//		m_isMulti = true;
-	//	}
-	//}
+	void RotMultiply()
+	{
+		if (!m_isMulti) {
+			m_rot.Multiply(Quaternion::SpriteRot());
+			m_isMulti = true;
+		}
+	}
 	/// <summary>
 	/// アルファ値をセット。
 	/// </summary>

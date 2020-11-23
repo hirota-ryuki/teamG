@@ -14,10 +14,10 @@ bool SpriteRender::Start()
 	return true;
 }
 
-void SpriteRender::Init(const wchar_t* texFilePath, float w, float h)
+void SpriteRender::Init(const char* texFilePath, float w, float h)
 {
 	SpriteInitData	spriteInitData;
-	spriteInitData.m_textures[0] = texFilePath;
+	spriteInitData.m_ddsFilePath[0] = texFilePath;
 	spriteInitData.m_fxFilePath = "Assets/shader/sprite.fx";
 	spriteInitData.m_width = w;
 	spriteInitData.m_height = h;
