@@ -112,6 +112,17 @@ public:
 		return m_sprite;
 	}
 private:
+	/// <summary>
+	/// ディレクショナルライト
+	/// </summary>
+	struct DirectionalLight {
+		Vector3  color;
+		float pad0;			//パディング。
+		Vector3  direction;
+		float pad1;			//パディング。
+		Vector3 eyePos;		//視点
+		float specPow;		//スペキュラの絞り。
+	};
 	Sprite				m_sprite;
 	Vector3				m_pos = Vector3::Zero;
 	Quaternion			m_rot = Quaternion::Identity;

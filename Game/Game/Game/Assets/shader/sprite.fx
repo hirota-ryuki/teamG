@@ -36,16 +36,7 @@ float4 PSMain( PSInput In ) : SV_Target0
 {
 	//G-Bufferの内容を使ってライティング。
 	float4 albedo = albedoTexture.Sample(Sampler, In.uv);
-	float3 normal = normalTexture.Sample(Sampler, In.uv).xyz;
-	float3 worldPos = worldPosTexture.Sample( Sampler, In.uv).xyz;
+
 	
-	//拡散反射光を計算。
-	float3 lig = 0.0f;
-	float t = max( 0.0f, dot( normal, ligDirection) * -1.0f);
-	lig = ligColor * t;
-	
-	lig+= float3(0.2f, 0.2f, 0.2f);
-	float4 finalColor = albedo;
-	finalColor.xyz *= lig;
-	return finalColor;
+    return albedo;
 }
