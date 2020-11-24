@@ -46,6 +46,6 @@ float4 PSMain( PSInput In ) : SV_Target0
 
 	lig += float3(0.2f, 0.2f, 0.2f);
 	float4 finalColor = albedo;
-	finalColor.xyz *= lig;
+	//finalColor.xyz *= lig;
 	return finalColor;
 }

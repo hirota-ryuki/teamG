@@ -36,7 +36,5 @@ float4 PSMain( PSInput In ) : SV_Target0
 {
 	//G-Bufferの内容を使ってライティング。
 	float4 albedo = albedoTexture.Sample(Sampler, In.uv);
-
-	
     return albedo;
 }
