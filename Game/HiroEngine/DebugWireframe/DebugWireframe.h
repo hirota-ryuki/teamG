@@ -12,13 +12,24 @@ public:
 	/// 初期化。	
 	/// </summary>
 	void Init();
+	/// <summary>
+	/// drawLine()を呼ぶ前に行う処理。
+	/// </summary>
+	void Begin()
+	{
+		m_vertexList.clear();
+	}
+	/// <summary>
+	/// drawLine()を呼んだ後に行う処理。
+	/// </summary>
+	void End();
 	/// 必須。
 	/// <summary>
 	/// 線ごとに一回ずつ呼ばれる。
 	/// </summary>
-	/// <param name="from"></param>
-	/// <param name="to"></param>
-	/// <param name="color"></param>
+	/// <param name="from">1つ目の頂点の座標。</param>
+	/// <param name="to">2つ目の頂点の座標。</param>
+	/// <param name="color">色。</param>
 	void    drawLine(const btVector3& from, const btVector3& to, const btVector3& color) override;
 	void    setDebugMode(int debugMode) override {};
 	int     getDebugMode() const override 
@@ -30,11 +41,6 @@ public:
 	void    drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime, const btVector3& color) override {};
 	void    reportErrorWarning(const char* warningString) override {};
 	void    draw3dText(const btVector3& location, const char* textString) override {};
-	void Begin()
-	{
-		m_vertexList.clear();
-	}
-	void End();
 private:
 	/// <summary>
 	/// ルートシグネチャの初期化。

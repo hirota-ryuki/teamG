@@ -8,6 +8,19 @@ public:
 	bool Start() override;
 	void Update() override;
 	void DrawHUD() override;
+	/// <summary>
+	/// 初期化。
+	/// </summary>
+	/// <param name="texFilePath">ファイルパス。</param>
+	/// <param name="w">横幅。</param>
+	/// <param name="h">縦幅。</param>
+	void Init(const char* texFilePath, float w, float h);
+	/// <summary>
+	/// データをセット。
+	/// </summary>
+	/// <param name="pos">座標。</param>
+	/// <param name="rot">回転。</param>
+	/// <param name="scale">拡大率。</param>
 	void SetData(const Vector2& pos, const Quaternion rot, const Vector3 scale)
 	{
 		m_pos = Vector3{ pos.x,pos.y, 0.0f };
@@ -36,7 +49,7 @@ public:
 	void SetRot(const Quaternion rot)
 	{
 		m_rot = rot;
-		//m_rot.Multiply(Quaternion::SpriteRot());
+		m_rot.Multiply(Quaternion::SpriteRot());
 		m_isMulti = true;
 	}
 	/// <summary>
@@ -52,13 +65,13 @@ public:
 	/// 元の画像が反転されて描画されるため、
 	/// 一回だけ実行させなければならない。
 	/// </summary>
-	//void RotMultiply()
-	//{
-	//	if (!m_isMulti) {
-	//		m_rot.Multiply(Quaternion::SpriteRot());
-	//		m_isMulti = true;
-	//	}
-	//}
+	void RotMultiply()
+	{
+		if (!m_isMulti) {
+			m_rot.Multiply(Quaternion::SpriteRot());
+			m_isMulti = true;
+		}
+	}
 	/// <summary>
 	/// アルファ値をセット。
 	/// </summary>
@@ -84,13 +97,6 @@ public:
 		m_isActive = active;
 	}
 	/// <summary>
-	/// 初期化。
-	/// </summary>
-	/// <param name="texFilePath">ファイルパス。</param>
-	/// <param name="w">横幅。</param>
-	/// <param name="h">縦幅。</param>
-	void Init(const wchar_t* texFilePath, float w, float h);
-	/// <summary>
 	/// スプライトをセット。
 	/// </summary>
 	/// <param name="sprite">スプライト。</param>
@@ -106,12 +112,12 @@ public:
 		return m_sprite;
 	}
 private:
-	Sprite		m_sprite;
-	Vector3		m_pos = Vector3::Zero;
-	Quaternion	m_rot = Quaternion::Identity;
-	Vector3		m_scale = Vector3::One;
-	float		m_alpha = 1.0f;					//スプライトのα値。
-	bool		m_isActive = true;				//画像がドローされているかどうか。
-	bool		m_isMulti = false;				//画像を反転させたかどうか。
+	Sprite				m_sprite;
+	Vector3				m_pos = Vector3::Zero;
+	Quaternion			m_rot = Quaternion::Identity;
+	Vector3				m_scale = Vector3::One;
+	float				m_alpha = 1.0f;					//スプライトのα値。
+	bool				m_isActive = true;				//画像がドローされているかどうか。
+	bool				m_isMulti = false;				//画像を反転させたかどうか。
 };
 

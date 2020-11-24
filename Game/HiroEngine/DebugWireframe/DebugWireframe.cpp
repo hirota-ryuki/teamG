@@ -17,6 +17,8 @@ void DebugWireframe::Init()
 	InitSharder();
 	//パイプラインステートを初期化。
 	InitPipelineState();
+	//最大長点数分のメモリは先に確保しておく。
+	m_vertexList.reserve(MAX_VERTEX);
 	//頂点バッファの初期化。
 	InitVertexBuffer();
 	//インデックスバッファの初期化。
@@ -72,8 +74,6 @@ void DebugWireframe::InitPipelineState()
 	psoDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
 	psoDesc.SampleDesc.Count = 1;
 	m_pipelineState.Init(psoDesc);
-	//最大長点数分のメモリは先に確保しておく。
-	m_vertexList.reserve(MAX_VERTEX);
 }
 
 void DebugWireframe::InitVertexBuffer()
@@ -148,6 +148,7 @@ void DebugWireframe::RenderContextUpdate()
 	rc.SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 	//頂点バッファを設定。
 	rc.SetVertexBuffer(m_vertexBuffer);
+	//インデックスバッファを設定。
 	rc.SetIndexBuffer(m_indexBuffer);
 	//ディスクリプタヒープに設定。
 	rc.SetDescriptorHeap(m_descriptorHeap);

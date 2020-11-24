@@ -212,7 +212,7 @@
 		m_constantBufferCPU.mulColor.x = 1.0f;
 		m_constantBufferCPU.mulColor.y = 1.0f;
 		m_constantBufferCPU.mulColor.z = 1.0f;
-		m_constantBufferCPU.mulColor.w = 1.0f;
+		m_constantBufferCPU.mulColor.w = m_alpha;
 		//定数バッファを更新。
 		m_constantBufferGPU.CopyToVRAM(&m_constantBufferCPU);
 		if (m_userExpandConstantBufferCPU != nullptr) {

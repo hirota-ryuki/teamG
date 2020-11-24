@@ -691,6 +691,23 @@ public:
 	{
 	}
 	/// <summary>
+	/// スプライト用に画像をあらかじめ回転させておく関数。
+	/// </summary>
+	/// <returns></returns>
+	static Quaternion SpriteRot()
+	{
+		/*static CQuaternion rot = CQuaternion::Identity();
+		rot.SetRotationDeg(CVector3::AxisY(), 180.f);
+		return rot;*/
+		Quaternion rot = Quaternion::Identity;
+		float s;
+		float halfAngle = Math::PI * 0.5f;
+		s = sin(halfAngle);
+		rot.w = cos(halfAngle);
+		rot.y = s;
+		return rot;
+	}
+	/// <summary>
 	/// X軸周りの回転クォータニオンを作成。
 	/// </summary>
 	/// <param name="axis"></param>
