@@ -4,9 +4,6 @@
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp">
       <Filter>HiroEngine\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp">
-      <Filter>HiroEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Player\Player.cpp">
       <Filter>Game\Player</Filter>
     </ClCompile>
@@ -136,7 +133,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="BackGround\BackGround.cpp" />
     <ClCompile Include="Title\Title.cpp">
       <Filter>Game\Title</Filter>
     </ClCompile>
@@ -149,11 +145,14 @@
     <ClCompile Include="..\..\HiroEngine\Sprite\SpriteRender.cpp">
       <Filter>HiroEngine\Sprite</Filter>
     </ClCompile>
+    <ClCompile Include="BackGround\BackGround.cpp">
+      <Filter>Game\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp">
+      <Filter>HiroEngine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
-      <Filter>HiroEngine</Filter>
-    </ClInclude>
     <ClInclude Include="Player\Player.h">
       <Filter>Game\Player</Filter>
     </ClInclude>
@@ -321,7 +320,6 @@
     <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h">
       <Filter>HiroEngine\CharaCon</Filter>
     </ClInclude>
-    <ClInclude Include="BackGround\BackGround.h" />
     <ClInclude Include="Title\Title.h">
       <Filter>Game\Title</Filter>
     </ClInclude>
@@ -333,6 +331,12 @@
     </ClInclude>
     <ClInclude Include="..\..\HiroEngine\Sprite\SpriteRender.h">
       <Filter>HiroEngine\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround\BackGround.h">
+      <Filter>Game\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
+      <Filter>HiroEngine\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -411,13 +415,5 @@
     <Filter Include="Game\Villager">
       <UniqueIdentifier>{9646bb47-838c-42e4-a0f7-b79b1a87a79f}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\modelData\background\Midori.DDS" />
-    <Image Include="Assets\image\KARI.dds" />
-    <Image Include="Assets\image\ENDKARI.dds" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\modelData\background\Model.tkm" />
   </ItemGroup>
 </Project>

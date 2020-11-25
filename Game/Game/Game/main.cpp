@@ -104,9 +104,14 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 	//デバッグモードのオンオフ。
 	bool isDebug = false;
-	Vector3 m_position = Vector3::Zero;
-	auto& renderContext = g_graphicsEngine->GetRenderContext();
+	
+	//タイトルの生成。
 	Title* title = NewGO<Title>();
+	SpriteRender* m_title = NewGO<SpriteRender>(GOPrio_Sprite);
+	m_title->Init("Assets/sprite/KARI.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
+	//レンダーコンテキストの取得。
+	auto& renderContext = g_graphicsEngine->GetRenderContext();
+	
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{
@@ -136,7 +141,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 		//GameObjectManagerの更新。
 		GameObjectManager::GetInstance().Update();
-
 	
 		//レンダリングターゲットへの書き込み待ち。
 		renderContext.WaitUntilFinishDrawingToRenderTargets(ARRAYSIZE(rts), rts);
@@ -153,13 +157,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
 
-		//カメラ
-		Vector3 m_toPos = { 0.0f, 100.0f, -450.0f };
-		Vector3 m_target = planePos;
-		m_target.y += 50.0f;
-		Vector3 m_pos = planePos + m_toPos;
-		g_camera3D->SetPosition(m_pos);
-		g_camera3D->SetTarget(m_target);
+		//カメラの更新。
 		g_camera3D->Update();
 		
 		//レンダリング終了。
