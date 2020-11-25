@@ -5,15 +5,14 @@ class GameCamera;
 class Player;
 class RenderContext;
 class Villager;
+class Title;
 
 class Game : public IGameObject
 {
 public:
 	Game();
 	~Game();
-	bool Start() override;
-	void Update() override;
-	void OnDestroy() override;
+public:
 	/// <summary>
 	/// ゲームのインスタンスを取得。
 	/// </summary>
@@ -34,6 +33,12 @@ public:
 		return m_villager;
 	}
 private:
+	bool Start() override;
+	void Update() override;
+	void OnDestroy() override;
+	void FlagUpdate();
+	void GameMenuFlag();
+private:
 	//インスタンス関係。
 	static Game*	m_game;							//Gameクラスのインスタンス。
 	BackGround*		m_bg		= nullptr;			//背景。
@@ -42,6 +47,8 @@ private:
 	Villager*		m_villager	= nullptr;			//村人。
 	SpriteRender*	m_menu		= nullptr;			//画像レンダー。
 
-	bool isGameTrue_flag = true;					//ゲーム終了するかのフラグ。
+	bool isGameMenu_flag		= false;			//メニューを開くフラグ。
+	bool isSpriteCreat_flag		= true;				//メニュー画面を一度だけ生成したいので。
+	bool isGameDelete_flag		= false;			//ゲーム終了するかのフラグ。
 };
 

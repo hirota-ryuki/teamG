@@ -20,11 +20,11 @@ void Title::Update()
 {
 	TitleState();
 }
-
+//¶¬B
 void Title::TitleInit()
 {
 	m_title = NewGO<SpriteRender>(GOPrio_Sprite);
-	m_title->Init("Assets/sprite/KARI.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
+	m_title->Init("Assets/image/KARI.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
 }
 
 void Title::OnDestroy()
@@ -34,6 +34,7 @@ void Title::OnDestroy()
 
 void Title::TitleState()
 {
+	//Game¶¬‚Æíœ‚ğ“¯‚É‚µ‚È‚¢‚æ‚¤‚ÉB
 	switch (isGameStart_flag)
 	{
 	case false:

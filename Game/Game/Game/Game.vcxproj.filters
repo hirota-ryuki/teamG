@@ -414,8 +414,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\modelData\background\Midori.DDS" />
-    <Image Include="Assets\image\KARI.dds" />
-    <Image Include="Assets\image\ENDKARI.dds" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\modelData\background\Model.tkm" />

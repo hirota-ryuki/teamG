@@ -136,3 +136,8 @@ void Player::Forward()
 	m_forward.y = mRot.m[2][1];
 	m_forward.z = mRot.m[2][2];
 }
+//プレイヤー消すとき
+void Player::OnDestroy()
+{
+	DeleteGO(m_playerModel);
+}

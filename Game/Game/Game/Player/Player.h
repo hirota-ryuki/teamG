@@ -52,6 +52,10 @@ private:
 	/// プレイヤーの前方ベクトル。 
 	/// </summary>
 	void Forward();
+	/// <summary>
+	/// プレイヤーが消えるときに消したいものを入れる
+	/// </summary>
+	void OnDestroy()override;
 private:
 	Villager* m_villager = nullptr;					//村人。	
 

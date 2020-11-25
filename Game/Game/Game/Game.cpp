@@ -4,7 +4,7 @@
 #include "camera/GameCamera.h"
 #include "BackGround/BackGround.h"
 #include"villagercharacter/Villager.h"
-
+#include "Title/Title.h"
 //FindGOについて
 //FindGOは処理が重くなってしまうのでQueryGOsの内部でのみ使用しています。
 //よって、Gameクラス内の他クラスのインスタンスを呼び出したいときは下記のようにしてください。
@@ -41,6 +41,7 @@ void Game::OnDestroy()
 	DeleteGO(m_gameCamera);
 	DeleteGO(m_player);
 	DeleteGO(m_villager);
+	DeleteGO(m_menu);
 }
 
 bool Game::Start()
@@ -55,9 +56,52 @@ bool Game::Start()
 
 void Game::Update()
 {
-	if (g_pad[0]->IsTrigger(enButtonX))
+	FlagUpdate();
+	if (isGameDelete_flag)
 	{
-		m_menu = NewGO<SpriteRender>(GOPrio_Sprite);
-		m_menu->Init("Assets/sprite/KARI.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
+		DeleteGO(this);
+	}
+}
+
+void Game::FlagUpdate()
+{
+	//Gameメニュー表示入力
+	GameMenuFlag();
+	//以降はフラグでメニュー画面での入力を簡易的に描いてます。
+	switch (isGameMenu_flag)
+	{
+	case false:
+		if (m_menu != nullptr) {
+			DeleteGO(m_menu);
+			isSpriteCreat_flag = true;
+		}
+		break;
+	case true:
+		//一度だけ呼びたいためフラグを使ってます。
+		if (isSpriteCreat_flag) {
+			m_menu = NewGO<SpriteRender>(GOPrio_Sprite);
+			m_menu->Init("Assets/sprite/onepiece.dds", 120.f, 50.f);
+			isSpriteCreat_flag = false;
+		}
+		//メニュー画面からセーブして終了すると思ったので下記のように書いてます。
+		//どう森のことよくわからないので許してヒヤシンス。
+		if (g_pad[0]->IsTrigger(enButtonA))
+		{
+			Title* title = NewGO<Title>();
+			isGameDelete_flag = true;
+		}
+		break;
+	}
+}
+
+void Game::GameMenuFlag()
+{
+	if (g_pad[0]->IsTrigger(enButtonX) && !isGameMenu_flag)
+	{
+		isGameMenu_flag = true;
+	}
+	else if (g_pad[0]->IsTrigger(enButtonX) && isGameMenu_flag)
+	{
+		isGameMenu_flag = false;
 	}
 }
