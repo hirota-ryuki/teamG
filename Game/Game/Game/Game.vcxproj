@@ -277,12 +277,6 @@
     <ClInclude Include="Title\Title.h" />
     <ClInclude Include="TrianglePolygon.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\modelData\background\Midori.DDS" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\modelData\background\Model.tkm" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

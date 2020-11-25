@@ -27,7 +27,7 @@ public:
 		*@param[in]	pos			座標。
 		*@param[in]	rot			回転。
 		*/
-	void CreateMeshObject(SkinModel& skinModel, CVector3 pos, CQuaternion rot);
+	void CreateMeshObject(SkinModel& skinModel, Vector3 pos, Quaternion rot);
 	/// <summary>
 	/// ユーザーインデックスを設定。
 	/// </summary>
@@ -35,7 +35,7 @@ public:
 	void SetUserIndex(int index){
 		m_rigidBody.GetBody()->setUserIndex(index);
 	}
-	void SetRotation(const CQuaternion& rot) {
+	void SetRotation(const Quaternion& rot) {
 		btRigidBody* btBody = m_rigidBody.GetBody();
 		//剛体を動かす。
 		btBody->setActivationState(DISABLE_DEACTIVATION);

@@ -18,7 +18,7 @@ PhysicsStaticObject::~PhysicsStaticObject()
 	
 }
 
-void PhysicsStaticObject::CreateMeshObject(SkinModel& skinModel, CVector3 pos, CQuaternion rot)
+void PhysicsStaticObject::CreateMeshObject(SkinModel& skinModel, Vector3 pos, Quaternion rot)
 {
 	if (!m_isInit) {
 		//メッシュコライダーを作成。
