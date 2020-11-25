@@ -195,9 +195,6 @@
     <ClInclude Include="..\..\HiroEngine\IUnorderAccessResource.h">
       <Filter>HiroEngine\Model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HiroEngine\Model.h">
-      <Filter>HiroEngine\Model</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
       <Filter>HiroEngine\Graphics</Filter>
     </ClInclude>

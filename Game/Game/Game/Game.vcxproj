@@ -249,7 +249,6 @@
     <ClInclude Include="..\..\HiroEngine\math\Matrix.h" />
     <ClInclude Include="..\..\HiroEngine\math\Vector.h" />
     <ClInclude Include="..\..\HiroEngine\MeshParts.h" />
-    <ClInclude Include="..\..\HiroEngine\Model.h" />
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h" />
     <ClInclude Include="..\..\HiroEngine\PipelineState.h" />
     <ClInclude Include="..\..\HiroEngine\RenderContext.h" />

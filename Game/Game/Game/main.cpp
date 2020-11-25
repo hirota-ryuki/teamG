@@ -107,8 +107,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	
 	//タイトルの生成。
 	Title* title = NewGO<Title>();
-	SpriteRender* m_title = NewGO<SpriteRender>(GOPrio_Sprite);
-	m_title->Init("Assets/sprite/KARI.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
+	/*SpriteRender* m_title = NewGO<SpriteRender>(GOPrio_Sprite);
+	m_title->Init("Assets/sprite/KARI.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);*/
 	//レンダーコンテキストの取得。
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
 	
