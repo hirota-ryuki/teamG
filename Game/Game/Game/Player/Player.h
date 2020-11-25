@@ -1,6 +1,7 @@
 #pragma once
 #include "CharaCon/CharacterController.h"
 
+class Villager;
 class Player : public IGameObject
 {
 public:
@@ -43,8 +44,18 @@ private:
 	/// プレイヤーの回転処理。
 	/// </summary>
 	void PlayerRotation();
+	/// <summary>
+	/// プレイヤーと村人の距離を測る。
+	/// </summary>
+	void DistanceOfVillagers();
+	/// <summary>
+	/// プレイヤーの前方ベクトル。 
+	/// </summary>
+	void Forward();
 private:
-	SkinModelRender* m_playerModel = nullptr;			//プレイヤーのモデル。
+	Villager* m_villager = nullptr;					//村人。	
+
+	SkinModelRender* m_playerModel = nullptr;		//プレイヤーのモデル。
 	CharacterController m_charaCon;					//キャラクターコントローラー。
 
 	Vector3 m_position = Vector3::Zero;				//プレイヤーのポジション。
@@ -52,6 +63,7 @@ private:
 	Vector3 m_cameraForward = Vector3::Zero;			//移動に使うカメラ前方方向取得。
 	Vector3 m_cameraRight = Vector3::Zero;			//移動に使うカメラ左右方向取得。
 	Vector3 m_scale = { 1.0f,1.0f,1.0f };			//大きさ。
+	Vector3 m_forward = Vector3::AxisZ;
 
 	Quaternion m_rotation = Quaternion::Identity;	//主に使う回転の変数。
 	Quaternion m_rotating = Quaternion::Identity;	//モデルが動いてるとき使う回転変数。
@@ -60,5 +72,7 @@ private:
 	float m_speed = 100.0f;							//移動速度。
 
 	int m_runSpeed = 1;								//走るときに速さ掛ける変数。
+
+	bool isHitVillager_flag = false;				//村人と接敵しているか
 };
 

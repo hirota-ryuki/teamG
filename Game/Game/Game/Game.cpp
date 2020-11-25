@@ -3,6 +3,7 @@
 #include "Player/Player.h"
 #include "camera/GameCamera.h"
 #include "BackGround/BackGround.h"
+#include"villagercharacter/Villager.h"
 
 //FindGOについて
 //FindGOは処理が重くなってしまうのでQueryGOsの内部でのみ使用しています。
@@ -35,25 +36,20 @@ Game::~Game()
 
 void Game::OnDestroy() 
 {
-	if (m_player != nullptr)
-	{
-		DeleteGO(m_player);
-	}
-	if (m_gameCamera != nullptr)
-	{
-		DeleteGO(m_gameCamera);
-	}
-	if (m_bg != nullptr) {
-		DeleteGO(m_bg);
-	}
+	//ゲームが消えるときに削除したい物はここに書いてね。
+	DeleteGO(m_bg);
+	DeleteGO(m_gameCamera);
+	DeleteGO(m_player);
+	DeleteGO(m_villager);
 }
 
 bool Game::Start()
 {
 	//生成一覧。
-	m_player = NewGO<Player>();
 	m_bg = NewGO<BackGround>();
 	m_gameCamera = NewGO<GameCamera>();
+	m_player = NewGO<Player>();
+	m_villager = NewGO<Villager>();
 	return true;
 }
 

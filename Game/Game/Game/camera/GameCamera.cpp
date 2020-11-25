@@ -24,11 +24,11 @@ void GameCamera::Update()
 {
 	StateCamera();
 	//Œã‚ÅÁ‚¦‚é‚æB
-	if (g_pad[0]->IsTrigger(enButtonA))
+	if (g_pad[0]->IsTrigger(enButtonB) && !isCameraTagChange_flag)
 	{
 		isCameraTagChange_flag = true;
 	}
-	else if (g_pad[0]->IsTrigger(enButtonB))
+	else if (g_pad[0]->IsTrigger(enButtonB) && isCameraTagChange_flag)
 	{
 		isCameraTagChange_flag = false;
 	}

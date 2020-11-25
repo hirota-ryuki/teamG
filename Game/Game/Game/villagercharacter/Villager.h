@@ -4,7 +4,10 @@ class Villager : public IGameObject
 public:
 	//このクラスは恐らく継承されるので、その時の関数を少しずつ書いておきます。
 	void InitModel(const char* texFilePath);
-
+	const Vector3& GetPosition() const
+	{
+		return m_position;
+	}
 private:
 	bool Start()override;
 	void Update()override;

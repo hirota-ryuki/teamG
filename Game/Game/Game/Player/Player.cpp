@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "Player.h"
+#include "Game.h"
+#include "villagercharacter/Villager.h"
 
 Player::Player()
 {
@@ -11,10 +13,12 @@ Player::~Player()
 
 bool Player::Start()
 {
+	Game* game = Game::GetGame();
+	m_villager = game->GetVillager();
 	//モデルの初期化。
 	InitModel();
 	//キャラコンの初期化。
-	m_charaCon.Init(80.f, 100.f, m_position);
+	m_charaCon.Init(40.f, 75.f, m_position);
 	return true;
 }
 //更新関数。
@@ -22,7 +26,9 @@ void Player::Update()
 {
 	MoveOperation();				//移動処理。
 	PlayerRotation();				//回転処理。
-	//PlayerInputProcessing();		//入力処理。
+	PlayerInputProcessing();		//入力処理。
+	DistanceOfVillagers();			//距離測定。
+	Forward();						//前方取得。
 }
 //モデル呼び出し
 void Player::InitModel()
@@ -77,8 +83,9 @@ void Player::PlayerInputProcessing()
 {
 	const int RUNSPEED = 2;
 	//Aボタンが押されたとき。
-	if (g_pad[0]->IsTrigger(enButtonA))
+	if (g_pad[0]->IsTrigger(enButtonA) && isHitVillager_flag)
 	{
+		MessageBoxA(nullptr,"あれ？またなんか尖っちゃいました？","廣田の顎",MB_OK);
 		//話しかけたり、物を拾ったり、基本的に選択するときにOKサイン出す。
 		//ただ今、選択物がないため処理が未完成。後々追加されるであろう。
 	}
@@ -106,4 +113,26 @@ void Player::PlayerRotation()
 	{
 		m_playerModel->SetRot(m_rotation);
 	}
+}
+//プレイヤーと村人の距離
+void Player::DistanceOfVillagers()
+{
+	Vector3 m_distance = m_position - m_villager->GetPosition();
+	if (m_distance.Length() < 85.0f)
+	{
+		isHitVillager_flag = true;
+	}
+	else
+	{
+		isHitVillager_flag = false;
+	}
+}
+//前方ベクトルの処理
+void Player::Forward()
+{
+	auto mRot = Matrix::Identity;
+	mRot.MakeRotationFromQuaternion(m_rotation);
+	m_forward.x = mRot.m[2][0];
+	m_forward.y = mRot.m[2][1];
+	m_forward.z = mRot.m[2][2];
 }

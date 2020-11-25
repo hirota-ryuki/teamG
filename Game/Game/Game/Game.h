@@ -1,9 +1,11 @@
 #pragma once
 
-class Player;
-class GameCamera;
-class RenderContext;
 class BackGround;
+class GameCamera;
+class Player;
+class RenderContext;
+class Villager;
+
 class Game : public IGameObject
 {
 public:
@@ -27,11 +29,16 @@ public:
 	Player* GetPlayer() {
 		return m_player;
 	}
+	Villager* GetVillager()
+	{
+		return m_villager;
+	}
 private:
 	//インスタンス関係。
 	static Game*	m_game;							//Gameクラスのインスタンス。
-	Player*			m_player = nullptr;				//プレイヤー。
-	GameCamera*		m_gameCamera = nullptr;			//カメラ。
 	BackGround*		m_bg = nullptr;					//背景。
+	GameCamera*		m_gameCamera = nullptr;			//カメラ。
+	Player*			m_player = nullptr;				//プレイヤー。
+	Villager*		 m_villager = nullptr;			//村人。
 };
 
