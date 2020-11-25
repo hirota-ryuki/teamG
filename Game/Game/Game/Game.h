@@ -41,5 +41,7 @@ private:
 	Player*			m_player	= nullptr;			//プレイヤー。
 	Villager*		m_villager	= nullptr;			//村人。
 	SpriteRender*	m_menu		= nullptr;			//画像レンダー。
+
+	bool isGameTrue_flag = true;					//ゲーム終了するかのフラグ。
 };
 

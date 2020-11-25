@@ -55,5 +55,9 @@ bool Game::Start()
 
 void Game::Update()
 {
-	
+	if (g_pad[0]->IsTrigger(enButtonX))
+	{
+		m_menu = NewGO<SpriteRender>(GOPrio_Sprite);
+		m_menu->Init("Assets/sprite/KARI.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
+	}
 }
