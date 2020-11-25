@@ -18,7 +18,7 @@ void SpriteRender::Init(const char* texFilePath, float w, float h)
 {
 	SpriteInitData	spriteInitData;
 	spriteInitData.m_ddsFilePath[0] = texFilePath;
-	spriteInitData.m_fxFilePath = "Assets/shader/sprite.fx";
+	spriteInitData.m_fxFilePath = "Assets/shader/spriterender.fx";
 	spriteInitData.m_width = w;
 	spriteInitData.m_height = h;
 	m_sprite.Init(spriteInitData);

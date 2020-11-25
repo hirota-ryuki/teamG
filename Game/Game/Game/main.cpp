@@ -94,8 +94,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//ディファードライティングで使用するテクスチャにワールド座標テクスチャを追加。
 	spriteInitData.m_textures[2] = &worldPosRT.GetRenderTargetTexture();
 	spriteInitData.m_fxFilePath = "Assets/shader/sprite.fx";
-	spriteInitData.m_expandConstantBuffer = &light;
-	spriteInitData.m_expandConstantBufferSize = sizeof(light);
+	//spriteInitData.m_expandConstantBuffer = &light;
+	//spriteInitData.m_expandConstantBufferSize = sizeof(light);
 	//初期化データを使ってスプライトを作成。
 	Sprite defferdLightinSpr;
 	defferdLightinSpr.Init(spriteInitData);
@@ -107,8 +107,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	Game* game = NewGO<Game>();
 	//Title* title = NewGO<Title>();
 	//BackGround* bg = NewGO<BackGround>();
-	/*SpriteRender* sp = NewGO<SpriteRender>(GOPrio_Sprite);
-	sp->Init("Assets/sprite/onepiece.dds", 1280.0f, 780.0f);*/
+	SpriteRender* sp = NewGO<SpriteRender>(GOPrio_Sprite);
+	sp->Init("Assets/sprite/onepiece.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{

@@ -414,9 +414,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\modelData\background\Midori.DDS" />
-    <Image Include="Assets\image\onepiece.jpg">
-      <Filter>Game</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\modelData\background\Model.tkm" />
