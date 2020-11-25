@@ -2,6 +2,7 @@
 #include "system/system.h"
 #include "Game.h"
 #include "BackGround/BackGround.h"
+#include"Title/Title.h"
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
 //関数宣言
 void InitRootSignature(RootSignature& rs);
@@ -104,11 +105,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	bool isDebug = false;
 	Vector3 m_position = Vector3::Zero;
 	auto& renderContext = g_graphicsEngine->GetRenderContext();
-	Game* game = NewGO<Game>();
-	//Title* title = NewGO<Title>();
-	//BackGround* bg = NewGO<BackGround>();
-	SpriteRender* sp = NewGO<SpriteRender>(GOPrio_Sprite);
-	sp->Init("Assets/sprite/onepiece.dds", FRAME_BUFFER_W, FRAME_BUFFER_H);
+	Title* title = NewGO<Title>();
 	// ここからゲームループ。
 	while (DispatchWindowMessage())
 	{

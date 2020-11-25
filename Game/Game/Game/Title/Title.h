@@ -10,9 +10,10 @@ public:
 	bool Start()override;
 	void Update()override;
 	void TitleInit();
+	void OnDestroy()override;
+	void TitleState();
 private:
-	//Game* m_game = nullptr;
-	Sprite* m_tileSprite = nullptr;
-	SpriteInitData m_spriteInitData;
+	SpriteRender* m_title = nullptr;
+	bool isGameStart_flag = false;
 };
 

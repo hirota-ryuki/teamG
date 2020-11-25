@@ -278,6 +278,8 @@
     <ClInclude Include="TrianglePolygon.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\image\ENDKARI.dds" />
+    <Image Include="Assets\image\KARI.dds" />
     <Image Include="Assets\modelData\background\Midori.DDS" />
   </ItemGroup>
   <ItemGroup>

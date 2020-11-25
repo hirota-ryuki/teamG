@@ -36,9 +36,10 @@ public:
 private:
 	//インスタンス関係。
 	static Game*	m_game;							//Gameクラスのインスタンス。
-	BackGround*		m_bg = nullptr;					//背景。
-	GameCamera*		m_gameCamera = nullptr;			//カメラ。
-	Player*			m_player = nullptr;				//プレイヤー。
-	Villager*		 m_villager = nullptr;			//村人。
+	BackGround*		m_bg		= nullptr;			//背景。
+	GameCamera*		m_gameCamera= nullptr;			//カメラ。
+	Player*			m_player	= nullptr;			//プレイヤー。
+	Villager*		m_villager	= nullptr;			//村人。
+	SpriteRender*	m_menu		= nullptr;			//画像レンダー。
 };
 
