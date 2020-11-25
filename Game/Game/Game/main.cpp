@@ -6,6 +6,7 @@
 //#include "BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h"
 //関数宣言
 void InitRootSignature(RootSignature& rs);
+void DebugMode(bool& isDebug);
 
 /// <summary>
 /// ディレクショナルライト
@@ -145,6 +146,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//G-Bufferの内容を元にしてディファードライティング。
 		defferdLightinSpr.Draw(renderContext);
 		
+		//デバッグモード。
+		DebugMode(isDebug);
+
 		//ここからフォワードレンダリング。
 		//深度ステンシルビューをG-Bufferを作成したときのものに変更する。
 		renderContext.SetRenderTarget(g_graphicsEngine->GetCurrentFrameBuffuerRTV(), rts[0]->GetDSVCpuDescriptorHandle());
@@ -158,18 +162,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		g_camera3D->SetTarget(m_target);
 		g_camera3D->Update();
 		
-		//デバッグモード。
-		//DubugMode(isDebug);
-		//ボタンで切り替え
-		if (g_pad[0]->IsTrigger(enButtonSelect))
-		{
-			isDebug = !isDebug;
-		}
-		if (isDebug)
-		{
-			//デバッグモード
-			g_physics.DebugDraw();
-		}
 		//レンダリング終了。
 		g_engine->EndFrame();
 	}
@@ -188,6 +180,16 @@ void InitRootSignature(RootSignature& rs)
 }
 
 //デバッグモード。
-void DubugMode(bool& isDebug) {
-
+void DebugMode(bool& isDebug) 
+{
+	//ボタンで切り替え。
+	if (g_pad[0]->IsTrigger(enButtonSelect))
+	{
+		isDebug = !isDebug;
+	}
+	if (isDebug)
+	{
+		//デバッグモード。
+		g_physics.DebugDraw();
+	}
 }
