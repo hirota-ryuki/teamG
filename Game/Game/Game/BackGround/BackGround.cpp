@@ -19,7 +19,6 @@ bool BackGround::Start()
 
 void BackGround::Update()
 {
-	
 }
 
 void BackGround::InitModel()
