@@ -204,6 +204,7 @@
     <ClCompile Include="..\..\HiroEngine\VertexBuffer.cpp" />
     <ClCompile Include="BackGround\BackGround.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Title\Title.cpp" />
     <ClInclude Include="..\..\HiroEngine\CharaCon\CharacterController.h" />
     <ClCompile Include="villagercharacter\Villager.cpp" />
@@ -228,6 +229,7 @@
     </ClCompile>
     <ClCompile Include="system\system.cpp" />
     <ClInclude Include="..\..\HiroEngine\Sprite\SpriteRender.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="villagercharacter\Villager.h" />
   </ItemGroup>
   <ItemGroup>

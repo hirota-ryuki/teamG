@@ -28,3 +28,8 @@ void BackGround::InitModel()
 	m_bg->Init("Assets/modelData/background/Model.tkm");
 	m_bg->SetPos(m_position);
 }
+
+void BackGround::OnDestroy()
+{
+	DeleteGO(m_bg);
+}

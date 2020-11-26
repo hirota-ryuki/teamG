@@ -3,8 +3,9 @@
 #include "Player/Player.h"
 #include "camera/GameCamera.h"
 #include "BackGround/BackGround.h"
-#include"villagercharacter/Villager.h"
+#include "villagercharacter/Villager.h"
 #include "Title/Title.h"
+#include "Menu.h"
 //FindGOについて
 //FindGOは処理が重くなってしまうのでQueryGOsの内部でのみ使用しています。
 //よって、Gameクラス内の他クラスのインスタンスを呼び出したいときは下記のようにしてください。
@@ -42,6 +43,7 @@ void Game::OnDestroy()
 	DeleteGO(m_player);
 	DeleteGO(m_villager);
 	DeleteGO(m_menu);
+	DeleteGO(this);
 }
 
 bool Game::Start()
@@ -79,8 +81,7 @@ void Game::FlagUpdate()
 	case true:
 		//一度だけ呼びたいためフラグを使ってます。
 		if (isSpriteCreat_flag) {
-			m_menu = NewGO<SpriteRender>(GOPrio_Sprite);
-			m_menu->Init("Assets/sprite/onepiece.dds", 120.f, 50.f);
+			m_menu = NewGO<Menu>();
 			isSpriteCreat_flag = false;
 		}
 		//メニュー画面からセーブして終了すると思ったので下記のように書いてます。
