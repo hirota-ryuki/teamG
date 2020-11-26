@@ -151,6 +151,7 @@
     <ClCompile Include="..\..\HiroEngine\NullTextureMaps.cpp">
       <Filter>HiroEngine\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player\Player.h">
@@ -335,6 +336,7 @@
     <ClInclude Include="..\..\HiroEngine\NullTextureMaps.h">
       <Filter>HiroEngine\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HiroEngine">

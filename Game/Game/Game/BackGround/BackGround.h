@@ -6,6 +6,7 @@ public:
 	~BackGround();
 	bool Start()override;
 	void Update()override;
+	void OnDestroy()override;
 	void InitModel();
 private:
 	SkinModelRender*	m_bg = nullptr;						//”wŒi‚¾‚æB

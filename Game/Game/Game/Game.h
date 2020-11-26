@@ -6,6 +6,7 @@ class Player;
 class RenderContext;
 class Villager;
 class Title;
+class Menu;
 
 class Game : public IGameObject
 {
@@ -45,7 +46,7 @@ private:
 	GameCamera*		m_gameCamera= nullptr;			//カメラ。
 	Player*			m_player	= nullptr;			//プレイヤー。
 	Villager*		m_villager	= nullptr;			//村人。
-	SpriteRender*	m_menu		= nullptr;			//画像レンダー。
+	Menu*			m_menu		= nullptr;			//メニュー。
 
 	bool isGameMenu_flag		= false;			//メニューを開くフラグ。
 	bool isSpriteCreat_flag		= true;				//メニュー画面を一度だけ生成したいので。
